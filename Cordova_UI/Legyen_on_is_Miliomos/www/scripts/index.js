@@ -27,4 +27,59 @@
     function onResume() {
         // TODO: This application has been reactivated. Restore application state here.
     };
-} )();
+})();
+function loginServerRq() {
+    var username = document.getElementById('uname').value.toLowerCase();
+    var password = document.getElementById('pword').value.toLowerCase();
+    var requestData = 'username=' + username +
+        '&password=' + password;
+    httpRequest('http://web-okt.duf.hu/~ll0qie/signup.php', requestData, null, loginOk, loginError);
+}
+
+function cancelForm() {
+    document.getElementById('uname').value = '';
+    document.getElementById('pword').value = '';
+}
+
+function loginOk(response) {
+    alert('successful login' + response);
+    if (response == "false") {
+        alert("helytelen jelszó");
+    }
+}
+
+function loginError() {
+    alert('login error');
+}
+function httpRequest(url, data, option, success, fallback)
+{
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4) {
+            if (xmlhttp.status >= 200 && xmlhttp.status < 300) {
+                if (typeof success === 'function') {
+                    success(xmlhttp.responseText);
+                }
+            } else {
+                if (typeof fallback === 'function') {
+                    fallback(xmlhttp.statusText);
+                }
+            }
+        }
+
+    };
+    xmlhttp.onerror = function (e) {
+        fallback(e.statusText);
+    };
+    var method = (data) ? 'POST' : 'GET';
+    if (options.user && options.password) {
+        xmlhttp.open(method, url, true);
+        xmlhttp.setRequestHeader('Authorization', 'Basic' + btoa(options.user+':'+options.password));
+    } else {
+        xmlhttp.open(method, url, true);
+    }
+    if (options.content) {
+        xmlhttp.setRequestHeader('Content-Type', options.content);
+    }
+    xmlhttp.send(data);
+  }

@@ -31,8 +31,8 @@
 function loginServerRq() {
     var username = document.getElementById('uname').value.toLowerCase();
     var password = document.getElementById('pword').value.toLowerCase();
-    var requestData = 'username=' + username + '&password=' + password;
-    httpRequest('https://thejumper203.ddns.net/~webuser/milliomos/login.php', requestData, {}, loginOk, loginError);
+    var requestData = 'username=' + username + 'password=' + password;
+    httpRequest('https://thejumper203.ddns.net/~webuser/milliomos/login.php', requestData, { content="application/x-www-form-urlencoded" }, loginOk, loginError);
     
 }
 
@@ -42,7 +42,7 @@ function cancelForm() {
 }
 
 function loginOk(response) {
-    alert('successful login' + response);
+    alert(response);
     if (response == "false") {
         alert("helytelen jelszó");
     }
@@ -79,7 +79,7 @@ function httpRequest(url, data, option, success, fallback)
         xmlhttp.open(method, url, true);
     }
     if (option.content) {
-        xmlhttp.setRequestHeader('Content-Type', options.content);
+        xmlhttp.setRequestHeader('Content-Type', option.content);
     }
     xmlhttp.send(data);
   }

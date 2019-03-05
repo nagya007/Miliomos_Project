@@ -4,9 +4,7 @@
 // and then run "window.location.reload()" in the JavaScript Console.
 (function () {
     "use strict";
-
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
-
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
@@ -19,11 +17,9 @@
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
     };
-
     function onPause() {
         // TODO: This application has been suspended. Save application state here.
     };
-
     function onResume() {
         // TODO: This application has been reactivated. Restore application state here.
     };
@@ -32,15 +28,12 @@ function loginServerRq() {
     var username = document.getElementById('uname').value.toLowerCase();
     var password = document.getElementById('pword').value.toLowerCase();
     var requestData = 'username=' + username + 'password=' + password;
-    httpRequest('https://thejumper203.ddns.net/~webuser/milliomos/login.php', requestData, { content="application/x-www-form-urlencoded" }, loginOk, loginError);
-    
-}
-
+    httpRequest('https://thejumper203.ddns.net/~webuser/milliomos/login.php', requestData, option.content = "application/x-www-form-urlencoded", loginOk, loginError);
+    }
 function cancelForm() {
     document.getElementById('uname').value = '';
     document.getElementById('pword').value = '';
 }
-
 function loginOk(response) {
     alert(response);
     if (response == "false") {

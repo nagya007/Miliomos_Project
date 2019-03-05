@@ -21,6 +21,26 @@
       <Configuration>Debug</Configuration>
       <Platform>Windows-ARM</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Legyen|Android">
+      <Configuration>Legyen</Configuration>
+      <Platform>Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Legyen|iOS">
+      <Configuration>Legyen</Configuration>
+      <Platform>iOS</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Legyen|Windows-ARM">
+      <Configuration>Legyen</Configuration>
+      <Platform>Windows-ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Legyen|Windows-x64">
+      <Configuration>Legyen</Configuration>
+      <Platform>Windows-x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Legyen|Windows-x86">
+      <Configuration>Legyen</Configuration>
+      <Platform>Windows-x86</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Android">
       <Configuration>Release</Configuration>
       <Platform>Android</Platform>

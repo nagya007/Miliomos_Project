@@ -24,28 +24,35 @@
         // TODO: This application has been reactivated. Restore application state here.
     };
 })(); 
+
 function loginServerRq() {
     var username = document.getElementById('uname').value.toLowerCase();
     var password = document.getElementById('pword').value.toLowerCase();
     var requestData = 'username=' + username + '&password=' + password;
-    httpRequest('https://thejumper203.ddns.net/~webuser/milliomos/login.php', requestData, { content: "application/x-www-form-urlencoded" }, loginOk, loginError);
+   httpRequest('https://thejumper203.ddns.net/~webuser/milliomos/login.php', requestData, { content: "application/x-www-form-urlencoded" }, loginOk, loginError);
     }
 function cancelForm() {
     document.getElementById('uname').value = '';
     document.getElementById('pword').value = '';
 }
 function loginOk(response) {
-    alert(response);
     if (response == "false") {
         alert("helytelen jelszó");
+    } else {
+        document.getElementById('app').hidden = true;
+        document.getElementById('succes').innerHTML = response;
+        document.getElementById('Login').style.visibility = "visible";
+        document.getElementById('usern').hidden = true;
+        document.getElementById('pass').hidden = true;
+        document.getElementById('but').hidden = true;
+
     }
 }
 
 function loginError() {
     alert('login error');
 }
-function httpRequest(url, data, option, success, fallback)
-{
+function httpRequest(url, data, option, success, fallback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4) {
@@ -67,13 +74,13 @@ function httpRequest(url, data, option, success, fallback)
     var method = (data) ? 'POST' : 'GET';
     if (option.user && option.password) {
         xmlhttp.open(method, url, true);
-        xmlhttp.setRequestHeader('Authorization', 'Basic' + btoa(option.user+':'+option.password));
+        xmlhttp.setRequestHeader('Authorization', 'Basic' + btoa(option.user + ':' + option.password));
     } else {
         xmlhttp.open(method, url, true);
     }
     if (option.content) {
         xmlhttp.setRequestHeader('Content-Type', option.content);
     }
- 
+
     xmlhttp.send(data);
-  }
+}

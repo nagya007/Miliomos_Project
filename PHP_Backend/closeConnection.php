@@ -1,5 +1,5 @@
 <?php
-function closeConnection(conn) {
+function closeConnection($conn) {
 	$conn->close();
 }
 ?>

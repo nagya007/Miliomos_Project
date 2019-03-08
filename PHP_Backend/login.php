@@ -1,10 +1,10 @@
 <?php
-    include "./sqlcredits.php";
+    require_once "./sqlcredits.php";
     session_start();
-    if (isset($_POST['username']) && isset($_POST['password'])) 
+    $username=$_POST["username"];
+    $password=$_POST["password"];
+    if ($username != "" && $password != "") 
         {
-            $username=$_POST["username"];
-            $password=$_POST["password"];
             $sqlq="select * from users where username='$username'";
             $result= mysqli_query($sqlconn, $sqlq);
             $data= mysqli_fetch_assoc($result);
@@ -15,5 +15,6 @@
             }
             else echo "false";
         }
-            
+        else echo "empty";
+        
 ?>

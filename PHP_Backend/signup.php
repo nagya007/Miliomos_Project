@@ -12,7 +12,8 @@
             $pwhash= password_hash($password,PASSWORD_DEFAULT);
             $sqlq="insert into users (username,pwhash,email) values ('$username','$pwhash','$email')";
             $sqlconn->query($sqlq);
-            header("Location: login.html");
+            //header("Location: login.html");
+            echo "successful";
         }    
     }
     else echo "empty";

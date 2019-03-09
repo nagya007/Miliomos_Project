@@ -15,6 +15,6 @@
             }
             else echo "false";
         }
-        else echo "empty";
+        else echo "false";
         
 ?>

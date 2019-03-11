@@ -5,6 +5,7 @@ CREATE TABLE user (
   name VARCHAR(50) NOT NULL,
   password VARCHAR(25) NOT NULL,
   email VARCHAR(25) NOT NULL,
+  score INT,
   PRIMARY KEY (id)
 );
 

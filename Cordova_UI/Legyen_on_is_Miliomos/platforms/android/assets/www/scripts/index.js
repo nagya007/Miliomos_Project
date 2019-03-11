@@ -16,6 +16,7 @@
         var receivedElement = parentElement.querySelector('.received');
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
+        displayForm('formA');
     };
     function onPause() {
         // TODO: This application has been suspended. Save application state here.
@@ -23,7 +24,14 @@
     function onResume() {
         // TODO: This application has been reactivated. Restore application state here.
     };
-})(); 
+})();
+function displayForm(formName) {
+    // kikapcsolja az összes formot és megjeleníti a paraméterként kapottat
+    document.getElementById('formA').style.display = 'none';
+    document.getElementById('formB').style.display = 'none';
+    document.getElementById('formC').style.display = 'none';
+    document.getElementById(formName).style.display = '';
+}
 
 function loginServerRq() {
     var username = document.getElementById('uname').value.toLowerCase();
@@ -39,12 +47,13 @@ function loginOk(response) {
     if (response == "false") {
         alert("helytelen jelszó");
     } else {
-        document.getElementById('app').hidden = true;
+       /*/ document.getElementById('app').hidden = true;
         document.getElementById('succes').innerHTML = response;
         document.getElementById('Login').style.visibility = "visible";
         document.getElementById('usern').hidden = true;
         document.getElementById('pass').hidden = true;
-        document.getElementById('but').hidden = true;
+        document.getElementById('but').hidden = true;/*/
+        displayForm('formB');
 
     }
 }

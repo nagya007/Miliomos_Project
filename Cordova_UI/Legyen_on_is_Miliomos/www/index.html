@@ -15,17 +15,11 @@
     <script src='communication.js'></script>
     <title>LegyenonisMiliomos</title>
 </head>
-    <body>
-        <div class="app" id="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <div id="Login"style="visibility:hidden">
+<body>
+    <div id="formA" style="display: none">
+        <div id="Login" style="visibility:hidden">
             <h1>
-               <b>"Üdvözöllek az oldalon"</b>
+                <b>"Üdvözöllek az oldalon"</b>
             </h1>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
@@ -51,5 +45,61 @@
             <button id="logInMe" onclick="loginServerRq()">login</button>
             <button id="logInCancel" onclick="cancelForm()">cancel</button>
         </div>
-    </body>
+    </div>
+    <div id="formB" style="display: none">
+        <table style="text-align: left; width: 100%; height: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+            <tbody>
+
+                <tr>
+
+                    <td style="text-align: center;" colspan="3" rowspan="1" height="30%" width="66%">K&Eacute;RD&Eacute;S</td>
+
+                    <td colspan="1" style="text-align: center;" ;colspan="1" rowspan="2" height="20%" width="34%">K&Eacute;RD&Eacute;SEK</td>
+
+                </tr>
+
+                <tr>
+
+                    <td colspan="3" rowspan="1" height="10%">
+                        <br>
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>A V&Aacute;LASZ</td>
+
+                    <td colspan="1" rowspan="2"></td>
+
+                    <td>B V&Aacute;LASZ</td>
+
+                    <td style="text-align: center;" colspan="1" rowspan="2" width="34%">SEG&Iacute;TS&Eacute;G</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>C V&Aacute;LASZ</td>
+
+                    <td>D V&Aacute;LASZ</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="formC" style="display: none">
+        <br>kdflajfiljq<br>eijdfiqejilf<br>
+
+        <div class="app" id="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

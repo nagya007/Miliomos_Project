@@ -31,9 +31,9 @@
     <splash density="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
     <splash density="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="orientation" value="landscape" />
     <preference name="SplashScreen" value="screen" />
     <preference name="windows-target-version" value="10.0" />
     <preference name="Fullscreen" value="True" />
-    <preference name="android-minSdkVersion" value="21" />
-    <preference name="android-targetSdkVersion" value="21" />
+    <preference name="AndroidLaunchMode" value="standard" />
 </widget>

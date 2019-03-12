@@ -12,10 +12,79 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="shortcut icon" href="">
-    <script src='communication.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+   
+    <!--<script src="scripts/jquery.js"></script>-->
+    <script src="scripts/index.js"></script>
+    <style>
+        #welcome {
+            display: block;
+        }
+
+        #signup_form {
+            display: none;
+        }
+
+        #login_form {
+            display: none;
+        }
+
+        #mainmenu {
+            display: none;
+        }
+
+        #playground {
+            display: none;
+        }
+    </style>
     <title>LegyenonisMiliomos</title>
 </head>
 <body>
+    <div id="welcome">
+        <button onclick="ShowSignup()">Signup</button>
+        <button onclick="ShowLogin()">Login</button>
+    </div>
+    <div id="signup_form">
+        <h1>Registration</h1>
+        <div>
+            <label>Email: </label>
+            <input type="text" name="s_email">
+        </div>
+        <div>
+            <label>Username: </label>
+            <input type="text" name="s_username">
+        </div>
+        <div>
+            <label>Password: </label>
+            <input type="password" name="s_password">
+        </div>
+        <input type="button" value="Sign up" onclick="Signup();">
+    </div>
+    <div id="login_form">
+        <h1>Login</h1>
+        <div>
+            <label>Username: </label>
+            <input type="text" name="l_username">
+        </div>
+        <div>
+            <label>Password: </label>
+            <input type="password" name="l_password">
+        </div>
+        <input type="button" value="Log in" onclick="Login();">
+    </div>
+    <div id="mainmenu">
+        <h1 id="greet">Welcome </h1>
+        <button" onclick="StartGame();">Start a game</button">
+</div>
+    <div id="playground">
+        <h3 id="questiontext"></h3>
+        <button id="answer1" onclick="CheckAnswer('#answer1')">asd</button>
+        <button id="answer2" onclick="CheckAnswer('#answer2')">asd</button>
+        <button id="answer3" onclick="CheckAnswer('#answer3')">asd</button>
+        <button id="answer4" " onclick="CheckAnswer('#answer4')">asd</button>
+</div>
+</body>
+<!--<body>
     <div id="formA" style="display: none">
         <div id="Login" style="visibility:hidden">
             <h1>
@@ -101,5 +170,5 @@
             </div>
         </div>
     </div>
-</body>
+</body>-->
 </html>

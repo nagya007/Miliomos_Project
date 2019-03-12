@@ -36,20 +36,24 @@ function CleanUp() {
     previous = [];
 }
 function ShowSignup() {
+    $("#welcome").css("display", "none");
     $("#signup_form").css("display", "block");
     $("#login_form").css("display", "none");
 }
 function ShowLogin() {
     $("#signup_form").css("display", "none");
     $("#login_form").css("display", "block");
+    $("#welcome").css("display", "none");
 }
 function ShowMainMenu(user) {
+    $("#welcome").css("display", "none");
     $("#login_form").css("display", "none");
     $("#mainmenu").css("display", "block");
     $("#playground").css("display", "none");
     $("#greet").append(user);
 }
 function ShowPlayground() {
+    $("#welcome").css("display", "none");
     $("#mainmenu").css("display", "none");
     $("#playground").css("display", "block");
 }
@@ -60,6 +64,7 @@ function Signup() {
     $.ajax({
         type: 'POST',
         url: 'https://thejumper203.ddns.net/~webuser/milliomos/signup.php',
+        //url: 'https://milliomos.000webhostapp.com/signup.php',
         data: 'email=' + email + '&username=' + username + '&password=' + password,
         success: function (data) {
             if (data === "successful") { alert("Successful registration. You can login now."); ShowLogin(); }
@@ -74,7 +79,8 @@ function Login() {
     var password = $("input[name='l_password']").val();
     $.ajax({
         type: 'POST',
-        url: 'https://thejumper203.ddns.net/~webuser/milliomos/login.php',
+          url: 'https://thejumper203.ddns.net/~webuser/milliomos/login.php',
+        //url: 'https://milliomos.000webhostapp.com/login.php',
         data: 'username=' + username + '&password=' + password,
         success: function (data) {
             if (data === "false") alert("Wrong username or password");
@@ -90,7 +96,8 @@ function Login() {
 function GetQuestions() {
     $.ajax({
         type: 'POST',
-        url: 'https://thejumper203.ddns.net/~webuser/milliomos/getQuestions.php',
+       url: 'https://thejumper203.ddns.net/~webuser/milliomos/getQuestions.php',
+        //url: 'https://milliomos.000webhostapp.com/Questions.php',
         data: 'questionnumber=' + questionnumber,
         dataType: 'json',
         async: false,

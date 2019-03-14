@@ -113,133 +113,42 @@ h1 {
  * specific language governing permissions and limitations
  * under the License.
  */
-
-body 
-{
-
-}
-.button-menu, .button-menu-2 {
-  /* Text */
-font: normal 450%/0 "Times New Roman", Times, serif;
-color: rgba(255,255,255,0.9);
-text-align: center;
--o-text-overflow: clip;
-text-overflow: clip;
-white-space: nowrap;
-  /* Forma */
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  position: absolute;
-  cursor: pointer;
-  margin: auto;
-  padding: auto;
-  border: 5px solid #0161c1;
-  -webkit-border-radius: 15px;
-  border-radius: 15px;
-
-  background: #0958ba;
-  -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
-  box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) ;
-  text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
-}
-.button-menu
-{
-  width: 18%;
-  height: 15%;
-  top: 60%;
-  right: 57%;
-  left: 27%;
-}
-.button-menu-2
-{
-	width: 18%;
-	height: 15%;
-	top: 60%;
-	right: 38%;
-	left: 48%;
-}
-
 .app {
     background-position: left center;
     padding: 75px 0px 75px 170px; /* padding-top + padding-bottom + text area = image height */
     margin: -90px 0px 0px -198px; /* offset vertical: half of image height */
     /* offset horizontal: half of image width and text area width */
 }
-<<<<<<< HEAD
-#parent {
-   height:100%;
-   max-width:100%;
-   min-width:100%;
-   width:100%;
-   position:fixed;
-}
 #welcome {
     display: block;
-    position: center,center;   
+  
+    position: fixed;
     background-color: #00FF00;
-    /*top: 50%;
-    left: 50%;*/
-  text-align: center;
- 
-=======
-
-#welcome {
-
->>>>>>> c2867f0dfa3f279a0adc0be2801672fc96d798b2
-}
+    top: 50%;
+    left: 50%;
+   }
 
 #signup_form {
     display: none;
-<<<<<<< HEAD
-    position: center,center;
-   /* top: 25%;
-   left: 25%;*/
-    text-align: center;
+    position:fixed;
+    top: 50%;
+    left: 50%;
 }
 #login_form {
     display: none;
-    position: center,center;
-    /*//top: 50%;*/
-    padding-bottom:50%;
-    /*//left: 25%;*/
-    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
 }
 #mainmenu {
     display: none;
-    position: center,center;
-   /*// top: 25%;
-    //left: 25%;*/
-    padding-left: 200px;
-    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
 }
 #playground {
     display: none;
-    position: center,center;
-    /*//top: 25%;
-    //left: 25%;*/
-    text-align: center;
-=======
-/*    position:fixed;
+    position: fixed;
     top: 50%;
-    left: 50%;*/
-}
-#login_form {
-    display: none;
-/*    position: fixed;
-    top: 50%;
-    left: 50%;*/
-}
-#mainmenu {
-    display: none;
-/*    position: fixed;
-    top: 50%;
-    left: 50%;*/
-}
-#playground {
-    display: none;
-/*    position: fixed;
-    top: 50%;
-    left: 50%;*/
->>>>>>> c2867f0dfa3f279a0adc0be2801672fc96d798b2
+    left: 50%;
 }

@@ -9,9 +9,6 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.myapp5fcb1d"
-        },
-        "cordova-plugin-device-orientation": {
-            "PACKAGE_NAME": "io.cordova.myapp5fcb1d"
         }
     },
     "dependent_plugins": {}

@@ -16,7 +16,6 @@
         var receivedElement = parentElement.querySelector('.received');
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-        screen.msOrientation = "portrait";
        // displayForm('formA');
     };
     function onPause() {
@@ -31,13 +30,6 @@ var questionnumber = 10;
 var rightanswer = "";
 var questions;
 var previous = [];
-function CancelLogin()
-{
-    $("#welcome").css("display", "block");
-    $("#signup_form").css("display", "none");
-    $("#login_form").css("display", "none");
-
-}
 function CleanUp() {
     rightanswer = "";
     questions = null;

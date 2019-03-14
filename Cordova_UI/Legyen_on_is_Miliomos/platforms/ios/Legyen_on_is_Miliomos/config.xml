@@ -73,7 +73,4 @@
     <preference name="Fullscreen" value="True" />
     <preference name="android-minSdkVersion" value="21" />
     <preference name="android-targetSdkVersion" value="21" />
-    <feature name="Compass">
-        <param name="ios-package" value="CDVCompass" />
-    </feature>
 </widget>

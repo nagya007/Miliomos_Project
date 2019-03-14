@@ -94,5 +94,4 @@
   </platform>
   <preference name="Fullscreen" value="True" />
   <preference name="AndroidLaunchMode" value="standard" />
-  <plugin name="cordova-plugin-device-orientation" spec="~2.0.1" />
 </widget>

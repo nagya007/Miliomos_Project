@@ -162,7 +162,7 @@ body
     text-overflow: clip;
     background: #000000;
 }
-/* Hol helyezkedik el */
+/* Hol helyezkedik el, elég rossz sztem de mükszik! */
 .button-anwser1 {
     left: 0%;
     top: 27%;
@@ -189,13 +189,22 @@ body
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%)
 }
-.w3-display-top-middle {
+/*
+.w3-display-top15 {
     position: absolute;
     top: 15%;
     left: 50%;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%)
+}*/
+.w3-display-topmiddle {
+	position:absolute;
+	left:50%;
+	top:-25;
+	transform:translate(-50%,0%);
+	-ms-transform:translate(-50%,0%)
 }
+
 .btn-group button {
     font: normal 200%/normal "Times New Roman", Times, serif;
     color: rgba(255,255,255,0.9);

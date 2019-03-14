@@ -22,7 +22,7 @@
         <button onclick="ShowSignup()">Register</button>
         <button onclick="ShowLogin()">Login</button>
     </div>
-    <div id="signup_form" style="display: none;" class="w3-padding w3-display-top-middle btn-group">
+    <div id="signup_form" style="display: none;" class="w3-padding w3-display-topmiddle btn-group">
         <h1 class="vertical">Registration</h1>
         <div>
             <label>Email: </label>
@@ -36,9 +36,11 @@
             <label>Password: </label>
             <input type="password" name="s_password">
         </div>
-        <input class="vertical" type="button" value="Sign up" onclick="Signup();">
+        <!--<input class="vertical" type="button" value="Sign up" onclick="Signup();">
+		-->
+		<button onclick="Login()">Sign up</button>
     </div>
-    <div id="login_form" style="display: inline; display:none" class="w3-padding w3-display-top-middle btn-group">
+    <div id="login_form" style="display: inline; display:none" class="w3-padding w3-display-topmiddle btn-group">
         <h1 class="vertical">Login</h1>
         <div>
             <label>Username: </label>
@@ -48,11 +50,13 @@
             <label>Password: </label>
             <input type="password" name="l_password">
         </div>
-        <input class="vertical" type="button" value="Log in" onclick="Login();">
+        <!--<input class="vertical" type="button" value="Login" onclick="Login();">
+		-->
+        <button onclick="Login()">Login</button>
     </div>
-    <div id="mainmenu" class="w3-display-middle w3-padding, btn-group" style="display: none;">
+    <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">
         <h1 class="vertical" id="greet">Welcome User</h1>
-        <button onclick="StartGame()">Start a game</button>
+        <button class="btn-group" onclick="StartGame()">Start a game</button>
     </div>
     <div id="playground">
         <h3 class="vertical text-kerdes" id="questiontext"></h3>

@@ -154,6 +154,7 @@ function SelectQuestion(flag) {
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
     GetQuestions();
+	//HelpEnableAll();
     if(questions.length==questionnumber){
     FillQuestion();
     ShowPlayground();
@@ -170,6 +171,8 @@ function FillQuestion(){
             var rnd=Math.floor(Math.random()*4+2);
             if (!filled.includes(rnd) && rnd<=5 &&rnd>=2) {
                 $("#answer"+i).html(q[rnd]);
+				// vissza kapcsolja a gombokat, ha használva volt help ami kikapcsolná
+                $("#answer"+i).removeAttr("disabled");
                 filled.push(rnd);
                 i++;
         }
@@ -196,18 +199,57 @@ function CheckAnswer(buttonid){
     }
 }
 //Segítségek
-function halving()
+// Eltüntet x rossz választ.
+// Hány help tipus van leprogramozva.
+
+// 1. = HelpRemove
+
+/*
+
+var HelpCount = 1;
+function HelpDisable(index) {
+    $("#help" + index).attr('disabled', 'true');
+    // Kikapcsolás vagy eltüntetés is
+    $("#help" + index).style.display = "hidden";
+}
+// Bekapcsol egy speckó helpet - nem használt egyenlőre
+function HelpEnable(index) {
+    $("#help" + index).removeAttr("disabled");
+    // lehet mind2 nem kell, de azért why not
+    $("#help" + index).style.display = "block";
+}
+function HelpEnableAll()
 {
-	for (i = 0; i <= 1; i++) {
-		var rndButton = Math.floor(Math.random() * 4) + 1;
-		if(!$("#answer"+rndButton).text()===rightanswer && !$("#answer"+rndButton).text()===""){
-			$("#answer"+rndButton).text()==="";
-			$("#answer"+rndButton).disabled="disabled";
-		}
-		else{
-			i--;
-		}
+	// 1től kezdődő indexelés
+	var i=1;
+	while(i<HelpCount+1) {
+        HelpEnable(i);
+		i++;
 	}
+}
+*/
+// 1. = Felezés, a.k.a Tüntess el x rossz választ
+function HelpRemove(count)
+{
+    var i=0;
+	while(i<count) {
+		var rndButton = Math.floor(Math.random() * 4) + 1;
+		// === ha egyezik változó tipusa, == ha egyezik 'a value' benne, megnézi üres-e már a gomb, vagy hogy rossz válasz-e
+		if(!($("#answer"+rndButton).text()===rightanswer) && !($("#answer"+rndButton).text()==""))
+		{
+			$("#answer"+rndButton).html('');
+			// disabled mint az agyam este 11kor
+			$("#answer"+rndButton).attr('disabled', 'true');
+			// Hidden akkor kell, ha azt akarjuk ne legyen ott a fekete gomb se.
+			//$("#answer"+rndButton).hidden=true;
+			//alert("teszt IF true");
+			i++;
+		}
+    }
+    // OK elég nagy bug ez, de többször meg lehet nyomni a gombot :( pls megoldaná valaki hogy buttonnak vissza küldjön infot hogy kapcsoljon ki, JS elszáll amikor én csinálom
+
+	// 1 = indexe
+    //HelpDisable(1);
 }
 //function displayForm(formName) {
 //    // kikapcsolja az összes formot és megjeleníti a paraméterként kapottat

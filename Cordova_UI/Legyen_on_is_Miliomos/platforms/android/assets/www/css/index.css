@@ -189,6 +189,21 @@ body
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%)
 }
+.w3-display-bottommiddle{
+	position:absolute;
+	left:50%;
+	bottom:0;
+	transform:translate(-50%,0%);
+	-ms-transform:translate(-50%,0%)
+}
+.w3-display-topmiddle {
+	position:absolute;
+	left:50%;
+	top:-25;
+	transform:translate(-50%,0%);
+	-ms-transform:translate(-50%,0%)
+}
+
 /*
 .w3-display-top15 {
     position: absolute;
@@ -197,13 +212,7 @@ body
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%)
 }*/
-.w3-display-topmiddle {
-	position:absolute;
-	left:50%;
-	top:-25;
-	transform:translate(-50%,0%);
-	-ms-transform:translate(-50%,0%)
-}
+
 
 .btn-group button {
     font: normal 200%/normal "Times New Roman", Times, serif;
@@ -217,6 +226,20 @@ body
     width: 100%; /* Set a width if needed */
     display: block; /* Make the buttons appear below each other */
 }
+.btn-group-help button {
+    font: normal 100%/normal "Times New Roman", Times, serif;
+    color: rgba(100,255,255,0.9);
+    background: #0199d9;
+    border: 1px solid #018dc4;
+    border-radius: 3px;
+
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 100%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+}
+
+
 
 .btn-group button:not(:last-child) {
     border-bottom: none; /* Prevent double borders */

@@ -195,6 +195,20 @@ function CheckAnswer(buttonid){
         ShowMainMenu();
     }
 }
+//Segítségek
+function halving()
+{
+	for (i = 0; i <= 1; i++) {
+		var rndButton = Math.floor(Math.random() * 4) + 1;
+		if(!$("#answer"+rndButton).text()===rightanswer && !$("#answer"+rndButton).text()===""){
+			"#answer"+rndButton.text()==="";
+			"#answer"+rndButton.disabled="disabled";
+		}
+		else{
+			i--;
+		}
+	}
+}
 //function displayForm(formName) {
 //    // kikapcsolja az összes formot és megjeleníti a paraméterként kapottat
 //    document.getElementById('formA').style.display = 'none';

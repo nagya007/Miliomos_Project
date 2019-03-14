@@ -1,32 +1,40 @@
-var session_user="";
-var questionnumber=10;
-var rightanswer="";
-var questions;
-var previous=[];
+var session_user="";  //name of actually logged in user
+var questionnumber=10; //number of requested questions
+var rightanswer=""; //the right answer of actual question is stored here
+var questions;  //received questions are stored here
+var previous=[];    //array for previous question ids
+var cnt=0;  //question counter;
 function CleanUp(){
-    rightanswer="";
-    questions=null;
-    previous=[];
+    //at the end of a game, this function clear these fields
+    rightanswer=""; 
+    questions=null; 
+    previous=[]; 
+    cnt=0;  
 }
 function ShowSignup(){
+    //makes signup form visible
     $("#signup_form").css("display","block");
     $("#login_form").css("display","none");
-}
+}  
 function ShowLogin(){
+    //makes login form visible
     $("#signup_form").css("display","none");
     $("#login_form").css("display","block");
-}
+}   
 function ShowMainMenu(user){
+    //makes main menu visible
     $("#login_form").css("display","none");
     $("#mainmenu").css("display","block");
     $("#playground").css("display","none");
     $("#greet").append(user);
-}
+} 
 function ShowPlayground(){
+    // makes question form visible
     $("#mainmenu").css("display","none");
     $("#playground").css("display","block");
-}
+} 
 function Signup(){
+    //implements signup function via ajax call
     var username=$("input[name='s_username']").val();
     var email=$("input[name='s_email']").val();
     var password=$("input[name='s_password']").val();
@@ -41,8 +49,9 @@ function Signup(){
         },
         error: function(){alert("Something went wrong");}
     });
-}
+} 
 function Login(){
+    //implements login function via ajax call
     var username=$("input[name='l_username']").val();
     var password=$("input[name='l_password']").val();
     $.ajax({
@@ -59,49 +68,70 @@ function Login(){
        },
        error: function(){alert("Something went wrong");}
     });
-}
+} 
 function GetQuestions(){
+    //recieves questions from database
     $.ajax({
         type:'POST',
         url:'./getQuestions.php',
-        data:'questionnumber='+questionnumber,
+        data:'questionnumber='+questionnumber+'&user='+session_user,
         dataType:'json',
         async:false,
         success: function (data)
         {
             questions=data;
-        }
+        },
+        error: function(){alert("Something went wrong. Failed to get questions");}
     }); 
-}
-function SelectQuestion() {
-    questionnumber=10;
-
-    while(true)
-    {             
-        var rnd=Math.floor(Math.random()*(questionnumber));
-        console.log("Random: "+rnd+" | "+previous);
-        if (!previous.includes(questions[rnd].id)) {
+} 
+function SelectQuestion(flag) {
+    //select a question from "questions" field and return an array
+    if(flag){
+        while(true)
+        {             
+            var rnd=Math.floor(Math.random()*(questions.length));
+            if (!previous.includes(questions[rnd].id)) {
+                var selected=[];
+                selected[0]=questions[rnd].id;
+                selected[1]=questions[rnd].question;
+                selected[2]=questions[rnd].right0;
+                selected[3]=questions[rnd].wrong1;
+                selected[4]=questions[rnd].wrong2;
+                selected[5]=questions[rnd].wrong3;
+                selected[6]=questions[rnd].level;
+                previous.push(selected[0]);
+                rightanswer=selected[2];
+                return selected;
+            }
+        } 
+    }
+    else {
         var selected=[];
-        selected[0]=questions[rnd].id;
-        selected[1]=questions[rnd].question;
-        selected[2]=questions[rnd].right0;
-        selected[3]=questions[rnd].wrong1;
-        selected[4]=questions[rnd].wrong2;
-        selected[5]=questions[rnd].wrong3;
-        selected[6]=questions[rnd].level;
+        selected[0]=questions[cnt].id;
+        selected[1]=questions[cnt].question;
+        selected[2]=questions[cnt].right0;
+        selected[3]=questions[cnt].wrong1;
+        selected[4]=questions[cnt].wrong2;
+        selected[5]=questions[cnt].wrong3;
+        selected[6]=questions[cnt].level;
+        cnt++;
         previous.push(selected[0]);
         rightanswer=selected[2];
         return selected;
-        }
-    } 
+    }
 }
 function StartGame(){
-    ShowPlayground();
+    //invokes GetQuestitons() function, then checks the count of received question and starts the game
     GetQuestions();
+    if(questions.length==questionnumber){
     FillQuestion();
+    ShowPlayground();
+    }
+    else alert("There are not enough questions");
 }
 function FillQuestion(){
-        var q=SelectQuestion();
+    //fills a selected question and answers to the playing form
+        var q=SelectQuestion(false);
         $("#questiontext").text(q[1]);
         var i=1;
         var filled=[];
@@ -116,9 +146,10 @@ function FillQuestion(){
     }
 }
 function CheckAnswer(buttonid){
+    //checks the given answer, and gets the next one
     if ($(buttonid).val()===rightanswer) {
         alert("Good!");
-        if (previous.length<questionnumber) {
+        if (previous.length<questions.length) {
         FillQuestion();
         } 
         else {

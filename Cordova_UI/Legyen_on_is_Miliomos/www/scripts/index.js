@@ -201,8 +201,8 @@ function halving()
 	for (i = 0; i <= 1; i++) {
 		var rndButton = Math.floor(Math.random() * 4) + 1;
 		if(!$("#answer"+rndButton).text()===rightanswer && !$("#answer"+rndButton).text()===""){
-			"#answer"+rndButton.text()==="";
-			"#answer"+rndButton.disabled="disabled";
+			$("#answer"+rndButton).text()==="";
+			$("#answer"+rndButton).disabled="disabled";
 		}
 		else{
 			i--;

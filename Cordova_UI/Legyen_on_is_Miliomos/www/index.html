@@ -18,6 +18,19 @@
     <title>LegyenonisMiliomos</title>
 </head>
 <body>
+<!-- Videó -->
+<div class="fullscreen-bg">
+    <video loop muted autoplay poster="media/png/background.png" class="fullscreen-bg__video">
+        <source src="media/mp4/background.mp4" type="video/mp4">
+    </video>
+</div>
+<!-- Zene -->
+<!-- <iframe src="media/wav/ost-temporary.wav" allow="autoplay" id="audio" style="display:none"></iframe>-->
+<audio id="player" autoplay loop>
+    <source src="media/wav/ost-temporary.wav" type="audio/wav">
+</audio>
+<!-- Media cuccok vége -->
+
     <div id="welcome" class="w3-padding w3-display-middle btn-group" style="">
         <button onclick="ShowSignup()">Register</button>
         <button onclick="ShowLogin()">Login</button>
@@ -59,7 +72,7 @@
         <button class="btn-group" onclick="StartGame()">Start a game</button>
     </div>
     <div id="playground">
-        <h3 class="vertical text-kerdes" id="questiontext"></h3>
+        <h3 class="w3-display-topmiddle text-kerdes" id="questiontext"></h3>
         <button class="button-anwser1" id="answer1" onclick="CheckAnswer('#answer1')">asd</button>
         <button class="button-anwser2" id="answer2" onclick="CheckAnswer('#answer2')">asd</button>
         <button class="button-anwser3" id="answer3" onclick="CheckAnswer('#answer3')">asd</button>

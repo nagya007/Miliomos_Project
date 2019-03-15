@@ -154,7 +154,7 @@ function SelectQuestion(flag) {
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
     GetQuestions();
-	//HelpEnableAll();
+	HelpEnableAll();
     if(questions.length==questionnumber){
     FillQuestion();
     ShowPlayground();
@@ -204,19 +204,19 @@ function CheckAnswer(buttonid){
 
 // 1. = HelpRemove
 
-/*
+///*
 
 var HelpCount = 1;
 function HelpDisable(index) {
     $("#help" + index).attr('disabled', 'true');
     // Kikapcsolás vagy eltüntetés is
-    $("#help" + index).style.display = "hidden";
+    //$("#help" + index).style.display = "hidden";
 }
 // Bekapcsol egy speckó helpet - nem használt egyenlőre
 function HelpEnable(index) {
     $("#help" + index).removeAttr("disabled");
     // lehet mind2 nem kell, de azért why not
-    $("#help" + index).style.display = "block";
+    //$("#help" + index).style.display = "block";
 }
 function HelpEnableAll()
 {
@@ -227,7 +227,7 @@ function HelpEnableAll()
 		i++;
 	}
 }
-*/
+//*/
 // 1. = Felezés, a.k.a Tüntess el x rossz választ
 function HelpRemove(count)
 {
@@ -249,7 +249,7 @@ function HelpRemove(count)
     // OK elég nagy bug ez, de többször meg lehet nyomni a gombot :( pls megoldaná valaki hogy buttonnak vissza küldjön infot hogy kapcsoljon ki, JS elszáll amikor én csinálom
 
 	// 1 = indexe
-    //HelpDisable(1);
+    HelpDisable(1);
 }
 //function displayForm(formName) {
 //    // kikapcsolja az összes formot és megjeleníti a paraméterként kapottat

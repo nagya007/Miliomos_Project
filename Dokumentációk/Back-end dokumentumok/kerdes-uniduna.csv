@@ -1,0 +1,10 @@
+Melyik keretezési eljárás nem tesz jelzést a keret elejére és a végére?;Karakterszámlálás;Karakterbeszúrás;Bitbeszúrás;Fizikai réteg kódsértése;1
+Hogy nevezzük azt az algoritmust, amely a régebbi csomagokat részesíti elõnyben?;Bor politika;Tej politika;Vodka politika;Pártpolitika;1
+Mekkora egy IP cím mérete az IPv6-ban?;128 bit;32 bit;64 bit;16 bit;1
+Melyik protokoll feladata a visszhang-kérés és -válasz?;ICMP;NAT;DHCP;ARP;1
+Mekkora egy TCP portcím mérete?;16 bit;32 bit;64 bit;8 bit;1
+A TCP-ben melyik bit jelzi, hogy a kapcsolatot újra kell építeni?;RST;ACK;URG;PSH;1
+A TCP/IP-ben melyik réteg felel meg az OSI fizikai rétegének?;hoszt és hálózat közötti;hálózati;szállítási;viszony;1
+Mi írja le az azonos gépen lévõ szállítási és hálózati réteg közötti kommunikáció szabályait?;Intefész;Protokoll;OSI modell;RCF;1
+Mekkora Hamming-távolságú kód szükséges k bithiba jelzéséhez?;k+1;k;k-1;2k;1
+Milyen keretezési eljárás a HDLC?;Bitbeszúrás;Karakterbeszúrás;Karakterszámlálás;Fizikai réteg kódsértése;1

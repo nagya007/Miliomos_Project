@@ -30,7 +30,20 @@ var questionnumber=10; //number of requested questions
 var rightanswer=""; //the right answer of actual question is stored here
 var questions;  //received questions are stored here
 var previous=[];    //array for previous question ids
-var cnt=0;  //question counter;
+var cnt = 0;  //question counter;
+function CancelLogin(){
+    $("#welcome").css("display", "block");
+    $("#login_form").css("display", "none");
+    $("#mainmenu").css("display", "none");
+    $("#playground").css("display", "none");  
+}
+function CancelSignup() {
+    $("#welcome").css("display", "block");
+    $("#login_form").css("display", "none");
+    $("#mainmenu").css("display", "none");
+    $("#playground").css("display", "none");
+    $("#signup_form").css("display", "none");
+}
 function CleanUp(){
     //at the end of a game, this function clear these fields
     rightanswer=""; 

@@ -242,6 +242,15 @@ fullscreen-bg {
 	transform:translate(-50%,0%);
 	-ms-transform:translate(-50%,0%)
 }
+.w3-display-topright{
+	position:absolute;
+	right:0;top:0
+}
+.counter{
+    padding: 25px 25px 25px 25px; /* padding-top + padding-bottom + text area = image height */
+    margin: 25px 25px 25px 25px; /* offset vertical: half of image height */
+}
+
 
 /*
 .w3-display-top15 {

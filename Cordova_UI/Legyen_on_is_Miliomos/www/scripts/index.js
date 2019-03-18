@@ -159,6 +159,8 @@ function SelectQuestion(flag) {
         selected[5]=questions[cnt].wrong3;
         selected[6]=questions[cnt].level;
         cnt++;
+		// Ami megjelenik a counteren
+        $("#counter").html(cnt+" / "+questionnumber);
         previous.push(selected[0]);
         rightanswer=selected[2];
         return selected;

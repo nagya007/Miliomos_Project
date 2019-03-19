@@ -125,7 +125,13 @@ function GetQuestions(){
         {
             questions=data;
         },
-        error: function(){alert("Something went wrong. Failed to get questions");}
+        error: function (jqXHR, textStatus) {
+            alert(' http request error' + textStatus);
+            if (errorCb) {
+                errorCb(jqXHR, textStatus);
+            }
+       }
+        //error: function(){alert("Something went wrong. Failed to get questions");}
     }); 
 } 
 function SelectQuestion(flag) {

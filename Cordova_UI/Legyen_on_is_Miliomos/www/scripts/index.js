@@ -31,6 +31,7 @@ var rightanswer=""; //the right answer of actual question is stored here
 var questions;  //received questions are stored here
 var previous=[];    //array for previous question ids
 var cnt = 0;  //question counter;
+var lock=false;
 function CancelLogin(){
     $("#welcome").css("display", "block");
     $("#login_form").css("display", "none");
@@ -120,10 +121,15 @@ function GetQuestions(){
         url: 'https://thejumper203.ddns.net/~webuser/milliomos/getQuestions.php',
         data:'questionnumber='+questionnumber+'&user='+session_user,
         dataType:'json',
-        async:false,
         success: function (data)
         {
-            questions=data;
+			questions=data;
+            HelpEnableAll();
+            if(questions.length===questionnumber){
+				FillQuestion();
+				ShowPlayground();    
+			}
+			else alert("There are not enough questions");
         },
         error: function (jqXHR, textStatus) {
             alert(' http request error' + textStatus);
@@ -134,28 +140,8 @@ function GetQuestions(){
         //error: function(){alert("Something went wrong. Failed to get questions");}
     }); 
 } 
-function SelectQuestion(flag) {
+function SelectQuestion() {
     //select a question from "questions" field and return an array
-    if(flag){
-        while(true)
-        {             
-            var rnd=Math.floor(Math.random()*(questions.length));
-            if (!previous.includes(questions[rnd].id)) {
-                var selected=[];
-                selected[0]=questions[rnd].id;
-                selected[1]=questions[rnd].question;
-                selected[2]=questions[rnd].right0;
-                selected[3]=questions[rnd].wrong1;
-                selected[4]=questions[rnd].wrong2;
-                selected[5]=questions[rnd].wrong3;
-                selected[6]=questions[rnd].level;
-                previous.push(selected[0]);
-                rightanswer=selected[2];
-                return selected;
-            }
-        } 
-    }
-    else {
         var selected=[];
         selected[0]=questions[cnt].id;
         selected[1]=questions[cnt].question;
@@ -170,21 +156,23 @@ function SelectQuestion(flag) {
         previous.push(selected[0]);
         rightanswer=selected[2];
         return selected;
-    }
 }
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
     GetQuestions();
-	HelpEnableAll();
-    if(questions.length==questionnumber){
-    FillQuestion();
-    ShowPlayground();
-    }
-    else alert("There are not enough questions");
 }
 function FillQuestion(){
     //fills a selected question and answers to the playing form
-        var q=SelectQuestion(false);
+	    lock=false;
+        for (i=1;i<5;i++)
+        {
+            $("#answer"+i).css("background","#000000");
+            $("#answer"+i).css("color","rgba(255,255,255,0.9)");
+            $("#answer"+i).css("animation","none");
+            // vissza kapcsolja a gombokat, ha használva volt help ami kikapcsolná
+            $("#answer"+i).removeAttr("disabled");
+        }
+        var q=SelectQuestion();
         $("#questiontext").text(q[1]);
         var i=1;
         var filled=[];
@@ -192,8 +180,6 @@ function FillQuestion(){
             var rnd=Math.floor(Math.random()*4+2);
             if (!filled.includes(rnd) && rnd<=5 &&rnd>=2) {
                 $("#answer"+i).html(q[rnd]);
-				// vissza kapcsolja a gombokat, ha használva volt help ami kikapcsolná
-                $("#answer"+i).removeAttr("disabled");
                 filled.push(rnd);
                 i++;
         }
@@ -202,21 +188,41 @@ function FillQuestion(){
 }
 function CheckAnswer(buttonid){
     //checks the given answer, and gets the next one
-    if ($(buttonid).text()===rightanswer) {
-        alert("Good!");
-        if (previous.length<questions.length) {
-        FillQuestion();
+    if (!lock) {
+        lock=true;
+        $(buttonid).css("background","orange");
+        $(buttonid).css("color","#000000");
+        setTimeout(function(){
+        if ($(buttonid).text()===rightanswer) {
+            //alert("Good!");
+            $(buttonid).css("background","#00ff00");
+            setTimeout(function(){
+                if (previous.length<questions.length) {
+                 FillQuestion();
+                } 
+                else {
+                    alert("You win!");
+                    CleanUp();
+                    ShowMainMenu();
+                }
+               },2000);          
         } 
         else {
-            alert("You win!");
-            CleanUp();
-            ShowMainMenu();
-        }
-    } 
-    else {
-        alert("Wrong answer! You lost!");
-        CleanUp();
-        ShowMainMenu();
+            var rightbtnid="#answer";
+            for(i=1;i<=4;i++)
+            {
+                if($("#answer"+i).text()===rightanswer) rightbtnid+=i;
+            }
+            $(buttonid).css("background","#ff0000");
+            $(rightbtnid).css("animation","wronganimation 1s infinite");
+            setTimeout(function(){
+                alert("Wrong answer! You lost!");
+                CleanUp();
+                ShowMainMenu();
+            },5000);
+
+            }
+        },3000);
     }
 }
 //Segítségek
@@ -267,76 +273,7 @@ function HelpRemove(count)
 			i++;
 		}
     }
-    // OK elég nagy bug ez, de többször meg lehet nyomni a gombot :( pls megoldaná valaki hogy buttonnak vissza küldjön infot hogy kapcsoljon ki, JS elszáll amikor én csinálom
 
 	// 1 = indexe
     HelpDisable(1);
 }
-//function displayForm(formName) {
-//    // kikapcsolja az összes formot és megjeleníti a paraméterként kapottat
-//    document.getElementById('formA').style.display = 'none';
-//    document.getElementById('formB').style.display = 'none';
-//    document.getElementById('formC').style.display = 'none';
-//    document.getElementById(formName).style.display = '';
-//}
-
-//function loginServerRq() {
-//    var username = document.getElementById('uname').value.toLowerCase();
-//    var password = document.getElementById('pword').value.toLowerCase();
-//    var requestData = 'username=' + username + '&password=' + password;
-//   httpRequest('https://thejumper203.ddns.net/~webuser/milliomos/login.php', requestData, { content: "application/x-www-form-urlencoded" }, loginOk, loginError);
-//    }
-//function cancelForm() {
-//    document.getElementById('uname').value = '';
-//    document.getElementById('pword').value = '';
-//}
-//function loginOk(response) {
-//    if (response == "false") {
-//        alert("helytelen jelszó");
-//    } else {
-//       /*/ document.getElementById('app').hidden = true;
-//        document.getElementById('succes').innerHTML = response;
-//        document.getElementById('Login').style.visibility = "visible";
-//        document.getElementById('usern').hidden = true;
-//        document.getElementById('pass').hidden = true;
-//        document.getElementById('but').hidden = true;/*/
-//        displayForm('formB');
-
-//    }
-//}
-
-//function loginError() {
-//    alert('login error');
-//}
-//function httpRequest(url, data, option, success, fallback) {
-//    var xmlhttp = new XMLHttpRequest();
-//    xmlhttp.onreadystatechange = function () {
-//        if (xmlhttp.readyState === 4) {
-//            if (xmlhttp.status >= 200 && xmlhttp.status < 300) {
-//                if (typeof success === 'function') {
-//                    success(xmlhttp.responseText);
-//                }
-//            } else {
-//                if (typeof fallback === 'function') {
-//                    fallback(xmlhttp.statusText);
-//                }
-//            }
-//        }
-
-//    };
-//    xmlhttp.onerror = function (e) {
-//        fallback(e.statusText);
-//    };
-//    var method = (data) ? 'POST' : 'GET';
-//    if (option.user && option.password) {
-//        xmlhttp.open(method, url, true);
-//        xmlhttp.setRequestHeader('Authorization', 'Basic' + btoa(option.user + ':' + option.password));
-//    } else {
-//        xmlhttp.open(method, url, true);
-//    }
-//    if (option.content) {
-//        xmlhttp.setRequestHeader('Content-Type', option.content);
-//    }
-
-//    xmlhttp.send(data);
-//}

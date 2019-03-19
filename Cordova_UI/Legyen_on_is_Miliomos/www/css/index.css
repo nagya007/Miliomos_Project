@@ -344,3 +344,10 @@ app {
     top: 50%;
     left: 50%;*/
 }
+@keyframes wronganimation {
+    0%   { background-color: #00ff00;}
+    49% { background-color: #00ff00; }
+    50% { background-color: #000000; }
+    99% { background-color: #000000; }
+    100% { background-color: #00ff00; }
+}

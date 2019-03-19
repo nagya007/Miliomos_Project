@@ -1,4 +1,5 @@
 <?php
+	header("Access-Control-Allow-Origin:*");
     require_once "./sqlcredits.php";
     session_start();
     $username=$_POST["username"];
@@ -9,9 +10,8 @@
             $result= mysqli_query($sqlconn, $sqlq);
             $data= mysqli_fetch_assoc($result);
             if(mysqli_num_rows($result)==1 && password_verify($password, $data["pwhash"])) {
-                echo "success <br>";
                 $_SESSION["session_user"]=$data["username"];
-                echo "welcome <b>".$_SESSION["session_user"]."</b>!";
+                echo "Welcome ".$_SESSION["session_user"]."!";
             }
             else echo "false";
         }

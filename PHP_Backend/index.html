@@ -1,66 +1,86 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Milliomos project</title>
-        <meta charset="UTF-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="script.js"></script>
-        <style>
-            #welcome{display:block;}
-            #signup_form {display:none;}
-            #login_form{display:none;}
-            #mainmenu{display:none;}
-            #playground{display:none;}
-        </style>
-    </head>
-    <body>
-        <div id="welcome">
-            <input type="button" value="Signup" onclick="ShowSignup();">
-            <input type="button" value="Login" onclick="ShowLogin();">
+﻿<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="shortcut icon" href="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--<script src="scripts/jquery.js"></script>-->
+    <script src="scripts/index.js"></script>
+    <title>LegyenonisMiliomos</title>
+</head>
+<body>
+<div id="screen">
+
+<!-- Videó -->
+	<div class="fullscreen-bg">
+    		<video loop muted autoplay poster="media/png/background.png" class="fullscreen-bg__video">
+        		<source src="media/mp4/background.mp4" type="video/mp4">
+    		</video>
+	</div>
+<!-- Zene -->
+<!-- <iframe src="media/wav/ost-temporary.wav" allow="autoplay" id="audio" style="display:none"></iframe>-->
+	<audio id="player" loop>
+    		<source src="media/wav/ost-temporary.wav" type="audio/wav">
+	</audio>
+<!-- Media cuccok vége -->
+
+    <div id="welcome" class="w3-padding w3-display-middle btn-group" style="">
+        <button onclick="ShowSignup()">Register</button>
+        <button onclick="ShowLogin()">Login</button>
+    </div>
+    <div id="signup_form" style="display: none;" class="w3-padding w3-display-topmiddle btn-group">
+        <h1 class="vertical">Registration</h1>
+        <div>
+            <label>Email: </label>
+            <input type="text" name="s_email">
         </div>
-        <div id="signup_form">
-            <h1>Registration</h1>
-            <div>
-                <label>Email: </label>
-                <input type="text" name="s_email">
-            </div>
-            <div>
-                <label>Username: </label>
-                <input type="text" name="s_username">
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" name="s_password">
-            </div>
-            <input type="button" value="Sign up" onclick="Signup();">
+        <div>
+            <label>Username: </label>
+            <input type="text" name="s_username">
         </div>
-        <div id="login_form">
-            <h1>Login</h1>
-            <div>
-                <label>Username: </label>
-                <input type="text" name="l_username">
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" name="l_password">
-            </div>
-            <input type="button" value="Log in" onclick="Login();">
+        <div>
+            <label>Password: </label>
+            <input type="password" name="s_password">
         </div>
-        <div id="mainmenu">
-            <h1 id="greet">Welcome </h1>
-            <input type="button" value="Start a game" onclick="StartGame();">
+        <!--<input class="vertical" type="button" value="Sign up" onclick="Signup();">
+		-->
+		<button onclick="Signup()">Sign up</button>
+    </div>
+    <div id="login_form" style="display: inline; display:none" class="w3-padding w3-display-topmiddle btn-group">
+        <h1 class="vertical">Login</h1>
+        <div>
+            <label>Username: </label>
+            <input type="text" name="l_username">
         </div>
-        <div id="playground">
-            <h3 id="questiontext"></h3>
-            <input type="button" id="answer1" value="asd" onclick="CheckAnswer('#answer1')">
-            <input type="button" id="answer2" value="asd" onclick="CheckAnswer('#answer2')">
-            <input type="button" id="answer3" value="asd" onclick="CheckAnswer('#answer3')">
-            <input type="button" id="answer4" value="asd" onclick="CheckAnswer('#answer4')">
+        <div>
+            <label>Password: </label>
+            <input type="password" name="l_password">
         </div>
-    </body>
+        <!--<input class="vertical" type="button" value="Login" onclick="Login();">
+		-->
+        <button onclick="Login()">Login</button>
+    </div>
+    <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">
+        <h1 class="vertical" id="greet">Welcome </h1>
+        <button class="btn-group" onclick="StartGame()">Start a game</button>
+    </div>
+    <div id="playground">
+        <h3 class="w3-display-topmiddle text-kerdes" id="questiontext"></h3>
+        <button class="button-anwser1" id="answer1" onclick="CheckAnswer('#answer1')">asd</button>
+        <button class="button-anwser2" id="answer2" onclick="CheckAnswer('#answer2')">asd</button>
+        <button class="button-anwser3" id="answer3" onclick="CheckAnswer('#answer3')">asd</button>
+        <button class="button-anwser4" id="answer4" onclick="CheckAnswer('#answer4')">asd</button>
+        <div class="w3-display-bottommiddle btn-group-help">
+            <!-- Ideiglenes helye a Help gomboknak -->
+            <button id="help1" onclick="HelpRemove(2)">Felezés!</button>
+            <button id="help2" onclick="">Help</button>
+        </div>
+    </div>
+</div>
+</body>
 </html>

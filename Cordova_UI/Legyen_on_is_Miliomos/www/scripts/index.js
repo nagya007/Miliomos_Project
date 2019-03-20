@@ -9,14 +9,6 @@
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
         document.addEventListener( 'resume', onResume.bind( this ), false );
-        
-        // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-        var parentElement = document.getElementById('deviceready');
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-       // displayForm('formA');
     };
     function onPause() {
         // TODO: This application has been suspended. Save application state here.
@@ -107,7 +99,6 @@ function Login(){
            if(data==="false") alert("Wrong username or password");
            else {
                session_user=username;
-               alert(data);
                ShowMainMenu(session_user);
            }
        },
@@ -195,7 +186,9 @@ function CheckAnswer(buttonid){
         setTimeout(function(){
         if ($(buttonid).text()===rightanswer) {
             //alert("Good!");
-            $(buttonid).css("background","#00ff00");
+           // $(buttonid).css("background","#00ff00");
+            $(buttonid).css("color", "#FFFFFF");
+            $(buttonid).css("animation", "wronganimation 0.5s infinite");
             setTimeout(function(){
                 if (previous.length<questions.length) {
                  FillQuestion();

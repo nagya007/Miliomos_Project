@@ -72,6 +72,7 @@ function ShowPlayground(){
 } 
 function Signup(){
     //implements signup function via ajax call
+	$("#btn_signup").attr("disabled","true");
     var username=$("input[name='s_username']").val();
     var email=$("input[name='s_email']").val();
     var password=$("input[name='s_password']").val();
@@ -80,15 +81,17 @@ function Signup(){
         url: 'https://thejumper203.ddns.net/~webuser/milliomos/signup.php',
         data:'email='+email+'&username='+username+'&password='+password,
         success: function (data) {
+			$("#btn_signup").removeAttr("disabled");
             if(data==="successful")  {alert("Successful registration. You can login now."); ShowLogin();}
             else if (data==="empty") alert ("You need to fill all fields");
             else if (data==="exist") alert("This user/email already exist");
         },
-        error: function(){alert("Something went wrong");}
+        error: function(){alert("Something went wrong");$("#btn_signup").removeAttr("disabled");}
     });
 } 
 function Login(){
     //implements login function via ajax call
+	$("#btn_login").attr("disabled","true");
     var username=$("input[name='l_username']").val();
     var password=$("input[name='l_password']").val();
     $.ajax({
@@ -96,13 +99,14 @@ function Login(){
        url: 'https://thejumper203.ddns.net/~webuser/milliomos/login.php',
        data:'username='+username+'&password='+password,
        success: function(data){
+		   $("#btn_login").removeAttr("disabled");
            if(data==="false") alert("Wrong username or password");
            else {
                session_user=username;
                ShowMainMenu(session_user);
            }
        },
-       error: function(){alert("Something went wrong");}
+       error: function(){alert("Something went wrong");$("#btn_login").removeAttr("disabled");}
     });
 } 
 function GetQuestions(){
@@ -116,6 +120,7 @@ function GetQuestions(){
         {
 			questions=data;
             HelpEnableAll();
+			$("#btn_startgame").removeAttr("disabled");
             if(questions.length===questionnumber){
 				FillQuestion();
 				ShowPlayground();    
@@ -124,6 +129,7 @@ function GetQuestions(){
         },
         error: function (jqXHR, textStatus) {
             alert(' http request error' + textStatus);
+			$("#btn_startgame").removeAttr("disabled");
             if (errorCb) {
                 errorCb(jqXHR, textStatus);
             }
@@ -150,6 +156,7 @@ function SelectQuestion() {
 }
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
+	$("#btn_startgame").attr("disabled","true");
     GetQuestions();
 }
 function FillQuestion(){

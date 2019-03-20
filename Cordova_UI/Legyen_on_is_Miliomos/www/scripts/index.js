@@ -156,7 +156,7 @@ function SelectQuestion() {
 }
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
-	$("#btn_startgame").attr("disabled","true");
+	$("#btn_startgame").attr("disabled","true"); //disables the button to prevent multiple click, it will be re-enabled when the next function successes or fails
     GetQuestions();
 }
 function FillQuestion(){

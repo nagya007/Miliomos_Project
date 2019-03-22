@@ -1,10 +1,30 @@
 Melyik keretezési eljárás nem tesz jelzést a keret elejére és a végére?;Karakterszámlálás;Karakterbeszúrás;Bitbeszúrás;Fizikai réteg kódsértése;1
-Hogy nevezzük azt az algoritmust, amely a régebbi csomagokat részesíti elõnyben?;Bor politika;Tej politika;Vodka politika;Pártpolitika;1
+Hogy nevezzük azt az algoritmust; amely a régebbi csomagokat részesíti elõnyben?;Bor politika;Tej politika;Vodka politika;Pártpolitika;1
 Mekkora egy IP cím mérete az IPv6-ban?;128 bit;32 bit;64 bit;16 bit;1
 Melyik protokoll feladata a visszhang-kérés és -válasz?;ICMP;NAT;DHCP;ARP;1
 Mekkora egy TCP portcím mérete?;16 bit;32 bit;64 bit;8 bit;1
-A TCP-ben melyik bit jelzi, hogy a kapcsolatot újra kell építeni?;RST;ACK;URG;PSH;1
+A TCP-ben melyik bit jelzi; hogy a kapcsolatot újra kell építeni?;RST;ACK;URG;PSH;1
 A TCP/IP-ben melyik réteg felel meg az OSI fizikai rétegének?;hoszt és hálózat közötti;hálózati;szállítási;viszony;1
 Mi írja le az azonos gépen lévõ szállítási és hálózati réteg közötti kommunikáció szabályait?;Intefész;Protokoll;OSI modell;RCF;1
 Mekkora Hamming-távolságú kód szükséges k bithiba jelzéséhez?;k+1;k;k-1;2k;1
 Milyen keretezési eljárás a HDLC?;Bitbeszúrás;Karakterbeszúrás;Karakterszámlálás;Fizikai réteg kódsértése;1
+Mikor lõtte le az Epic Games a Paragon szervereit?;2018. 04.;2018. 03.;2018.05.;2018.01;2
+Melyik játékból készült film?;World of Warcfraft;League of Legends;NieR: Automata;Diablo;1
+Melyik játékból nem készült élõszereplõs film?;Tera;Street Fighter;Dead or Alive;Mortal Kombat;2
+Kinek a nevéhez kötõdik a Can Can?;Jacques Offenbach;Johann Sebastian Bach;Joseph Haydn;Wolfgang Amadeus Mozart;2
+Kinek köszönhethük az Üstdob-szimfóniát?;Joseph Haydn;Ludwig van Beethoven;ohann Sebastian Bach;Wolfgang Amadeus Mozart;2
+Milynek a mértékegysége a rõf?;Hosszúság;Tömeg;Terület;Idõ;2
+Mikor ünnepelte a LEGO a 60. születésnapját?;2018;2015;2010;2008;2
+Mikor pustol a hó?;Ha vízszintesen ”esik”;Ha nagyon gyorsan olvad;Ha 0 fok fölött esik;Ha hirtelen nagy mennyiség esik;2
+Melyik Földünk legmélyebb tava?;Bajkál-tó;Tanganyika tó;Nagy-Rabszolga-Tó;Matano tó;2
+Mikor kezdte pályafutását az Irigy Hónaljmirigy?;1990;1989;1991;1993;2
+Kinek a nevéhez fûzõdik a La Baletta No. 1-2?;Presser Gábor; Jean-Michel Jarre; Benkõ László; Ralf Hütter és Florian Schneider;3
+Melyik egyetemi várost emlegetik a diákok "kommunista fõvárosunk"-ként?;Dunaújváros;Debrecen;Gyõr;Pécs;11
+Hány régióra bontható Magyarország?;7;19;10;3;3
+Hány megyéje vab Magyarországnak?19;20;18;16;3
+Elsõrendû logikában mit jelent az univerzális kvantor?;minden;van olyan;kivéve;nincs olyan;3
+Elsõrendû logikában mit jelent az egzisztenciális kvantor?;van olyan;minden;kivéve;nincs olyan;3
+Melyik nem kielégíhetõ tulajdonság az elsõrendû logikában?;érvénytelen;kielégíthetõ;érvényes;kielégíthetetlen;3
+Milyen néven indult a ma "Sziget Fesztivál" néven ismert rendezvény?;Diáksziget;Pepsi Sziget;Eurowoodstock;Sziget Parádé;3
+Milyen fajta kutya Lassie?;Rough Collie;Border Collie;Ausztrál juhászkutya;Sheltie;3
+Mi volt Magyarország legjobb helyezése az Euróvíziós Dalfesztiválon 2018-ig?;4.hely;2.hely;3.hely;1.hely;3

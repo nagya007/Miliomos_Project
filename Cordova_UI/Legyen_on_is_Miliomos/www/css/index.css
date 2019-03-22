@@ -41,7 +41,7 @@ fullscreen-bg {
 }
 
 
-/* Ebbe ker�l a k�rd�s j�t�k k�zben */
+/* Ebbe kerül a kérdés játék közben */
 .text-kerdes {
     font: normal 120%/1 Impact, Charcoal, sans-serif;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -49,7 +49,7 @@ fullscreen-bg {
     text-align: center;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    width: 90%;
+    width: 50%;
     height: auto;
     padding: 8px;
     overflow: visible;
@@ -62,21 +62,21 @@ fullscreen-bg {
     position: static;
 }
 
-/* Ebbe ker�lnek a 4 v�lasz j�t�k k�zbe */
+/* Ebbe kerülnek a 4 válasz játék közbe */
 .button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4 {
-    /* Ezek a gombok j�t�k k�zben */
-    /* Bal fels� gomb */
+    /* Ezek a gombok játék közben */
+    /* Bal felső gomb */
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-    width: 48%;
-    height: 25%;
+    width: 35%;
+    height: 20%;
     position: absolute;
     cursor: pointer;
     /* Style stuff */
     margin: auto;
     padding: inherit;
-    border: 6px solid rgba(255,255,0,1);
+    border: 6px solid #58D3F7;
     -webkit-border-radius: 25%;
     border-radius: 25%;
     font: normal 100%/normal "Times New Roman", Times, serif;
@@ -84,27 +84,45 @@ fullscreen-bg {
     text-align: center;
     -o-text-overflow: clip;
     text-overflow: clip;
-    background: #000000;
+    background: #170B3B;
 }
-/* Hol helyezkedik el, el�g rossz sztem de m�kszik! */
-.button-anwser1 {
-    left: 0%;
-    top: 27%;
+
+
+/* Hol helyezkedik el, elég rossz sztem de mükszik! */
+.button-anwser1{
+    left: 3%;
+    top: 35%;
 }
 .button-anwser2 {
-    top:26%;
-    left: 50%;
+    left: 40%;
+	top:35%;
 }
 .button-anwser3 {
-    top: 55%;
-    left: 0%;
+    left: 3%;
+	top: 60%;
 }
 .button-anwser4 {
-    top: 55%;
-    left: 50%;
+    left: 40%;
+	top: 60%;
 }
 .w3-padding {
     padding: 8px 16px !important
+}
+#answer1:hover
+{
+	background-color:#81DAF5;
+}
+#answer2:hover
+{
+	background-color:#81DAF5;
+}
+#answer3:hover
+{
+	background-color:#81DAF5;
+}
+#answer4:hover
+{
+	background-color:#81DAF5;
 }
 .w3-display-middle {
     position: absolute;
@@ -115,10 +133,11 @@ fullscreen-bg {
 }
 .w3-display-bottommiddle{
 	position:absolute;
-	left:50%;
-	bottom:0;
+	left:90%;
+	bottom:20%;
 	transform:translate(-50%,0%);
 	-ms-transform:translate(-50%,0%)
+	
 }
 .w3-display-topmiddle {
 	position:absolute;
@@ -127,13 +146,18 @@ fullscreen-bg {
 	transform:translate(-50%,0%);
 	-ms-transform:translate(-50%,0%)
 }
+.w3-display-topleft{
+	position:absolute;
+	left:0;top:0
+}
 .w3-display-topright{
 	position:absolute;
 	right:0;top:0
 }
-.counter{
-    padding: 25px 25px 25px 25px; /* padding-top + padding-bottom + text area = image height */
-    margin: 25px 25px 25px 25px; /* offset vertical: half of image height */
+#counter{
+    padding: 2px 2px 2px 2px; /* padding-top + padding-bottom + text area = image height */
+    margin: 2px 2px 2px 2px; /* offset vertical: half of image height */
+	font-size:100%;
 }
 
 
@@ -162,15 +186,15 @@ fullscreen-bg {
 .btn-group-help button {
     font: normal 100%/normal "Times New Roman", Times, serif;
     color: #080c00;
-    background: #08d169;
+    background: #81DAF5;
     border: 1px solid #018dc4;
-    border-radius: 3px;
+    border-radius: 90%;
 
-    padding: 10px 24px; /* Some padding */
+    padding: 10px 20px; /* Some padding /*
     cursor: pointer; /* Pointer/hand icon */
 	width: 120px;
 	text-align: center;
-	float: left;
+	float: left; 
 }
 button, button[disabled]{
   border: 1px solid #999999;
@@ -229,10 +253,190 @@ app {
     top: 50%;
     left: 50%;*/
 }
+#scoreboard {
+	justify-content: center;
+	vertical-align:middle;
+	background-color:#81DAF5;
+	width: 16%;
+	height: 40%;
+	border: 1px solid blue;
+}
+th, td {
+  vertical-align: middle;
+}
+
+
+.scoreboard-text {
+	font-size: 25%;
+}
+
 @keyframes wronganimation {
     0%   { background-color: #00ff00;}
     49% { background-color: #00ff00; }
     50% { background-color: #000000; }
     99% { background-color: #000000; }
     100% { background-color: #00ff00; }
+}
+
+.reset-this {
+    animation : none;
+    animation-delay : 0;
+    animation-direction : normal;
+    animation-duration : 0;
+    animation-fill-mode : none;
+    animation-iteration-count : 1;
+    animation-name : none;
+    animation-play-state : running;
+    animation-timing-function : ease;
+    backface-visibility : visible;
+    background : 0;
+    background-attachment : scroll;
+    background-clip : border-box;
+    background-color : transparent;
+    background-image : none;
+    background-origin : padding-box;
+    background-position : 0 0;
+    background-position-x : 0;
+    background-position-y : 0;
+    background-repeat : repeat;
+    background-size : auto auto;
+    border : 0;
+    border-style : none;
+    border-width : medium;
+    border-color : inherit;
+    border-bottom : 0;
+    border-bottom-color : inherit;
+    border-bottom-left-radius : 0;
+    border-bottom-right-radius : 0;
+    border-bottom-style : none;
+    border-bottom-width : medium;
+    border-collapse : separate;
+    border-image : none;
+    border-left : 0;
+    border-left-color : inherit;
+    border-left-style : none;
+    border-left-width : medium;
+    border-radius : 0;
+    border-right : 0;
+    border-right-color : inherit;
+    border-right-style : none;
+    border-right-width : medium;
+    border-spacing : 0;
+    border-top : 0;
+    border-top-color : inherit;
+    border-top-left-radius : 0;
+    border-top-right-radius : 0;
+    border-top-style : none;
+    border-top-width : medium;
+    bottom : auto;
+    box-shadow : none;
+    box-sizing : content-box;
+    caption-side : top;
+    clear : none;
+    clip : auto;
+    color : inherit;
+    columns : auto;
+    column-count : auto;
+    column-fill : balance;
+    column-gap : normal;
+    column-rule : medium none currentColor;
+    column-rule-color : currentColor;
+    column-rule-style : none;
+    column-rule-width : none;
+    column-span : 1;
+    column-width : auto;
+    content : normal;
+    counter-increment : none;
+    counter-reset : none;
+    cursor : auto;
+    direction : ltr;
+    display : inline;
+    empty-cells : show;
+    float : none;
+    font : normal;
+    font-family : inherit;
+    font-size : medium;
+    font-style : normal;
+    font-variant : normal;
+    font-weight : normal;
+    height : auto;
+    hyphens : none;
+    left : auto;
+    letter-spacing : normal;
+    line-height : normal;
+    list-style : none;
+    list-style-image : none;
+    list-style-position : outside;
+    list-style-type : disc;
+    margin : 0;
+    margin-bottom : 0;
+    margin-left : 0;
+    margin-right : 0;
+    margin-top : 0;
+    max-height : none;
+    max-width : none;
+    min-height : 0;
+    min-width : 0;
+    opacity : 1;
+    orphans : 0;
+    outline : 0;
+    outline-color : invert;
+    outline-style : none;
+    outline-width : medium;
+    overflow : visible;
+    overflow-x : visible;
+    overflow-y : visible;
+    padding : 0;
+    padding-bottom : 0;
+    padding-left : 0;
+    padding-right : 0;
+    padding-top : 0;
+    page-break-after : auto;
+    page-break-before : auto;
+    page-break-inside : auto;
+    perspective : none;
+    perspective-origin : 50% 50%;
+    position : static;
+    /* May need to alter quotes for different locales (e.g fr) */
+    quotes : '\201C' '\201D' '\2018' '\2019';
+    right : auto;
+    tab-size : 8;
+    table-layout : auto;
+    text-align : inherit;
+    text-align-last : auto;
+    text-decoration : none;
+    text-decoration-color : inherit;
+    text-decoration-line : none;
+    text-decoration-style : solid;
+    text-indent : 0;
+    text-shadow : none;
+    text-transform : none;
+    top : auto;
+    transform : none;
+    transform-style : flat;
+    transition : none;
+    transition-delay : 0s;
+    transition-duration : 0s;
+    transition-property : none;
+    transition-timing-function : ease;
+    unicode-bidi : normal;
+    vertical-align : baseline;
+    visibility : visible;
+    white-space : normal;
+    widows : 0;
+    width : auto;
+    word-spacing : normal;
+    z-index : auto;
+    /* basic modern patch */
+    all: initial;
+    all: unset;
+}
+
+/* basic modern patch */
+
+#reset-this-root {
+    all: initial;
+    * {
+        all: unset;
+    }
 }

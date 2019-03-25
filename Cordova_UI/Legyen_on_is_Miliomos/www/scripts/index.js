@@ -23,7 +23,13 @@ var rightanswer=""; //the right answer of actual question is stored here
 var questions;  //received questions are stored here
 var previous=[];    //array for previous question ids
 var cnt = 0;  //question counter;
-var lock=false;
+var lock=false; //locks answer buttons after clicking one
+//----------------------
+//these urls can be used for application, uncomment the line what you want to use
+var url="https://thejumper203.ddns.net/~webuser/milliomos/";  //my own webserver
+//var url="https://milliomos.000webhostapp.com/"; //free webhost server
+//var url="./"; //localhost for web use
+//----------------------
 function CancelLogin(){
     $("#welcome").css("display", "block");
     $("#login_form").css("display", "none");
@@ -68,7 +74,7 @@ function ShowPlayground(){
     // makes question form visible
     $("#welcome").css("display", "none");
     $("#mainmenu").css("display", "none");
-	$("#playground").css("display", "block")
+	$("#playground").css("display", "block");
 } 
 function Signup(){
     //implements signup function via ajax call
@@ -78,7 +84,7 @@ function Signup(){
     var password=$("input[name='s_password']").val();
     $.ajax({
         type:'POST',
-        url: 'https://thejumper203.ddns.net/~webuser/milliomos/signup.php',
+        url: url+'signup.php',
         data:'email='+email+'&username='+username+'&password='+password,
         success: function (data) {
 			$("#btn_signup").removeAttr("disabled");
@@ -96,7 +102,7 @@ function Login(){
     var password=$("input[name='l_password']").val();
     $.ajax({
        type:'POST',
-       url: 'https://thejumper203.ddns.net/~webuser/milliomos/login.php',
+       url: url+'login.php',
        data:'username='+username+'&password='+password,
        success: function(data){
 		   $("#btn_login").removeAttr("disabled");
@@ -113,7 +119,7 @@ function GetQuestions(){
     //recieves questions from database
     $.ajax({
         type:'POST',
-        url: 'https://thejumper203.ddns.net/~webuser/milliomos/getQuestions.php',
+        url: url+'getQuestions.php',
         data:'questionnumber='+questionnumber+'&user='+session_user,
         dataType:'json',
         success: function (data)
@@ -262,7 +268,7 @@ function HelpRemove(count)
 	while(i<count) {
 		var rndButton = Math.floor(Math.random() * 4) + 1;
 		// === ha egyezik változó tipusa, == ha egyezik 'a value' benne, megnézi üres-e már a gomb, vagy hogy rossz válasz-e
-		if(!($("#answer"+rndButton).text()===rightanswer) && !($("#answer"+rndButton).text()==""))
+		if(!($("#answer"+rndButton).text()===rightanswer) && !($("#answer"+rndButton).text()===""))
 		{
 			$("#answer"+rndButton).html('');
 			// disabled mint az agyam este 11kor
@@ -276,4 +282,25 @@ function HelpRemove(count)
 
 	// 1 = indexe
     HelpDisable(1);
+}
+function HelpTip1(){
+    
+	var weights=[2,5,83,6];
+	for	(i=1;i<=4;i++)
+	{
+		if($("#answer"+i).text()===rightanswer)
+		{
+			var temp=weights[i-1];
+			weights[i-1]=83-questions[cnt-1].level;
+			weights[2]=temp;
+		}
+	}
+	var sumweight=0;
+	for (i=0;i<weights.length;i++) sumweight+=weights[i];
+	var rnd=Math.floor(Math.random()*sumweight)+1;
+	for (i=0;i<weights.length;i++){
+		if(rnd<weights[i]) {HelpDisable(2);return i+1;}
+		rnd-=weights[i];
+	}
+	
 }

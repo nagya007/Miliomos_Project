@@ -239,7 +239,7 @@ function CheckAnswer(buttonid){
 
 ///*
 
-var HelpCount = 1;
+var HelpCount = 2;
 function HelpDisable(index) {
     $("#help" + index).attr('disabled', 'true');
     // Kikapcsolás vagy eltüntetés is

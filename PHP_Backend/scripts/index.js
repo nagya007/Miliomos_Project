@@ -9,14 +9,6 @@
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
         document.addEventListener( 'resume', onResume.bind( this ), false );
-        
-        // TODO: Cordova has been loaded. Perform any initialization that requires Cordova here.
-        var parentElement = document.getElementById('deviceready');
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-       // displayForm('formA');
     };
     function onPause() {
         // TODO: This application has been suspended. Save application state here.
@@ -30,8 +22,27 @@ var questionnumber=10; //number of requested questions
 var rightanswer=""; //the right answer of actual question is stored here
 var questions;  //received questions are stored here
 var previous=[];    //array for previous question ids
-var cnt=0;  //question counter;
-var lock=false;
+var cnt = 0;  //question counter;
+var lock=false; //locks answer buttons after clicking one
+//----------------------
+//these urls can be used for application, uncomment the line what you want to use
+var url="https://thejumper203.ddns.net/~webuser/milliomos/";  //my own webserver
+//var url="https://milliomos.000webhostapp.com/"; //free webhost server
+//var url="./"; //localhost for web use
+//----------------------
+function CancelLogin(){
+    $("#welcome").css("display", "block");
+    $("#login_form").css("display", "none");
+    $("#mainmenu").css("display", "none");
+    $("#playground").css("display", "none");  
+}
+function CancelSignup() {
+    $("#welcome").css("display", "block");
+    $("#login_form").css("display", "none");
+    $("#mainmenu").css("display", "none");
+    $("#playground").css("display", "none");
+    $("#signup_form").css("display", "none");
+}
 function CleanUp(){
     //at the end of a game, this function clear these fields
     rightanswer=""; 
@@ -63,62 +74,73 @@ function ShowPlayground(){
     // makes question form visible
     $("#welcome").css("display", "none");
     $("#mainmenu").css("display", "none");
-    $("#playground").css("display", "block");
+	$("#playground").css("display", "block");
 } 
 function Signup(){
     //implements signup function via ajax call
+	$("#btn_signup").attr("disabled","true");
     var username=$("input[name='s_username']").val();
     var email=$("input[name='s_email']").val();
     var password=$("input[name='s_password']").val();
     $.ajax({
         type:'POST',
-        url: 'signup.php',
+        url: url+'signup.php',
         data:'email='+email+'&username='+username+'&password='+password,
         success: function (data) {
+			$("#btn_signup").removeAttr("disabled");
             if(data==="successful")  {alert("Successful registration. You can login now."); ShowLogin();}
             else if (data==="empty") alert ("You need to fill all fields");
             else if (data==="exist") alert("This user/email already exist");
         },
-        error: function(){alert("Something went wrong");}
+        error: function(){alert("Something went wrong");$("#btn_signup").removeAttr("disabled");}
     });
 } 
 function Login(){
     //implements login function via ajax call
+	$("#btn_login").attr("disabled","true");
     var username=$("input[name='l_username']").val();
     var password=$("input[name='l_password']").val();
     $.ajax({
        type:'POST',
-       url: 'login.php',
+       url: url+'login.php',
        data:'username='+username+'&password='+password,
        success: function(data){
+		   $("#btn_login").removeAttr("disabled");
            if(data==="false") alert("Wrong username or password");
            else {
                session_user=username;
-               alert(data);
                ShowMainMenu(session_user);
            }
        },
-       error: function(){alert("Something went wrong");}
+       error: function(){alert("Something went wrong");$("#btn_login").removeAttr("disabled");}
     });
 } 
 function GetQuestions(){
     //recieves questions from database
     $.ajax({
         type:'POST',
-        url: 'getQuestions.php',
+        url: url+'getQuestions.php',
         data:'questionnumber='+questionnumber+'&user='+session_user,
         dataType:'json',
-        async:true,
         success: function (data)
         {
-            questions=data;
+			questions=data;
             HelpEnableAll();
+			$("#btn_startgame").removeAttr("disabled");
             if(questions.length===questionnumber){
-            FillQuestion();
-            ShowPlayground();    }
-        else alert("There are not enough questions");
+				FillQuestion();
+				ShowPlayground();    
+			}
+			else alert("There are not enough questions");
         },
-        error: function(){alert("Something went wrong. Failed to get questions");}
+        error: function (jqXHR, textStatus) {
+            alert(' http request error' + textStatus);
+			$("#btn_startgame").removeAttr("disabled");
+            if (errorCb) {
+                errorCb(jqXHR, textStatus);
+            }
+       }
+        //error: function(){alert("Something went wrong. Failed to get questions");}
     }); 
 } 
 function SelectQuestion() {
@@ -132,21 +154,20 @@ function SelectQuestion() {
         selected[5]=questions[cnt].wrong3;
         selected[6]=questions[cnt].level;
         cnt++;
+		// Ami megjelenik a counteren
+        $("#counter").html(cnt+" / "+questionnumber);
         previous.push(selected[0]);
         rightanswer=selected[2];
-        return selected;    
+        return selected;
 }
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
+	$("#btn_startgame").attr("disabled","true"); //disables the button to prevent multiple click, it will be re-enabled when the next function successes or fails
     GetQuestions();
-    //HelpEnableAll();
-    //if(questions.length===questionnumber){
-    //FillQuestion();
-    //ShowPlayground();
 }
 function FillQuestion(){
     //fills a selected question and answers to the playing form
-        lock=false;
+	    lock=false;
         for (i=1;i<5;i++)
         {
             $("#answer"+i).css("background","#000000");
@@ -178,7 +199,9 @@ function CheckAnswer(buttonid){
         setTimeout(function(){
         if ($(buttonid).text()===rightanswer) {
             //alert("Good!");
-            $(buttonid).css("background","#00ff00");
+           // $(buttonid).css("background","#00ff00");
+            $(buttonid).css("color", "#FFFFFF");
+            $(buttonid).css("animation", "wronganimation 0.5s infinite");
             setTimeout(function(){
                 if (previous.length<questions.length) {
                  FillQuestion();
@@ -207,8 +230,6 @@ function CheckAnswer(buttonid){
             }
         },3000);
     }
-    
-
 }
 //Segítségek
 // Eltüntet x rossz választ.
@@ -258,9 +279,28 @@ function HelpRemove(count)
 			i++;
 		}
     }
-    // OK elég nagy bug ez, de többször meg lehet nyomni a gombot :( pls megoldaná valaki hogy buttonnak vissza küldjön infot hogy kapcsoljon ki, JS elszáll amikor én csinálom
 
 	// 1 = indexe
     HelpDisable(1);
 }
-
+function HelpTip1(){
+    
+	var weights=[2,5,83,6];
+	for	(i=1;i<=4;i++)
+	{
+		if($("#answer"+i).text()===rightanswer)
+		{
+			var temp=weights[i-1];
+			weights[i-1]=83-questions[cnt-1].level;
+			weights[2]=temp;
+		}
+	}
+	var sumweight=0;
+	for (i=0;i<weights.length;i++) sumweight+=weights[i];
+	var rnd=Math.floor(Math.random()*sumweight)+1;
+	for (i=0;i<weights.length;i++){
+		if(rnd<weights[i]) {HelpDisable(2);return i+1;}
+		rnd-=weights[i];
+	}
+	
+}

@@ -5,7 +5,7 @@ CREATE TABLE user (
   name VARCHAR(50) NOT NULL,
   password VARCHAR(25) NOT NULL,
   email VARCHAR(25) NOT NULL,
-  score INT,
+  score INT NOT NULL FOREIGN KEY REFERENCES score(id),
   PRIMARY KEY (id)
 );
 
@@ -17,5 +17,12 @@ CREATE TABLE question (
   wrong2 VARCHAR(50) NOT NULL,
   wrong3 VARCHAR(50) NOT NULL,
   level TINYINT(1) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE score (
+  id INT NOT NULL AUTO_INCREMENT,
+  money INT DEFAULT 0,
+  score INT DEFAULT 0,
   PRIMARY KEY (id)
 );

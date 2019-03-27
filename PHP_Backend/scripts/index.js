@@ -105,12 +105,13 @@ function Login(){
        url: url+'login.php',
        data:'username='+username+'&password='+password,
        success: function(data){
-		   $("#btn_login").removeAttr("disabled");
+		   
            if(data==="false") alert("Wrong username or password");
            else {
                session_user=username;
                ShowMainMenu(session_user);
            }
+		   $("#btn_login").removeAttr("disabled");
        },
        error: function(){alert("Something went wrong");$("#btn_login").removeAttr("disabled");}
     });

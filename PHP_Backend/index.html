@@ -23,7 +23,6 @@
     		</video>
 	</div>
 <!-- Zene -->
-<!-- <iframe src="media/wav/ost-temporary.wav" allow="autoplay" id="audio" style="display:none"></iframe>-->
 	<audio id="player" loop>
     		<source src="media/wav/ost-temporary.wav" type="audio/wav">
 	</audio>
@@ -34,40 +33,42 @@
         <button onclick="ShowLogin()">Login</button>
     </div>
     <div id="signup_form" style="display: none;" class="w3-padding w3-display-topmiddle btn-group">
-        <h1 class="vertical">Registration</h1>
-        <div>
-            <label>Email: </label>
-            <input type="text" name="s_email">
-        </div>
-        <div>
-            <label>Username: </label>
-            <input type="text" name="s_username">
-        </div>
-        <div>
-            <label>Password: </label>
-            <input type="password" name="s_password">
-        </div>
-        <!--<input class="vertical" type="button" value="Sign up" onclick="Signup();">
-		-->
-		<button onclick="Signup()">Sign up</button>
+		<form onsubmit="return false">
+			<h1 class="vertical">Registration</h1>
+			<div>
+				<label>Email: </label>
+				<input type="text" name="s_email">
+			</div>
+			<div>
+				<label>Username: </label>
+				<input type="text" name="s_username">
+			</div>
+			<div>
+				<label>Password: </label>
+				<input type="password" name="s_password">
+			</div>
+			<button id="btn_signup" onclick="Signup()">Sign up</button>
+			<button onclick="CancelSignup()">Cancel</button>
+		</form>
     </div>
     <div id="login_form" style="display: inline; display:none" class="w3-padding w3-display-topmiddle btn-group">
-        <h1 class="vertical">Login</h1>
-        <div>
-            <label>Username: </label>
-            <input type="text" name="l_username">
-        </div>
-        <div>
-            <label>Password: </label>
-            <input type="password" name="l_password">
-        </div>
-        <!--<input class="vertical" type="button" value="Login" onclick="Login();">
-		-->
-        <button onclick="Login()">Login</button>
+		<form onsubmit="return false">
+			<h1 class="vertical">Login</h1>
+			<div>
+				<label>Username: </label>
+				<input type="text" name="l_username">
+			</div>
+			<div>
+				<label>Password: </label>
+				<input type="password" name="l_password">
+			</div>
+			<button id="btn_login" onclick="Login()">Login</button>
+			<button onclick="CancelLogin()">Cancel</button>
+		</form>
     </div>
     <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">
         <h1 class="vertical" id="greet">Welcome </h1>
-        <button class="btn-group" onclick="StartGame()">Start a game</button>
+        <button id="btn_startgame" class="btn-group" onclick="StartGame()">Start a game</button>
     </div>
     <div id="playground">
         <h3 class="w3-display-topmiddle" id="questiontext"></h3>

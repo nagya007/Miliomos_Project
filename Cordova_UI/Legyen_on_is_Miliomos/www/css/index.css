@@ -440,3 +440,9 @@ th, td {
         all: unset;
     }
 }
+
+#regbox {
+    background-color: lightblue;
+    border-radius: 20px;
+    margin-left: 20px;
+}

@@ -32,41 +32,77 @@
 <!-- Media cuccok vége -->
 
     <div id="welcome" class="w3-padding w3-display-middle btn-group" style="">
-        <button onclick="ShowSignup()">Register</button>
+        <button onclick="ShowSignup()">Register</button><br>
         <button onclick="ShowLogin()">Login</button>
     </div>
     <div id="signup_form" style="display: none;" class="w3-padding w3-display-topmiddle btn-group">
         <h1 class="vertical">Registration</h1>
-        <div>
+ <!--     <div> 											originál regisztráció
             <label>Email: </label>
-            <input type="text" name="s_email">
+            <input type="text" name="s_email" id="regbox">
         </div>
         <div>
             <label>Username: </label>
-            <input type="text" name="s_username">
+            <input type="text" name="s_username" id="regbox">
         </div>
         <div>
             <label>Password: </label>
-            <input type="password" name="s_password">
-        </div>
-        <!--<input class="vertical" type="button" value="Sign up" onclick="Signup();">
+            <input type="password" name="s_password" id="regbox"> -->
+      
+	  	
+	<div>	<table style="text-align: left; width: 100%" border="0"
+ cellpadding="2" cellspacing="2">
+    <tr>
+      <td><label>Email: </label></td>
+      <td><input type="text" name="s_email" id="regbox"></td>
+    </tr>
+    <tr>
+      <td>Username:</td>
+      <td> <input type="text" name="s_username" id="regbox"></td>
+    </tr>
+    <tr>
+      <td>Password: </td>
+      <td><input type="password" name="s_password" id="regbox"></td>
+    </tr>
+</table></div>
+		
+		<br>
+       
+	   <!--<input class="vertical" type="button" value="Sign up" onclick="Signup();">
     -->
-        <button id="btn_signup" onclick="Signup()">Sign up</button>
+        <button id="btn_signup" onclick="Signup()">Sign up</button><br>
         <button id="btn_cancelsignup" onclick="CancelSignup()">Cancel</button>
     </div>
     <div id="login_form" style="display: inline; display:none" class="w3-padding w3-display-topmiddle btn-group">
         <h1 class="vertical">Login</h1>
-        <div>
+        <!-- <div>													original login
             <label>Username: </label>
             <input type="text" name="l_username">
         </div>
         <div>
             <label>Password: </label>
             <input type="password" name="l_password">
-        </div>
+        </div>-->
+		
+		
+		<div>		
+		<table style="text-align: left; width: 100%;" border="0"
+ cellpadding="2" cellspacing="2">
+    <tr>
+      <td>Username</td>
+      <td><input type="text" name="l_username" id="regbox"></td>
+    </tr>
+    <tr>
+      <td>Password: </td>
+      <td><input type="password" name="l_password" id="regbox"></td>
+    </tr>
+</table>
+		</div><br>
+		
+			
         <!--<input class="vertical" type="button" value="Login" onclick="Login();">
 		-->
-        <button id="btn_login" onclick="Login()">Login</button>
+      <button id="btn_login" onclick="Login()">Login</button><br>
         <button id="btn_cancellogin"onclick="CancelLogin()">Cancel</button>
     </div>
     <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">

@@ -86,6 +86,7 @@ function Signup(){
         type:'POST',
         url: url+'signup.php',
         data:'email='+email+'&username='+username+'&password='+password,
+		timeout: 5000,
         success: function (data) {
 			$("#btn_signup").removeAttr("disabled");
             if(data==="successful")  {alert("Successful registration. You can login now."); ShowLogin();}
@@ -104,6 +105,7 @@ function Login(){
        type:'POST',
        url: url+'login.php',
        data:'username='+username+'&password='+password,
+	   timeout: 5000,
        success: function(data){
 		   $("#btn_login").removeAttr("disabled");
            if(data==="false") alert("Wrong username or password");
@@ -122,6 +124,7 @@ function GetQuestions(){
         url: url+'getQuestions.php',
         data:'questionnumber='+questionnumber+'&user='+session_user,
         dataType:'json',
+		timeout: 5000,
         success: function (data)
         {
 			questions=data;

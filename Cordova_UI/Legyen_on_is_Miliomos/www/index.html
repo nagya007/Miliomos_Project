@@ -34,7 +34,9 @@
     <div id="welcome" class="w3-padding w3-display-middle btn-group" style="">
         <button onclick="ShowSignup()">Register</button><br>
         <button onclick="ShowLogin()">Login</button>
-    </div>
+	</div>
+
+	
     <div id="signup_form" style="display: none;" class="w3-padding w3-display-topmiddle btn-group">
         <h1 class="vertical">Registration</h1>
  <!--     <div> 											originál regisztráció
@@ -118,7 +120,8 @@
 			<div class="w3-display-bottommiddle btn-group-help">
 				<!-- Ideiglenes helye a Help gomboknak -->
 				<button id="help1" onclick="HelpRemove(2)">Felezés!</button>
-				<button id="help2" onclick="alert('My tip is: '+HelpTip1());">Tipp!TEST!</button>
+				<!--<button id="help2" onclick="alert('My tip is: '+HelpTip1());">Einstein tipje!</button>-->
+				<button id="help2" onclick="HelpEinstein()">Einstein tipje!</button>
 			</div>
 			<div id="scoreboard" class="w3-display-topright w3-padding vertical" style="margin: auto;">
 				<table style="font-size: 40%;display:inline">
@@ -160,6 +163,15 @@
 			<div id="counter" class="w3-display-topleft w3-padding">
 			-->
 		</div>
+		<!--Einstein-->
+			<div class="vertical w3-display-middle" id="help_einstein">
+			<img src="media/png/help_einstein.png" alt="Einstein gondolkodott a kérdéseden..." style="vertical-align: middle;height: 170px;">
+			<p style="vertical-align: middle;margin-bottom:0%">Hmm, hát az én tippem:</p>
+			<button id="einstein_anwser" class="button-anwser">Válasz</button>
+			<div class="btn-group">
+				<button onclick="HelpEinsteinRefuse()">Folytatás!</button>
+			</div>
+			</div>
 	</div>
 </body>
 </html>

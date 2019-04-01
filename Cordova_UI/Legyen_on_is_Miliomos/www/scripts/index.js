@@ -26,8 +26,8 @@ var cnt = 0;  //question counter;
 var lock=false; //locks answer buttons after clicking one
 //----------------------
 //these urls can be used for application, uncomment the line what you want to use
-var url="https://thejumper203.ddns.net/~webuser/milliomos/";  //my own webserver
-//var url="https://milliomos.000webhostapp.com/"; //free webhost server
+//var url="https://thejumper203.ddns.net/~webuser/milliomos/";  //my own webserver
+var url="https://milliomos.000webhostapp.com/"; //free webhost server
 //var url="./"; //localhost for web use
 //----------------------
 function CancelLogin(){
@@ -239,7 +239,7 @@ function CheckAnswer(buttonid){
 // Hány help tipus van leprogramozva.
 
 // 1. = HelpRemove
-
+// 2. = Einstein
 ///*
 
 var HelpCount = 2;
@@ -286,6 +286,8 @@ function HelpRemove(count)
 	// 1 = indexe
     HelpDisable(1);
 }
+
+// EINSTEIN
 function HelpTip1(){
     
 	var weights=[2,5,83,6];
@@ -302,12 +304,21 @@ function HelpTip1(){
 	for (i=0;i<weights.length;i++) sumweight+=weights[i];
 	var rnd=Math.floor(Math.random()*sumweight)+1;
 	for (i=0;i<weights.length;i++){
-		if(rnd<weights[i]) {HelpDisable(2);return i+1;}
+		if(rnd<weights[i]) {		
+			return i+1;
+			}
 		rnd-=weights[i];
 	}
 	
 }
-
+function HelpEinstein(){
+	HelpDisable(2);
+	$("#einstein_anwser").html($("#answer"+HelpTip1()).text());
+	$("#help_einstein").css("display", "block");
+}
+function HelpEinsteinRefuse(){
+	$("#help_einstein").css("display", "none");
+}
 //Közönség szavazás
 //Generál 4 számot amit leoszt az összegükkel, hogy fasza százalékokká változzanak. A helyes válasz +30% boostot kap.
 //String tömböt ad vissza amiben az eredmények sorrendje a gombok sorrendjét követi.

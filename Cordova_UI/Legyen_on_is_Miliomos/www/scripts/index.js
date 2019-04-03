@@ -196,7 +196,8 @@ function FillQuestion(){
 function CheckAnswer(buttonid){
     //checks the given answer, and gets the next one
     if (!lock) {
-        lock=true;
+        lock = true;
+        HelpEinsteinRefuse();
         $(buttonid).css("background","orange");
         $(buttonid).css("color","#000000");
         setTimeout(function(){

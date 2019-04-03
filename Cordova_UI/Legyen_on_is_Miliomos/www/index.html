@@ -12,7 +12,6 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="shortcut icon" href="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <!--<script src="scripts/jquery.js"></script>-->
     <script src="scripts/index.js"></script>
     <title>LegyenonisMiliomos</title>
@@ -30,29 +29,13 @@
    <!-- <source src="media/wav/ost-temporary.mp3" type="audio/mp3"> -->
 </audio>
 <!-- Media cuccok vége -->
-
     <div id="welcome" class="w3-padding w3-display-middle btn-group" style="">
         <button onclick="ShowSignup()">Register</button><br>
         <button onclick="ShowLogin()">Login</button>
-	</div>
-
-	
+	</div>	
     <div id="signup_form" style="display: none;" class="w3-padding w3-display-topmiddle btn-group">
         <h1 class="vertical">Registration</h1>
- <!--     <div> 											originál regisztráció
-            <label>Email: </label>
-            <input type="text" name="s_email" id="regbox">
-        </div>
-        <div>
-            <label>Username: </label>
-            <input type="text" name="s_username" id="regbox">
-        </div>
-        <div>
-            <label>Password: </label>
-            <input type="password" name="s_password" id="regbox"> -->
-      
-	  	
-	<div>	<table style="text-align: left; width: 100%" border="0"
+ 	<div>	<table style="text-align: left; width: 100%" border="0"
  cellpadding="2" cellspacing="2">
     <tr>
       <td><label>Email: </label></td>
@@ -66,28 +49,14 @@
       <td>Password: </td>
       <td><input type="password" name="s_password" id="regbox"></td>
     </tr>
-</table></div>
-		
-		<br>
-       
-	   <!--<input class="vertical" type="button" value="Sign up" onclick="Signup();">
-    -->
+</table></div>		
+		<br>        
         <button id="btn_signup" onclick="Signup()">Sign up</button><br>
         <button id="btn_cancelsignup" onclick="CancelSignup()">Cancel</button>
     </div>
     <div id="login_form" style="display: inline; display:none" class="w3-padding w3-display-topmiddle btn-group">
         <h1 class="vertical">Login</h1>
-        <!-- <div>													original login
-            <label>Username: </label>
-            <input type="text" name="l_username">
-        </div>
-        <div>
-            <label>Password: </label>
-            <input type="password" name="l_password">
-        </div>-->
-		
-		
-		<div>		
+   		<div>		
 		<table style="text-align: left; width: 100%;" border="0"
  cellpadding="2" cellspacing="2">
     <tr>
@@ -100,10 +69,6 @@
     </tr>
 </table>
 		</div><br>
-		
-			
-        <!--<input class="vertical" type="button" value="Login" onclick="Login();">
-		-->
       <button id="btn_login" onclick="Login()">Login</button><br>
         <button id="btn_cancellogin"onclick="CancelLogin()">Cancel</button>
     </div>

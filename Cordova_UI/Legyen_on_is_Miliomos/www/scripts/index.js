@@ -30,6 +30,12 @@ var lock=false; //locks answer buttons after clicking one
 var url="https://milliomos.000webhostapp.com/"; //free webhost server
 //var url="./"; //localhost for web use
 //----------------------
+function ExitGame() {
+    navigator.notification.confirm('', function (button) {
+        if (button === 2) navigator.app.exitApp();
+        else return null;
+    }, 'Are you sure?', 'No,Yes');
+}
 function CancelLogin(){
     $("#welcome").css("display", "block");
     $("#login_form").css("display", "none");

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="shortcut icon" href="">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--<script src="scripts/jquery.js"></script>-->
+    <script src="cordova.js"></script> <!--VS hibát dob rá hogy nem találja, de ne töröld, kell-->
     <script src="scripts/index.js"></script>
     <title>LegyenonisMiliomos</title>
 </head>
@@ -30,8 +30,9 @@
 </audio>
 <!-- Media cuccok vége -->
     <div id="welcome" class="w3-padding w3-display-middle btn-group" style="">
-        <button onclick="ShowSignup()">Register</button><br>
+        <button onclick="ShowSignup()">Register</button>
         <button onclick="ShowLogin()">Login</button>
+        <button id="btn_exitgame1" onclick="ExitGame()">Exit</button>
 	</div>	
     <div id="signup_form" style="display: none;" class="w3-padding w3-display-topmiddle btn-group">
         <h1 class="vertical">Registration</h1>
@@ -50,8 +51,8 @@
       <td><input type="password" name="s_password" id="regbox"></td>
     </tr>
 </table></div>		
-		<br>        
-        <button id="btn_signup" onclick="Signup()">Sign up</button><br>
+		        
+        <button id="btn_signup" onclick="Signup()">Sign up</button>
         <button id="btn_cancelsignup" onclick="CancelSignup()">Cancel</button>
     </div>
     <div id="login_form" style="display: inline; display:none" class="w3-padding w3-display-topmiddle btn-group">
@@ -68,13 +69,14 @@
       <td><input type="password" name="l_password" id="regbox"></td>
     </tr>
 </table>
-		</div><br>
-      <button id="btn_login" onclick="Login()">Login</button><br>
+		</div>
+      <button id="btn_login" onclick="Login()">Login</button>
         <button id="btn_cancellogin"onclick="CancelLogin()">Cancel</button>
     </div>
     <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">
         <h1 class="vertical" id="greet">Welcome </h1>
         <button id="btn_startgame" class="btn-group" onclick="StartGame()">Start a game</button>
+        <button id="btn_exitgame2" class="btn-group" onclick="ExitGame()">Exit</button>
     </div>
 	<div id="playground">
 			<h3 class="w3-display-topmiddle text-kerdes" id="questiontext" style="top:4%;left:42%;"></h3>

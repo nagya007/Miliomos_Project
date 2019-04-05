@@ -243,7 +243,6 @@ app {
 #login_form {
     display: none;
 }
-}
 #mainmenu {
     display: none;
 }
@@ -251,13 +250,38 @@ app {
     display: none;
 }
 #scoreboard {
-	justify-content: center;
-	vertical-align:middle;
-	background-color:#81DAF5;
-	width: 16%;
-	height: 40%;
-	border: 1px solid blue;
+    justify-content: center;
+    vertical-align:middle;
+    background-color:#81DAF5;
+    width: 16%;
+    height: 40%;
+    border: 1px solid blue;
 }
+#help_einstein {
+    display: none;
+    /*background-color:#81DAF5;*/
+    background-color:rgba(129,218,245,0.95); /*same color, but with some transparency*/
+    top:45%;
+    width: 60%;
+    height: 62%;
+    border: 1px solid blue;
+}
+.button-anwser {
+    /* Einstein */
+    width:40%;
+    height: 20%;
+    cursor: pointer;
+    border: 6px solid #58D3F7;
+    -webkit-border-radius: 25%;
+    border-radius: 25%;
+    font: normal 100%/normal "Times New Roman", Times, serif;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: #170B3B;
+}
+
 th, td {
   vertical-align: middle;
 }

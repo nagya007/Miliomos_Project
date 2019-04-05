@@ -288,23 +288,55 @@ function HelpRemove(count)
     HelpDisable(1);
 }
 function HelpTip1(){
-    
-	var weights=[2,5,83,6];
-	for	(i=1;i<=4;i++)
-	{
-		if($("#answer"+i).text()===rightanswer)
-		{
-			var temp=weights[i-1];
-			weights[i-1]=83-questions[cnt-1].level;
-			weights[2]=temp;
-		}
-	}
-	var sumweight=0;
-	for (i=0;i<weights.length;i++) sumweight+=weights[i];
-	var rnd=Math.floor(Math.random()*sumweight)+1;
-	for (i=0;i<weights.length;i++){
-		if(rnd<weights[i]) {HelpDisable(2);return i+1;}
-		rnd-=weights[i];
-	}
+    var weights=[2,5,83,6];
+    for	(i=1;i<=4;i++)
+    {
+        if($("#answer"+i).text()===rightanswer)
+        {
+            var temp=weights[i-1];
+            weights[i-1]=83-questions[cnt-1].level;
+            weights[2]=temp;
+        }
+    }
+    var sumweight=0;
+    for (i=0;i<weights.length;i++) sumweight+=weights[i];
+    var rnd=Math.floor(Math.random()*sumweight)+1;
+    for (i=0;i<weights.length;i++){
+        if(rnd<weights[i]) {HelpDisable(2);return i+1;}
+        rnd-=weights[i];
+    }
 	
+}
+function HelpEinstein(){
+    HelpDisable(2);
+    $("#einstein_anwser").html($("#answer"+HelpTip1()).text());
+    $("#help_einstein").css("display", "block");
+}
+function HelpEinsteinRefuse(){
+    $("#help_einstein").css("display", "none");
+}
+//Közönség szavazás
+//Generál 4 számot amit leoszt az összegükkel, hogy fasza százalékokká változzanak. A helyes válasz +30% boostot kap.
+//String tömböt ad vissza amiben az eredmények sorrendje a gombok sorrendjét követi.
+function AskTheAudience(){
+    var tips = new Array(4);
+    var sum=0;
+    for (i=0;i<=3;i++)
+    {
+        if($("#answer"+(i+1)).text()===rightanswer)
+        {
+            tips[i] = (Math.floor(Math.random() * 100) + 1)+30; //Itt állítható a boost.
+            sum += tips[i];
+        }
+        else
+        {
+            tips[i] = Math.floor(Math.random() * 100) + 1;
+            sum += tips[i];
+        }
+    }
+    for (i=0;i<=3;i++)
+    {
+        tips[i]=(tips[i]/sum).toFixed(2); //.toFixed() a tizedesjegyet állítja és!!! stringre alakít!!!
+    }
+    return tips;
 }

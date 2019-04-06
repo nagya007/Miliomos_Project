@@ -30,12 +30,6 @@ var lock=false; //locks answer buttons after clicking one
 var url="https://milliomos.000webhostapp.com/"; //free webhost server
 //var url="./"; //localhost for web use
 //----------------------
-function ExitGame() {
-    navigator.notification.confirm('', function (button) {
-        if (button === 2) navigator.app.exitApp();
-        else return null;
-    }, 'Are you sure?', 'No,Yes');
-}
 function CancelLogin(){
     $("#welcome").css("display", "block");
     $("#login_form").css("display", "none");
@@ -82,9 +76,13 @@ function ShowPlayground(){
     $("#mainmenu").css("display", "none");
 	$("#playground").css("display", "block");
 } 
+
+
+
 function Signup(){
     //implements signup function via ajax call
-	$("#btn_signup").attr("disabled","true");
+	$("#btn_signup").attr("disabled","true")
+        ;
     var username=$("input[name='s_username']").val();
     var email=$("input[name='s_email']").val();
     var password=$("input[name='s_password']").val();
@@ -249,7 +247,7 @@ function CheckAnswer(buttonid){
 // 2. = Einstein
 ///*
 
-var HelpCount = 2;
+var HelpCount = 3;
 function HelpDisable(index) {
     $("#help" + index).attr('disabled', 'true');
     // Kikapcsolás vagy eltüntetés is
@@ -323,20 +321,24 @@ function HelpEinstein(){
 	$("#einstein_anwser").html($("#answer"+HelpTip1()).text());
 	$("#help_einstein").css("display", "block");
 }
+
+
 function HelpEinsteinRefuse(){
 	$("#help_einstein").css("display", "none");
 }
 //Közönség szavazás
 //Generál 4 számot amit leoszt az összegükkel, hogy fasza százalékokká változzanak. A helyes válasz +30% boostot kap.
 //String tömböt ad vissza amiben az eredmények sorrendje a gombok sorrendjét követi.
-function AskTheAudience(){
+function AskTheAudience() {
+    HelpDisable(3);
+    $("#ask_Audi").css("display", "block");
 	var tips = new Array(4);
 	var sum=0;
 	for (i=0;i<=3;i++)
 	{
 		if($("#answer"+(i+1)).text()===rightanswer)
 		{
-			tips[i] = (Math.floor(Math.random() * 100) + 1)+30; //Itt állítható a boost.
+			tips[i] = (Math.floor(Math.random() * 100) + 1)+80; //Itt állítható a boost.
 			sum += tips[i];
 		}
 		else
@@ -344,10 +346,46 @@ function AskTheAudience(){
 			tips[i] = Math.floor(Math.random() * 100) + 1;
 			sum += tips[i];
 		}
-	}
-	for (i=0;i<=3;i++)
-	{
-		tips[i]=(tips[i]/sum).toFixed(2); //.toFixed() a tizedesjegyet állítja és!!! stringre alakít!!!
-	}
-	return tips;
+    }
+    var floatips = new Array(4);
+
+
+
+    for (i = 0; i <= 3; i++) {
+        tips[i] = (tips[i] / sum).toFixed(2); //.toFixed() a tizedesjegyet állítja és!!! stringre alakít!!!
+        floatips[i] = parseFloat(tips[i])*100;
+    }
+
+    var a = document.getElementById("audition");
+    var atx = a.getContext("2d");
+    atx.rect(0, 0, 30, floatips[0]);
+    atx.fillStyle = "darkblue";
+    atx.fill();
+    atx.beginPath();
+
+        var b = document.getElementById("audition");
+        var btx = b.getContext("2d");
+        btx.beginPath();
+        btx.rect(40, 0, 30, floatips[1]);
+        btx.fillStyle = "darkblue";
+        btx.fill();
+
+        var c = document.getElementById("audition");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.rect(80, 0, 30, floatips[2]);
+        ctx.fillStyle = "darkblue";
+        ctx.fill();
+
+        var d = document.getElementById("audition");
+        var dtx = d.getContext("2d");
+        dtx.beginPath();
+        dtx.rect(120, 0, 30, floatips[3]);
+        dtx.fillStyle = "darkblue";
+        dtx.fill();
+}
+
+function ByeAudi() {
+    $("#ask_Audi").css("display", "none");
+    
 }

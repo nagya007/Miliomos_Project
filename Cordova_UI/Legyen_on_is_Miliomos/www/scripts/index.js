@@ -19,8 +19,10 @@
 })();
 var session_user="";  //name of actually logged in user
 var questionnumber=10; //number of requested questions
+var scorenumber=10; //number of requested scores
 var rightanswer=""; //the right answer of actual question is stored here
 var questions;  //received questions are stored here
+var scores; //received scores are stored here
 var previous=[];    //array for previous question ids
 var cnt = 0;  //question counter;
 var lock=false; //locks answer buttons after clicking one
@@ -75,8 +77,14 @@ function ShowPlayground(){
     $("#welcome").css("display", "none");
     $("#mainmenu").css("display", "none");
 	$("#playground").css("display", "block");
-} 
-
+}
+//Fejlesztés alatt!! Score táblát jeleníti (majd) meg. Egy kóbor frontendes megcsinálhatja nyugodtan! :)
+/*function ShowScores(){
+    // makes scores form visible
+    $("#welcome").css("display", "none");
+    $("#mainmenu").css("display", "none");
+	$("#playground").css("display", "block");
+} */
 
 
 function Signup(){
@@ -389,3 +397,53 @@ function ByeAudi() {
     $("#ask_Audi").css("display", "none");
     
 }
+//Fejlesztés alatt!!
+/*function GetScores(){
+    //recieves scores from database
+    $.ajax({
+        type:'POST',
+        url: url+'getScores.php',
+        data:'scorenumber='+scorenumber,
+        dataType:'json',
+		timeout: 5000,
+        success: function (data)
+        {
+			scores=data;
+				FillScores();
+				ShowScores();    
+        },
+        error: function (jqXHR, textStatus) {
+            alert(' http request error' + textStatus);
+            if (errorCb) {
+                errorCb(jqXHR, textStatus);
+            }
+       }
+        //error: function(){alert("Something went wrong. Failed to get questions");}
+    }); 
+}
+//Score táblát tölti fel (majd)
+function FillScores(){
+    //fills a selected question and answers to the playing form
+	    lock=false;
+        for (i=1;i<5;i++)
+        {
+            $("#answer"+i).css("background","#000000");
+            $("#answer"+i).css("color","rgba(255,255,255,0.9)");
+            $("#answer"+i).css("animation","none");
+            // vissza kapcsolja a gombokat, ha használva volt help ami kikapcsolná
+            $("#answer"+i).removeAttr("disabled");
+        }
+        var q=SelectQuestion();
+        $("#questiontext").text(q[1]);
+        var i=1;
+        var filled=[];
+        while(i<=4) {
+            var rnd=Math.floor(Math.random()*4+2);
+            if (!filled.includes(rnd) && rnd<=5 &&rnd>=2) {
+                $("#answer"+i).html(q[rnd]);
+                filled.push(rnd);
+                i++;
+        }
+        else if(filled.length<4) rnd=Math.floor(Math.random()*4+2); 
+    }
+}*/

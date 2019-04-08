@@ -63,19 +63,14 @@ fullscreen-bg {
 }
 
 /* Ebbe kerülnek a 4 válasz játék közbe */
-.button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4 {
-    /* Ezek a gombok játék közben */
-    /* Bal felső gomb */
+.button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4, .button-anwser-einstein, .button-anwser {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
 	width:30%;
     height: 20%;
-    position: absolute;
     cursor: pointer;
     /* Style stuff */
-    margin: auto;
-    padding: inherit;
     border: 6px solid #58D3F7;
     -webkit-border-radius: 25%;
     border-radius: 25%;
@@ -87,20 +82,28 @@ fullscreen-bg {
     background: #170B3B;
 }
 
+.button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4 {
+    /* Ezek a gombok játék közben */
+    /* Bal felső gomb */
+    position: absolute;
+    margin: auto;
+    padding: inherit;
+	width:30%;
+    height: 20%;
+}
+.button-anwser-einstein {
+	/* Einstein */
+	width:100%;
+}
+.button-anwser-audience {
+	/* Einstein */
+	width:15%;
+    height: 10%;
+}
 .button-anwser {
 	/* Einstein */
-	width:40%;
+	width:30%;
     height: 20%;
-    cursor: pointer;
-    border: 6px solid #58D3F7;
-    -webkit-border-radius: 25%;
-    border-radius: 25%;
-    font: normal 100%/normal "Times New Roman", Times, serif;
-    color: rgba(255,255,255,0.9);
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    background: #170B3B;
 }
 
 /* Hol helyezkedik el, elég rossz sztem de mükszik! */
@@ -145,6 +148,20 @@ fullscreen-bg {
     left: 50%;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%)
+}
+.w3-display-right{
+	position:absolute;
+	top:50%;
+	right:0%;
+	transform:translate(0%,-50%);
+	-ms-transform:translate(0%,-50%)
+}
+.w3-display-left{
+	position:absolute;
+	top:50%;
+	left:0%;
+	transform:translate(0%,-50%);
+	-ms-transform:translate(-0%,-50%)
 }
 .w3-display-right{
 	position:absolute;
@@ -301,9 +318,9 @@ app {
 #help_einstein {
     display: none;
 	background-color:#81DAF5;
-	top:45%;
+	top:50%;
 	width: 60%;
-	height: 85%;
+	height: 95%;
 	border: 1px solid blue;
 }
 #ask_Audi {

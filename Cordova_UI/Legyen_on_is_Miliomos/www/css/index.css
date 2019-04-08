@@ -146,10 +146,25 @@ fullscreen-bg {
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%)
 }
+.w3-display-right{
+	position:absolute;
+	top:50%;
+	right:0%;
+	transform:translate(0%,-50%);
+	-ms-transform:translate(0%,-50%)
+}
 .w3-display-bottommiddle{
 	position:absolute;
 	left:90%;
 	bottom:20%;
+	transform:translate(-50%,0%);
+	-ms-transform:translate(-50%,0%)
+	
+}
+.w3-display-bottommiddle-fix{
+	position:absolute;
+	left:50%;
+	bottom:0%;
 	transform:translate(-50%,0%);
 	-ms-transform:translate(-50%,0%)
 	
@@ -169,10 +184,15 @@ fullscreen-bg {
 	position:absolute;
 	right:0;top:0
 }
+.w3-display-bottomright-help{
+	position:absolute;
+	left:80%;
+	bottom:5%;
+}
 #counter{
     padding: 2px 2px 2px 2px; /* padding-top + padding-bottom + text area = image height */
     margin: 2px 2px 2px 2px; /* offset vertical: half of image height */
-	font-size:100%;
+	font-size:110%;
 }
 
 
@@ -269,6 +289,8 @@ app {
     left: 50%;*/
 }
 #scoreboard {
+	font: normal 5%/normal "Times New Roman", Times, serif;
+	font-size: 25%;
 	justify-content: center;
 	vertical-align:middle;
 	background-color:#81DAF5;
@@ -293,12 +315,7 @@ app {
 	border: 1px solid blue;
 }
 th, td {
-  vertical-align: middle;
-}
-
-
-.scoreboard-text {
-	font-size: 25%;
+	vertical-align: middle;
 }
 
 @keyframes wronganimation {

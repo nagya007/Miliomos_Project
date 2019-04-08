@@ -370,7 +370,8 @@ function AskTheAudience() {
 
     var a = document.getElementById("audition");
     var atx = a.getContext("2d");
-    atx.rect(0, 0, 30, floatips[0]);
+    //atx.rect(0, 0, 30, floatips[0]);
+    atx.rect(15, 0, floatips[0]*2, 15);
     atx.fillStyle = "darkblue";
     atx.fill();
     atx.beginPath();
@@ -378,21 +379,24 @@ function AskTheAudience() {
         var b = document.getElementById("audition");
         var btx = b.getContext("2d");
         btx.beginPath();
-        btx.rect(40, 0, 30, floatips[1]);
+        //btx.rect(40, 0, 30, floatips[1]);
+        btx.rect(15, 20, floatips[1]*2, 15);
         btx.fillStyle = "darkblue";
         btx.fill();
 
         var c = document.getElementById("audition");
         var ctx = c.getContext("2d");
         ctx.beginPath();
-        ctx.rect(80, 0, 30, floatips[2]);
+        //ctx.rect(80, 0, 30, floatips[2]);
+        ctx.rect(15, 40, floatips[2]*2, 15);
         ctx.fillStyle = "darkblue";
         ctx.fill();
 
         var d = document.getElementById("audition");
         var dtx = d.getContext("2d");
         dtx.beginPath();
-        dtx.rect(120, 0, 30, floatips[3]);
+        //dtx.rect(120, 0, 30, floatips[3]);
+        dtx.rect(15, 60, floatips[3]*2, 15);
         dtx.fillStyle = "darkblue";
         dtx.fill();
 }

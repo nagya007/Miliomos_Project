@@ -11,6 +11,7 @@
         else {
             $pwhash= password_hash($password,PASSWORD_DEFAULT);
             if($sqlconn->query("insert into users (username,pwhash,email) values ('$username','$pwhash','$email')")){
+			$sqlconn->query("insert into score (userid) select id from users where username='$username'");
             echo "successful";
 			}
         }    

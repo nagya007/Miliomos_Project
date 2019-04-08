@@ -178,7 +178,9 @@ function SelectQuestion() {
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
 	$("#btn_startgame").attr("disabled","true"); //disables the button to prevent multiple click, it will be re-enabled when the next function successes or fails
-    GetQuestions();
+    ByeAudi();
+	GetQuestions();
+	FillScoreboard();
 }
 function FillQuestion(){
     //fills a selected question and answers to the playing form
@@ -204,6 +206,8 @@ function FillQuestion(){
         }
         else if(filled.length<4) rnd=Math.floor(Math.random()*4+2); 
     }
+	// Scoreboard körvonalazódik, 1ről kezdődik
+	HighlightScoreboard(cnt-1);
 }
 function CheckAnswer(buttonid){
     //checks the given answer, and gets the next one
@@ -447,3 +451,61 @@ function FillScores(){
         else if(filled.length<4) rnd=Math.floor(Math.random()*4+2); 
     }
 }*/
+function FillScoreboard()
+{
+	var table = document.getElementById("scoreboard_table");
+	//Clear
+	table.innerHTML = '<caption id="counter"></caption>';
+	// Csak megadjuk ezt az értéket neki, de questionnumber is lehetne a változó minden részbe itt
+	// max nehéz lenne átlátni :D
+	// Mennyit lehet nyerni
+    var price = [
+	  5000,
+	  10000,
+	  25000,
+	  50000,
+	  250000,
+	  500000,
+	  1000000,
+	  5000000,
+	  25000000,
+	  50000000,
+	  100000000,
+	  250000000, 
+	  500000000,
+	  1000000000,
+	  2000000000,
+	  5000000000,
+	  25000000000,
+	  50000000000,
+	  100000000000,
+	  250000000000
+	]; 
+	var number = questionnumber;
+    for (i = 0; i < number; i++) {
+      var j = 0; // First Cell
+      var k = 1; // Second Cell
+      var newTR = table.insertRow(i);
+      var newTD1 = newTR.insertCell(j);
+      var newTD2 = newTR.insertCell(j+1);
+	  var index=number-i-1;
+	  newTD1.id = "scoreboard"+index; // ID amire hivatkozunk később
+      //newTD1.innerHTML = "Row " + i + " Cell " + j;
+      newTD1.innerHTML = newTD1.id;
+	  newTD2.innerHTML = "Ft";
+    }
+	// Nem kell szétszedni, de gyakorlás révén hagytam így az element IDvel hivatkozva teszt
+	for (i = 0; i < number; i++) {
+		var s = document.getElementById("scoreboard"+i);
+		// Eltérés, hogy alulról nőjön az érték!
+		s.innerHTML = price[i];	
+    }
+}
+function HighlightScoreboard(index)
+{
+	document.getElementById("scoreboard"+index).style.border = "thick solid #0000FF";  
+	if(index!=0)
+	{
+		document.getElementById("scoreboard"+(index-1)).style.border = "";  
+	}
+}

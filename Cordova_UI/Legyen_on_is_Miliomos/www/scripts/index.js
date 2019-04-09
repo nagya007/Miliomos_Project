@@ -367,46 +367,23 @@ function AskTheAudience() {
     for (i = 0; i <= 3; i++) {
         tips[i] = (tips[i] / sum).toFixed(2); //.toFixed() a tizedesjegyet állítja és!!! stringre alakít!!!
         floatips[i] = parseFloat(tips[i])*100;
+		
+		var a = document.getElementById("audition_anwser"+(i+1));
+		$("#audition_question"+(i+1)).html($("#answer"+(i+1)).text());
+		//$("#audition_question"+(i+1)).html($("#answer"+(i+1)).text()+' ['+floatips[i].toFixed(0)+' %]');
+		var atx = a.getContext("2d");
+		//atx.rect(0, 0, 30, floatips[0]);
+		atx.rect(0, 0, floatips[i]*2, 25);
+		atx.fillStyle = "darkblue";
+		atx.fill();
+		atx.beginPath();
+		// Szöveg réteg
+		var ctx = a.getContext("2d");
+		ctx.fillStyle = "white";
+		ctx.textAlign = "center";
+		ctx.font = "25px Arial";
+		ctx.fillText(floatips[i].toFixed(0)+' %', a.width/2, a.height/2+10); 
     }
-
-    var a = document.getElementById("audition-anwser1");
-    var a_question = document.getElementById("audition-question1");
-	a_question.innerHTML($("#answer"+1).text());
-    var atx = a.getContext("2d");
-    //atx.rect(0, 0, 30, floatips[0]);
-    atx.rect(0, 0, floatips[0]*2, 15);
-    atx.fillStyle = "darkblue";
-    atx.fill();
-    atx.beginPath();
-
-        var b = document.getElementById("audition-anwser2");
-        var b_question = document.getElementById("audition-question2");
-		b_question.innerHTML($("#answer"+2).text());
-        var btx = b.getContext("2d");
-        btx.beginPath();
-        //btx.rect(40, 0, 30, floatips[1]);
-        btx.rect(0, 0, floatips[1]*2, 15);
-        btx.fillStyle = "darkblue";
-        btx.fill();
-
-        var c = document.getElementById("audition-anwser3");
-        var c_question = document.getElementById("audition-question3");
-		c_question.innerHTML($("#answer"+3).text());
-        var ctx = c.getContext("2d");
-        ctx.beginPath();
-        //ctx.rect(80, 0, 30, floatips[2]);
-        ctx.rect(0, 0, floatips[2]*2, 15);
-        ctx.fillStyle = "darkblue";
-        ctx.fill();
-
-        var d = document.getElementById("audition-anwser4");
-        $("#audition-question1").html('ADSASDSDSADSAD');
-        var dtx = d.getContext("2d");
-        dtx.beginPath();
-        //dtx.rect(120, 0, 30, floatips[3]);
-        dtx.rect(0, 0, floatips[3]*2, 15);
-        dtx.fillStyle = "darkblue";
-        dtx.fill();
 }
 
 function ByeAudi() {

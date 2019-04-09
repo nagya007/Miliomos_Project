@@ -351,7 +351,7 @@ function AskTheAudience() {
 	{
 		if($("#answer"+(i+1)).text()===rightanswer)
 		{
-			tips[i] = (Math.floor(Math.random() * 100) + 1)+80; //Itt állítható a boost.
+			tips[i] = (Math.floor(Math.random() * 100) + 1)+40; //Itt állítható a boost.
 			sum += tips[i];
 		}
 		else

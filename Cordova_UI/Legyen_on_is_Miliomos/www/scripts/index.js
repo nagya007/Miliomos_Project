@@ -53,7 +53,9 @@ function CancelSignup() {
 }
 function CleanUp(){
     //at the end of a game, this function clear these fields
-    rightanswer=""; 
+    AskTheAudience_ClearCanvas();
+	ByeAudi();
+	rightanswer=""; 
     questions=null; 
     previous=[]; 
     cnt=0;  
@@ -83,6 +85,7 @@ function ShowPlayground(){
     $("#welcome").css("display", "none");
     $("#mainmenu").css("display", "none");
 	$("#playground").css("display", "block");
+	$("#ask_Audi").css("display", "none");
 }
 //Fejlesztés alatt!! Score táblát jeleníti (majd) meg. Egy kóbor frontendes megcsinálhatja nyugodtan! :)
 /*function ShowScores(){
@@ -184,7 +187,6 @@ function SelectQuestion() {
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
 	$("#btn_startgame").attr("disabled","true"); //disables the button to prevent multiple click, it will be re-enabled when the next function successes or fails
-    ByeAudi();
 	GetQuestions();
 	FillScoreboard();
 }
@@ -379,6 +381,9 @@ function AskTheAudience() {
 		//$("#audition_question"+(i+1)).html($("#answer"+(i+1)).text()+' ['+floatips[i].toFixed(0)+' %]');
 		var atx = a.getContext("2d");
 		//atx.rect(0, 0, 30, floatips[0]);
+		//CLEAR
+
+		//
 		atx.rect(0, 0, floatips[i]*2, 25);
 		atx.fillStyle = "darkblue";
 		atx.fill();
@@ -391,6 +396,15 @@ function AskTheAudience() {
 		ctx.fillText(floatips[i].toFixed(0)+' %', a.width/2, a.height/2+10); 
     }
 }
+function AskTheAudience_ClearCanvas()
+{
+	for (i = 0; i <= 3; i++) {
+	var a = document.getElementById("audition_anwser"+(i+1));
+	const context = a.getContext('2d');
+	context.clearRect(0, 0, a.width, a.height);
+    }
+}
+
 
 function ByeAudi() {
     $("#ask_Audi").css("display", "none");

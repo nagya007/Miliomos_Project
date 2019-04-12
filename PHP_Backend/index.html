@@ -69,6 +69,7 @@
     <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">
         <h1 class="vertical" id="greet">Welcome </h1>
         <button id="btn_startgame" class="btn-group" onclick="StartGame()">Start a game</button>
+        <button class="btn-group" onclick="GetScores()">Highscores</button>
     </div>
     <div id="playground">
         <h3 class="w3-display-topmiddle" id="questiontext"></h3>
@@ -79,58 +80,67 @@
         <div class="w3-display-bottommiddle btn-group-help">
             <!-- Ideiglenes helye a Help gomboknak -->
             <button id="help1" onclick="HelpRemove(2)">Felezés!</button>
+            <button id="help3" onclick="AskTheAudience()">Közönség</button>
             <button id="help2" onclick="HelpEinstein()">Einstein tippje</button>
         </div>
-        <div id="scoreboard" class="w3-display-topright w3-padding vertical" style="margin: auto;">
-				<table style="font-size: 40%;display:inline">
-					 <caption id="counter"></caption>
-					<tbody>
-						<tr>
-							<td>2,000,000 Ft</td>
-						</tr>
-						<tr>
-							<td>1,000,000 Ft</td>
-						</tr>
-						<tr>
-							<td>500,000 Ft</td>
-						</tr>
-						<tr>
-							<td>250,000 Ft</td>
-						</tr>
-						<tr>
-							<td>150,000 Ft</td>
-						</tr>
-						<tr>
-							<td>100,000 Ft</td>
-						</tr>
-						<tr>
-							<td>50,000 Ft</td>
-						</tr>
-						<tr>
-							<td>25,000 Ft</td>
-						</tr>
-						<tr>
-							<td>10,000 Ft</td>
-						</tr>
-						<tr>
-							<td>5,000 Ft</td>
-						</tr>
-					</tbody>
-				</table>
-			<!--
-			<div id="counter" class="w3-display-topleft w3-padding">
-			-->
-		</div>
+                <div id="scoreboard" class="w3-display-topright w3-padding vertical" style="margin: auto;">
+            <div class="w3-display-middle">
+			<table id="scoreboard_table" style="font-size: 12px;line-height: 0.6;">
+                <caption id="counter"></caption>
+            </table>
+			</div>
+            <!--
+        <div id="counter" class="w3-display-topleft w3-padding">
+        -->
+        </div>
         <!--Einstein-->
         <div class="vertical w3-display-middle" id="help_einstein">
         <img src="media/png/help_einstein.png" alt="Einstein gondolkodott a kérdéseden..." style="vertical-align: middle;height: 170px;">
         <p style="vertical-align: middle;margin-bottom:0%">Hmm, hát az én tippem:</p>
         <button id="einstein_anwser" class="button-anwser">Válasz</button>
-        <div class="btn-group">
+            <div class="w3-display-bottommiddle-fix btn-group">
                 <button onclick="HelpEinsteinRefuse()">Folytatás!</button>
+            </div>
         </div>
+            <div id="ask_Audi" class="vertical w3-display-middle">
+                <div id="ask_Audi_tips" class="w3-display-middle">
+                    <p style="margin-bottom: 0px;margin-top: 0px;">
+                        <button class="button-anwser" id="audition_question1">Válasz</button>
+                        <canvas class="" id="audition_anwser1" width="150" height="25" style="border:1px solid black;"></canvas>
+                    </p>
+                    <p style="margin-bottom: 0px;margin-top: 0px;">
+                        <button class="button-anwser" id="audition_question2">Válasz</button>
+                        <canvas class="" id="audition_anwser2" width="150" height="25" style="border:1px solid black;"></canvas>
+                    </p>
+                    <p style="margin-bottom: 0px;margin-top: 0px;">
+                        <button class="button-anwser" id="audition_question3">Válasz</button>
+                        <canvas class="" id="audition_anwser3" width="150" height="25" style="border:1px solid black;"></canvas>
+                    </p>
+                    <p style="margin-bottom: 0px;margin-top: 0px;">
+                        <button class="button-anwser" id="audition_question4">Válasz</button>
+                        <canvas class="" id="audition_anwser4" width="150" height="25" style="border:1px solid black;"></canvas>
+                    </p>
+                </div>
+                <div class="w3-display-bottommiddle-fix btn-group">
+                    <button  onclick="ByeAudi()">Folytatás!</button>
+                </div>
         </div>
     </div>
+    
+    <div id="AlertDiv" class="vertical w3-display-middle">
+        <p id="alertmessage"></p>
+        <div class="w3-display-bottommiddle-fix btn-group">
+            <button id="continue">Folytatás!</button>
+        </div>
+     </div>
+     <div id="HighScoreDiv" class="vertical w3-display-middle">
+        <div>
+            <table id="highscore"></table>
+        </div>
+        <div class="w3-display-bottommiddle-fix btn-group">
+            <button onclick="$('#HighScoreDiv').fadeOut('slow')">Folytatás!</button>
+        </div>
+     </div>
 </div>
 </body>
 </html>

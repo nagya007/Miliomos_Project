@@ -250,6 +250,8 @@ app {
     display: none;
 }
 #scoreboard {
+    font: normal 5%/normal "Times New Roman", Times, serif;
+    font-size: 25%;
     justify-content: center;
     vertical-align:middle;
     background-color:#81DAF5;
@@ -264,6 +266,14 @@ app {
     top:45%;
     width: 60%;
     height: 62%;
+    border: 1px solid blue;
+}
+#ask_Audi {
+    display: none;
+    background-color:rgba(129, 218, 245,0.95);
+    top:45%;
+    width: 60%;
+    height: 70%;
     border: 1px solid blue;
 }
 .button-anwser {
@@ -297,4 +307,48 @@ th, td {
     50% { background-color: #000000; }
     99% { background-color: #000000; }
     100% { background-color: #00ff00; }
+}
+.w3-display-bottommiddle-fix{
+	position:absolute;
+	left:50%;
+	bottom:0%;
+	transform:translate(-50%,0%);
+	-ms-transform:translate(-50%,0%)
+	
+}
+#ask_Audi_tips {
+    top:50%;
+    height:95%;
+    width:100%;
+}
+#AlertDiv{
+    display: none;
+    position:absolute;
+    background-color:rgba(129,218,245,0.95); /*same color, but with some transparency*/
+    top:50%;
+    width: 50%;
+    height: 50%;
+    border: 1px solid blue;
+}
+#alertmessage{
+    position:relative;
+    font-size:24px;
+    top:20%;
+    color:blue;
+}
+#HighScoreDiv{
+    display: none;
+    position:absolute;
+    background-color:rgba(129,218,245,0.95); /*same color, but with some transparency*/
+    top:40%;
+    width: 40%;
+    height: 60%;
+    border: 1px solid blue;
+}
+#highscore{
+    position:relative;
+    width: 100%;
+    padding: 10px;
+    color:blue;
+    margin:10px;
 }

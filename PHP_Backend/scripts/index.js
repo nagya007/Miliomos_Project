@@ -1,3 +1,5 @@
+/* global errorCb */
+
 ﻿// For an introduction to the Blank template, see the following documentation:
 // http://go.microsoft.com/fwlink/?LinkID=397704
 // To debug code on page load in cordova-simulate or on Android devices/emulators: launch your app, set breakpoints, 
@@ -26,9 +28,9 @@ var cnt = 0;  //question counter;
 var lock=false; //locks answer buttons after clicking one
 //----------------------
 //these urls can be used for application, uncomment the line what you want to use
-var url="https://thejumper203.ddns.net/~webuser/milliomos/";  //my own webserver
+//var url="https://thejumper203.ddns.net/~webuser/milliomos/";  //my own webserver
 //var url="https://milliomos.000webhostapp.com/"; //free webhost server
-//var url="./"; //localhost for web use
+var url="./"; //localhost for web use
 //----------------------
 function CancelLogin(){
     $("#welcome").css("display", "block");
@@ -45,10 +47,21 @@ function CancelSignup() {
 }
 function CleanUp(){
     //at the end of a game, this function clear these fields
+    AskTheAudience_ClearCanvas();
+    ByeAudi();
     rightanswer=""; 
     questions=null; 
     previous=[]; 
     cnt=0;  
+}
+function ShowAlert(message,onContinue){
+    $("#alertmessage").text(message);
+    $("#AlertDiv").fadeIn("fast");
+    $("#continue").click(
+        function(){
+            $("#AlertDiv").fadeOut("fast");
+            if(onContinue) onContinue();
+        });
 }
 function ShowSignup(){
     //makes signup form visible
@@ -60,7 +73,7 @@ function ShowLogin(){
     //makes login form visible
     $("#signup_form").css("display", "none");
     $("#login_form").css("display", "block");
-	$("#welcome").css("display", "none");
+    $("#welcome").css("display", "none");
 }   
 function ShowMainMenu(user){
     //makes main menu visible
@@ -68,7 +81,7 @@ function ShowMainMenu(user){
     $("#login_form").css("display", "none");
     $("#mainmenu").css("display", "block");
     $("#playground").css("display", "none");
-	$("#greet").append(user);
+    $("#greet").append(user);
 } 
 function ShowPlayground(){
     // makes question form visible
@@ -89,11 +102,11 @@ function Signup(){
 		timeout: 5000,
         success: function (data) {
 			$("#btn_signup").removeAttr("disabled");
-            if(data==="successful")  {alert("Successful registration. You can login now."); ShowLogin();}
-            else if (data==="empty") alert ("You need to fill all fields");
-            else if (data==="exist") alert("This user/email already exist");
+            if(data==="successful")  {ShowAlert("Successful registration. You can login now."); ShowLogin();}
+            else if (data==="empty") ShowAlert ("You need to fill all fields");
+            else if (data==="exist") ShowAlert("This user/email already exist");
         },
-        error: function(){alert("Something went wrong");$("#btn_signup").removeAttr("disabled");}
+        error: function(){ShowAlert("Something went wrong");$("#btn_signup").removeAttr("disabled");}
     });
 } 
 function Login(){
@@ -108,14 +121,14 @@ function Login(){
 	   timeout: 5000,
        success: function(data){
 		   
-           if(data==="false") alert("Wrong username or password");
+           if(data==="false") ShowAlert("Wrong username or password");
            else {
                session_user=username;
                ShowMainMenu(session_user);
            }
 		   $("#btn_login").removeAttr("disabled");
        },
-       error: function(){alert("Something went wrong");$("#btn_login").removeAttr("disabled");}
+       error: function(){ShowAlert("Something went wrong");$("#btn_login").removeAttr("disabled");}
     });
 } 
 function GetQuestions(){
@@ -125,21 +138,21 @@ function GetQuestions(){
         url: url+'getQuestions.php',
         data:'questionnumber='+questionnumber+'&user='+session_user,
         dataType:'json',
-		timeout: 5000,
+        timeout: 5000,
         success: function (data)
         {
-			questions=data;
+            questions=data;
             HelpEnableAll();
-			$("#btn_startgame").removeAttr("disabled");
+            $("#btn_startgame").removeAttr("disabled");
             if(questions.length===questionnumber){
-				FillQuestion();
-				ShowPlayground();    
-			}
-			else alert("There are not enough questions");
+                FillQuestion();
+                ShowPlayground();    
+            }
+            else ShowAlert("There are not enough questions");
         },
         error: function (jqXHR, textStatus) {
-            alert(' http request error' + textStatus);
-			$("#btn_startgame").removeAttr("disabled");
+            ShowAlert(' http request error' + textStatus);
+            $("#btn_startgame").removeAttr("disabled");
             if (errorCb) {
                 errorCb(jqXHR, textStatus);
             }
@@ -168,6 +181,7 @@ function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
 	$("#btn_startgame").attr("disabled","true"); //disables the button to prevent multiple click, it will be re-enabled when the next function successes or fails
     GetQuestions();
+    FillScoreboard();
 }
 function FillQuestion(){
     //fills a selected question and answers to the playing form
@@ -193,6 +207,8 @@ function FillQuestion(){
         }
         else if(filled.length<4) rnd=Math.floor(Math.random()*4+2); 
     }
+    // Scoreboard körvonalazódik, 1ről kezdődik
+    HighlightScoreboard(cnt-1);
 }
 function CheckAnswer(buttonid){
     //checks the given answer, and gets the next one
@@ -211,9 +227,11 @@ function CheckAnswer(buttonid){
                  FillQuestion();
                 } 
                 else {
-                    alert("You win!");
-                    CleanUp();
-                    ShowMainMenu();
+                    ShowAlert("You win!",function(){
+                        Highscore(cnt-1);
+                        CleanUp();
+                        ShowMainMenu();
+                    });
                 }
                },2000);          
         } 
@@ -226,9 +244,13 @@ function CheckAnswer(buttonid){
             $(buttonid).css("background","#ff0000");
             $(rightbtnid).css("animation","wronganimation 1s infinite");
             setTimeout(function(){
-                alert("Wrong answer! You lost!");
-                CleanUp();
-                ShowMainMenu();
+                //alert("Wrong answer! You lost!");
+                ShowAlert("Wrong answer! You lost", function(){
+                    Highscore(cnt-2);
+                    CleanUp();
+                    ShowMainMenu();
+                });
+
             },5000);
 
             }
@@ -243,7 +265,7 @@ function CheckAnswer(buttonid){
 
 ///*
 
-var HelpCount = 2;
+var HelpCount = 3;
 function HelpDisable(index) {
     $("#help" + index).attr('disabled', 'true');
     // Kikapcsolás vagy eltüntetés is
@@ -310,10 +332,12 @@ function HelpTip1(){
 function HelpEinstein(){
     HelpDisable(2);
     $("#einstein_anwser").html($("#answer"+HelpTip1()).text());
-    $("#help_einstein").css("display", "block");
+    //$("#help_einstein").css("display", "block");
+    $("#help_einstein").fadeIn("slow");
 }
 function HelpEinsteinRefuse(){
-    $("#help_einstein").css("display", "none");
+    //$("#help_einstein").css("display", "none");
+    $("#help_einstein").fadeOut("slow");
 }
 //Közönség szavazás
 //Generál 4 számot amit leoszt az összegükkel, hogy fasza százalékokká változzanak. A helyes válasz +30% boostot kap.
@@ -339,4 +363,169 @@ function AskTheAudience(){
         tips[i]=(tips[i]/sum).toFixed(2); //.toFixed() a tizedesjegyet állítja és!!! stringre alakít!!!
     }
     return tips;
+}
+
+//Fejlesztés alatt!!
+function GetScores(){
+    //recieves scores from database
+    scorenumber=10; //get top10 highscores
+    $.ajax({
+        type:'POST',
+        url: url+'getScores.php',
+        data:'scorenumber='+scorenumber,
+        dataType:'json',
+        timeout: 5000,
+        success: function (data)
+        {
+            tablecontent="<caption>Highscores</caption>";
+            for (i=0;i<data.length;i++) {
+                tablecontent+="<tr><td>"+(i+1)+".</td><td>"+data[i].username+"</td><td>"+data[i].money+"</td></tr>";
+            }
+            $("#highscore").html(tablecontent);
+            $("#HighScoreDiv").fadeIn("slow");
+            //scores=data;
+            //alert(scores);
+            //FillScores();
+            //ShowScores();    
+        },
+        error: function (jqXHR, textStatus) {
+            alert(' http request error' + textStatus);
+            if (errorCb) {
+                errorCb(jqXHR, textStatus);
+            }
+       }
+    }); 
+}
+function Highscore(index){
+    if (index>=0)
+    {
+        var score=$("#scoreboard"+(index)).text();
+        $.post(url+"highscore.php","user="+session_user+"&score="+score);
+    }
+        
+}
+
+//Közönség szavazás
+//Generál 4 számot amit leoszt az összegükkel, hogy fasza százalékokká változzanak. A helyes válasz +30% boostot kap.
+//String tömböt ad vissza amiben az eredmények sorrendje a gombok sorrendjét követi.
+function AskTheAudience() {
+    HelpDisable(3);
+    //$("#ask_Audi").css("display", "block");
+    $("#ask_Audi").fadeIn("slow");
+	var tips = new Array(4);
+	var sum=0;
+	for (i=0;i<=3;i++)
+	{
+		if($("#answer"+(i+1)).text()===rightanswer)
+		{
+			tips[i] = (Math.floor(Math.random() * 100) + 1)+40; //Itt állítható a boost.
+			sum += tips[i];
+		}
+		else
+		{
+			tips[i] = Math.floor(Math.random() * 100) + 1;
+			sum += tips[i];
+		}
+    }
+    var floatips = new Array(4);
+
+
+
+    for (i = 0; i <= 3; i++) {
+        tips[i] = (tips[i] / sum).toFixed(2); //.toFixed() a tizedesjegyet állítja és!!! stringre alakít!!!
+        floatips[i] = parseFloat(tips[i])*100;
+		
+		var a = document.getElementById("audition_anwser"+(i+1));
+		$("#audition_question"+(i+1)).html($("#answer"+(i+1)).text());
+		//$("#audition_question"+(i+1)).html($("#answer"+(i+1)).text()+' ['+floatips[i].toFixed(0)+' %]');
+		var atx = a.getContext("2d");
+		//atx.rect(0, 0, 30, floatips[0]);
+		//CLEAR
+
+		//
+		atx.rect(0, 0, floatips[i]*2, 25);
+		atx.fillStyle = "darkblue";
+		atx.fill();
+		atx.beginPath();
+		// Szöveg réteg
+		var ctx = a.getContext("2d");
+		ctx.fillStyle = "white";
+		ctx.textAlign = "center";
+		ctx.font = "25px Arial";
+		ctx.fillText(floatips[i].toFixed(0)+' %', a.width/2, a.height/2+10); 
+    }
+}
+function AskTheAudience_ClearCanvas()
+{
+	for (i = 0; i <= 3; i++) {
+	var a = document.getElementById("audition_anwser"+(i+1));
+	const context = a.getContext('2d');
+	context.clearRect(0, 0, a.width, a.height);
+    }
+}
+
+
+function ByeAudi() {
+    //$("#ask_Audi").css("display", "none");
+    $("#ask_Audi").fadeOut("slow");
+    
+}
+
+function FillScoreboard()
+{
+	var table = document.getElementById("scoreboard_table");
+	//Clear
+	table.innerHTML = '<caption id="counter"></caption>';
+	// Csak megadjuk ezt az értéket neki, de questionnumber is lehetne a változó minden részbe itt
+	// max nehéz lenne átlátni :D
+	// Mennyit lehet nyerni
+    var price = [
+	  5000,
+	  10000,
+	  25000,
+	  50000,
+	  250000,
+	  500000,
+	  1000000,
+	  5000000,
+	  25000000,
+	  50000000,
+	  100000000,
+	  250000000, 
+	  500000000,
+	  1000000000,
+	  2000000000,
+	  5000000000,
+	  25000000000,
+	  50000000000,
+	  100000000000,
+	  250000000000
+	]; 
+	var number = questionnumber;
+    for (i = 0; i < number; i++) {
+      var j = 0; // First Cell
+      var k = 1; // Second Cell
+      var newTR = table.insertRow(i);
+      var newTD1 = newTR.insertCell(j);
+      var newTD2 = newTR.insertCell(j+1);
+	  var index=number-i-1;
+	  newTD1.id = "scoreboard"+index; // ID amire hivatkozunk később
+      //newTD1.innerHTML = "Row " + i + " Cell " + j;
+      newTD1.innerHTML = newTD1.id;
+	  newTD2.innerHTML = "Ft";
+    }
+	// Nem kell szétszedni, de gyakorlás révén hagytam így az element IDvel hivatkozva teszt
+	for (i = 0; i < number; i++) {
+		var s = document.getElementById("scoreboard"+i);
+		// Eltérés, hogy alulról nőjön az érték!
+		s.innerHTML = price[i];	
+    }
+}
+function HighlightScoreboard(index)
+{
+	document.getElementById("scoreboard"+index).style.border = "thick solid #0000FF";  
+	if(index!=0)
+	{
+		document.getElementById("scoreboard"+(index-1)).style.border = "";  
+	}
 }

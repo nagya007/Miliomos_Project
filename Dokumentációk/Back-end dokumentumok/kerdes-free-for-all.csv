@@ -1,30 +1,60 @@
 Melyik keretezési eljárás nem tesz jelzést a keret elejére és a végére?;Karakterszámlálás;Karakterbeszúrás;Bitbeszúrás;Fizikai réteg kódsértése;1
-Hogy nevezzük azt az algoritmust; amely a régebbi csomagokat részesíti elõnyben?;Bor politika;Tej politika;Vodka politika;Pártpolitika;1
+Hogy nevezzük azt az algoritmust  amely a régebbi csomagokat részesíti elõnyben?;Bor politika;Tej politika;Vodka politika;Pártpolitika;1
 Mekkora egy IP cím mérete az IPv6-ban?;128 bit;32 bit;64 bit;16 bit;1
 Melyik protokoll feladata a visszhang-kérés és -válasz?;ICMP;NAT;DHCP;ARP;1
 Mekkora egy TCP portcím mérete?;16 bit;32 bit;64 bit;8 bit;1
-A TCP-ben melyik bit jelzi; hogy a kapcsolatot újra kell építeni?;RST;ACK;URG;PSH;1
+A TCP-ben melyik bit jelzi  hogy a kapcsolatot újra kell építeni?;RST;ACK;URG;PSH;1
 A TCP/IP-ben melyik réteg felel meg az OSI fizikai rétegének?;hoszt és hálózat közötti;hálózati;szállítási;viszony;1
 Mi írja le az azonos gépen lévõ szállítási és hálózati réteg közötti kommunikáció szabályait?;Intefész;Protokoll;OSI modell;RCF;1
 Mekkora Hamming-távolságú kód szükséges k bithiba jelzéséhez?;k+1;k;k-1;2k;1
 Milyen keretezési eljárás a HDLC?;Bitbeszúrás;Karakterbeszúrás;Karakterszámlálás;Fizikai réteg kódsértése;1
-Mikor lõtte le az Epic Games a Paragon szervereit?;2018. 04.;2018. 03.;2018.05.;2018.01;2
+Mikor lõtte le az Epic Games a Paragon szervereit?;2018 április;2018 március;2018 május;2018 január;2
 Melyik játékból készült film?;World of Warcfraft;League of Legends;NieR: Automata;Diablo;1
 Melyik játékból nem készült élõszereplõs film?;Tera;Street Fighter;Dead or Alive;Mortal Kombat;2
 Kinek a nevéhez kötõdik a Can Can?;Jacques Offenbach;Johann Sebastian Bach;Joseph Haydn;Wolfgang Amadeus Mozart;2
-Kinek köszönhethük az Üstdob-szimfóniát?;Joseph Haydn;Ludwig van Beethoven;ohann Sebastian Bach;Wolfgang Amadeus Mozart;2
+Kinek köszönhethük az Üstdob-szimfóniát?;Joseph Haydn;Ludwig van Beethoven;Johann Sebastian Bach;Wolfgang Amadeus Mozart;2
 Milynek a mértékegysége a rõf?;Hosszúság;Tömeg;Terület;Idõ;2
 Mikor ünnepelte a LEGO a 60. születésnapját?;2018;2015;2010;2008;2
 Mikor pustol a hó?;Ha vízszintesen ”esik”;Ha nagyon gyorsan olvad;Ha 0 fok fölött esik;Ha hirtelen nagy mennyiség esik;2
 Melyik Földünk legmélyebb tava?;Bajkál-tó;Tanganyika tó;Nagy-Rabszolga-Tó;Matano tó;2
 Mikor kezdte pályafutását az Irigy Hónaljmirigy?;1990;1989;1991;1993;2
 Kinek a nevéhez fûzõdik a La Baletta No. 1-2?;Presser Gábor; Jean-Michel Jarre; Benkõ László; Ralf Hütter és Florian Schneider;3
-Melyik egyetemi várost emlegetik a diákok "kommunista fõvárosunk"-ként?;Dunaújváros;Debrecen;Gyõr;Pécs;11
+"Melyik egyetemi várost emlegetik a diákok ""kommunista fõvárosunk""-ként?";Dunaújváros;Debrecen;Gyõr;Pécs;11
 Hány régióra bontható Magyarország?;7;19;10;3;3
-Hány megyéje vab Magyarországnak?19;20;18;16;3
-Elsõrendû logikában mit jelent az univerzális kvantor?;minden;van olyan;kivéve;nincs olyan;3
-Elsõrendû logikában mit jelent az egzisztenciális kvantor?;van olyan;minden;kivéve;nincs olyan;3
-Melyik nem kielégíhetõ tulajdonság az elsõrendû logikában?;érvénytelen;kielégíthetõ;érvényes;kielégíthetetlen;3
-Milyen néven indult a ma "Sziget Fesztivál" néven ismert rendezvény?;Diáksziget;Pepsi Sziget;Eurowoodstock;Sziget Parádé;3
+Hány megyéje vab Magyarországnak?;19;20;18;16;3
+Elsõrendû logikában mit jelent az univerzális kvantor?;Minden;Van olyan;Kivéve;Nincs olyan;3
+Elsõrendû logikában mit jelent az egzisztenciális kvantor?;Van olyan;Minden;Kivéve;Nincs olyan;3
+Melyik nem kielégíhetõ tulajdonság az elsõrendû logikában?;Érvénytelen;Kielégíthetõ;Érvényes;Kielégíthetetlen;3
+"Milyen néven indult a ma ""Sziget Fesztivál"" néven ismert rendezvény?";Diáksziget;Pepsi Sziget;Eurowoodstock;Sziget Parádé;3
 Milyen fajta kutya Lassie?;Rough Collie;Border Collie;Ausztrál juhászkutya;Sheltie;3
 Mi volt Magyarország legjobb helyezése az Euróvíziós Dalfesztiválon 2018-ig?;4.hely;2.hely;3.hely;1.hely;3
+Mi volt a végsebessége az 1955-ös Citröen DS 19-nek?;175 km/h;150 km/h;200 km/h;125 km/h;4
+Mikor fejezték be Európában a Volkswagen bogár gyártását?;1978 január;1979 március;1977 október;1976 augusztus;4
+Melyik állat latin neve a cerambyx cerdo?;Nagy hõscincér;Hegedülõ csercincér;Tölgyes-tövisescincér;Havasi cincér ;4
+Milyen állat a kék nünüke?;Bogár;Madár;Hal;Gyík;4
+Hol találhatók a kerekek egy Lockheed XFV-1-es repülõgépen?;A farkon;A törzs oldalán;A szárnyakon;A pilótafülke körül;4
+Ki volt a Fiat C.R. gépek tervezõje?;Celestino Rosatelli;F.A. Canders;James R. Bede;Curtiss Rhondenbaum;4
+Mennyi hagyma kell a mákostésztába 5 személyre?;Nem kell hagyma;10 dkg;20 dkg;30 dkg;4
+Mekkora szárnyfesztávolsága van a banánlepkének?;7-8 cm;5-6 cm;9-10 cm;3-4 cm;4
+"Melyik dal nem szerepel a Queen  ""The Works"" címû lemezén?";Bohemian Rhapsody;Tear It Up;Radio Gaga;Hammer To Fall;4
+Mennyit fogyaszt száz km-en az 1980-as Lamborghini Athon?;15-20 L;25-30 L;10-15 L;20-25 L;4
+Melyik évben látta meg a napvilágot a Ferrari 308 GTBi?;1982;1980;1984;1978;5
+Melyik dal nem a Paddy and The Rats slágere?;The Boys are Back;Lonely Hearts' Boulvard;Fuck you, I'm Drunk;Celebrate;5
+Mi Alecia Beth Moore mûvészneve?;Pink;Cher;Enya;Baby Alice;5
+Melyik együttes száma a Vertigo?;U2;Scorpions;Metallica;Europe;5
+Ki nyerte a 2006-os Eurovíziót?;Lordi;Dima Bilan;Six4One;Las Ketchup;5
+Hány országgal határos Magyarország?;7;6;8;9;5
+Kinek a nevéhez fûzödik a kettõs honfoglalás elmélete?;László Gyula;Gyulai László;Kõhalmi Oszkár;Kelemen Nándor;5
+Mikor jelent meg a Transformers animációs mozifilm?;1986;1990;1980;1996;5
+"Kinek a nevéhez köthetõ a ""Húrin gyermekei"" címû regény?";J. R. R. Tolkien;Tad Williams;Steven Erikson;J. K. Rowling;5
+Kinek a regényén alapult a 2006-os Eragon címû mozifilm?;Christopher Paolini;Janny Wurts;Tad Williams;Clayton Emery;5
+Ki írta a Csongor és Tündét?;Vörösmarty Mihály;Arany János;József Attila;Ady Endre;6
+Melyik nem része a lözépbélnek?;Vakbél;Patkóbél;Éhbél;Csípõbél;6
+Mely mirigy betegsége a golyva?;Pajzsmirigy;Hasnyálmirigy;Csecsemõmirigy;Tobozmirigy;6
+Mi a réz-szulfát köznapi neve?;Kékkõ;Vöröskõ;Borkõ;Vizkõ;6
+Mi a dialektika?;A vitatkozás mûvészete;Mértani test;Szószedet;Idõzítõ szerkezet;6
+Mi az abrázió?;A tenger pusztító munkája;A szél pusztító munkája;Vulkanikus pusztító erõ;Földcsuszamlás;6
+Hol találkozhatunk bálnahátbuckával?;Homoksivatagban;Füves síkságon;A tengerfenék iszapjában;Bombvidéken;6
+Mi a dolina?;Mészkõfelszínen kialakult mélyedés;Álló cseppkõ;Hegyi ösvény;Erdei tisztás;6
+Melyik tudományágban tevékenykedett Paál Árpád?;Botanika;Archeológia;Ornitológia;Geológia;6
+Melyik uralkodónk került elõbb a trónra?;III. Béla;Bajor Ottó;III. András;IV. Kun László;6

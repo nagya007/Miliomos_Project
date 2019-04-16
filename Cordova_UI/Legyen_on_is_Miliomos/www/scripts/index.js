@@ -38,6 +38,15 @@ function ExitGame() {
         else return null;
     }, 'Are you sure?', 'No,Yes');
 }
+function ShowAlert(message,onContinue){
+    $("#alertmessage").text(message);
+    $("#AlertDiv").fadeIn("fast");
+    $("#continue").click(
+        function(){
+            $("#AlertDiv").fadeOut("fast");
+            if(onContinue) onContinue();
+        });
+}
 function CancelLogin(){
     $("#welcome").css("display", "block");
     $("#login_form").css("display", "none");
@@ -111,10 +120,10 @@ function Signup(){
         success: function (data) {
 			$("#btn_signup").removeAttr("disabled");
             if(data==="successful")  {alert("Successful registration. You can login now."); ShowLogin();}
-            else if (data==="empty") alert ("You need to fill all fields");
-            else if (data==="exist") alert("This user/email already exist");
+            else if (data==="empty") ShowAlert ("You need to fill all fields");
+            else if (data==="exist") ShowAlert("This user/email already exist");
         },
-        error: function(){alert("Something went wrong");$("#btn_signup").removeAttr("disabled");}
+        error: function(){ShowAlert("Something went wrong");$("#btn_signup").removeAttr("disabled");}
     });
 } 
 function Login(){
@@ -129,13 +138,13 @@ function Login(){
 	   timeout: 5000,
        success: function(data){
 		   $("#btn_login").removeAttr("disabled");
-           if(data==="false") alert("Wrong username or password");
+           if(data==="false") ShowAlert("Wrong username or password");
            else {
                session_user=username;
                ShowMainMenu(session_user);
            }
        },
-       error: function(){alert("Something went wrong");$("#btn_login").removeAttr("disabled");}
+       error: function(){ShowAlert("Something went wrong");$("#btn_login").removeAttr("disabled");}
     });
 } 
 function GetQuestions(){
@@ -155,7 +164,7 @@ function GetQuestions(){
 				FillQuestion();
 				ShowPlayground();    
 			}
-			else alert("There are not enough questions");
+			else ShowAlert("There are not enough questions");
         },
         error: function (jqXHR, textStatus) {
             alert(' http request error' + textStatus);
@@ -236,9 +245,12 @@ function CheckAnswer(buttonid){
                  FillQuestion();
                 } 
                 else {
-                    alert("You win!");
-                    CleanUp();
-                    ShowMainMenu();
+                    ShowAlert("You win!", function () {
+                        Highscore(cnt - 1);
+                        CleanUp();
+                        ShowMainMenu();
+                    });
+
                 }
                },2000);          
         } 
@@ -251,9 +263,11 @@ function CheckAnswer(buttonid){
             $(buttonid).css("background","#ff0000");
             $(rightbtnid).css("animation","wronganimation 1s infinite");
             setTimeout(function(){
-                alert("Wrong answer! You lost!");
-                CleanUp();
-                ShowMainMenu();
+                ShowAlert("Wrong answer! You lost!", function () {
+                    Highscore(cnt - 2);
+                    CleanUp();
+                    ShowMainMenu();
+                });
             },5000);
 
             }
@@ -340,19 +354,22 @@ function HelpTip1(){
 function HelpEinstein(){
 	HelpDisable(2);
 	$("#einstein_anwser").html($("#answer"+HelpTip1()).text());
-	$("#help_einstein").css("display", "block");
+    //$("#help_einstein").css("display", "block");
+    $("#help_einstein").fadeIn("slow");
 }
 
 
 function HelpEinsteinRefuse(){
-	$("#help_einstein").css("display", "none");
+    //$("#help_einstein").css("display", "none");
+    $("#help_einstein").fadeOut("slow");
 }
 //Közönség szavazás
 //Generál 4 számot amit leoszt az összegükkel, hogy fasza százalékokká változzanak. A helyes válasz +30% boostot kap.
 //String tömböt ad vissza amiben az eredmények sorrendje a gombok sorrendjét követi.
 function AskTheAudience() {
     HelpDisable(3);
-    $("#ask_Audi").css("display", "block");
+    //$("#ask_Audi").css("display", "block");
+    $("#ask_Audi").fadeIn("slow");
 	var tips = new Array(4);
 	var sum=0;
 	for (i=0;i<=3;i++)
@@ -407,35 +424,49 @@ function AskTheAudience_ClearCanvas()
 
 
 function ByeAudi() {
-    $("#ask_Audi").css("display", "none");
+    //$("#ask_Audi").css("display", "none");
+    $("#ask_Audi").fadeOut("slow");
     
 }
 //Fejlesztés alatt!!
-/*function GetScores(){
+function GetScores() {
     //recieves scores from database
+    scorenumber = 10; //get top10 highscores
     $.ajax({
-        type:'POST',
-        url: url+'getScores.php',
-        data:'scorenumber='+scorenumber,
-        dataType:'json',
-		timeout: 5000,
-        success: function (data)
-        {
-			scores=data;
-				FillScores();
-				ShowScores();    
+        type: 'POST',
+        url: url + 'getScores.php',
+        data: 'scorenumber=' + scorenumber,
+        dataType: 'json',
+        timeout: 5000,
+        success: function (data) {
+            tablecontent = "<caption>Highscores</caption>";
+            for (i = 0; i < data.length; i++) {
+                tablecontent += "<tr><td>" + (i + 1) + ".</td><td>" + data[i].username + "</td><td>" + data[i].money + "</td></tr>";
+            }
+            $("#highscore").html(tablecontent);
+            $("#HighScoreDiv").fadeIn("slow");
+            //scores=data;
+            //alert(scores);
+            //FillScores();
+            //ShowScores();    
         },
         error: function (jqXHR, textStatus) {
             alert(' http request error' + textStatus);
             if (errorCb) {
                 errorCb(jqXHR, textStatus);
             }
-       }
-        //error: function(){alert("Something went wrong. Failed to get questions");}
-    }); 
+        }
+    });
+}
+function Highscore(index) {
+    if (index >= 0) {
+        var score = $("#scoreboard" + (index)).text();
+        $.post(url + "highscore.php", "user=" + session_user + "&score=" + score);
+    }
+
 }
 //Score táblát tölti fel (majd)
-function FillScores(){
+/*function FillScores(){
     //fills a selected question and answers to the playing form
 	    lock=false;
         for (i=1;i<5;i++)

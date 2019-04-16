@@ -76,6 +76,7 @@
     <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">
         <h1 class="vertical" id="greet">Welcome </h1>
         <button id="btn_startgame" class="btn-group" onclick="StartGame()">Start a game</button>
+        <button class="btn-group" onclick="GetScores()">Highscores</button>
         <button id="btn_exitgame2" class="btn-group" onclick="ExitGame()">Exit</button>
     </div>
     <div id="playground">
@@ -144,6 +145,20 @@
         </div>
 
 
+    </div>
+    <div id="AlertDiv" class="vertical w3-display-middle">
+        <p id="alertmessage"></p>
+        <div class="w3-display-bottommiddle-fix btn-group">
+            <button id="continue">Folytatás!</button>
+        </div>
+    </div>
+    <div id="HighScoreDiv" class="vertical w3-display-middle">
+        <div>
+            <table id="highscore"></table>
+        </div>
+        <div class="w3-display-bottommiddle-fix btn-group">
+            <button onclick="$('#HighScoreDiv').fadeOut('slow')">Folytatás!</button>
+        </div>
     </div>
 </body>
 </html>

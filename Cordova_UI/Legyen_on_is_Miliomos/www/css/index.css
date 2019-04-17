@@ -74,7 +74,7 @@ fullscreen-bg {
     border: 6px solid #58D3F7;
     -webkit-border-radius: 25%;
     border-radius: 25%;
-    font: normal 100%/normal "Times New Roman", Times, serif;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
     color: rgba(255,255,255,0.9);
     text-align: center;
     -o-text-overflow: clip;
@@ -224,7 +224,7 @@ fullscreen-bg {
 
 
 .btn-group button {
-    font: normal 200%/normal "Times New Roman", Times, serif;
+    font: normal 200%/normal Arial, Helvetica, Sans-serif;
     color: rgba(255,255,255,0.9);
     background: #0199d9;
     border: 1px solid #018dc4;
@@ -236,7 +236,7 @@ fullscreen-bg {
     display: block; /* Make the buttons appear below each other */
 }
 .btn-group-help button {
-    font: normal 100%/normal "Times New Roman", Times, serif;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
     color: #080c00;
     background: #81DAF5;
     border: 1px solid #018dc4;
@@ -286,18 +286,21 @@ app {
 /*    position:fixed;
     top: 50%;
     left: 50%;*/
+	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #login_form {
     display: none;
 /*    position: fixed;
     top: 50%;
     left: 50%;*/
+	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #mainmenu {
     display: none;
 /*    position: fixed;
     top: 50%;
     left: 50%;*/
+	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #playground {
     display: none;
@@ -306,7 +309,7 @@ app {
     left: 50%;*/
 }
 #scoreboard {
-	font: normal 5%/normal "Times New Roman", Times, serif;
+	font: normal 5%/normal Arial, Helvetica, Sans-serif;
 	font-size: 25%;
 	justify-content: center;
 	vertical-align:middle;
@@ -322,6 +325,7 @@ app {
 	width: 60%;
 	height: 95%;
 	border: 1px solid blue;
+	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #ask_Audi {
     display: none;
@@ -381,4 +385,5 @@ th, td {
     padding: 10px;
     color: blue;
     margin: 10px;
+	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }

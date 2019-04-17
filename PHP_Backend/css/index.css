@@ -86,7 +86,7 @@ fullscreen-bg {
     border: 6px solid #58D3F7;
     -webkit-border-radius: 25%;
     border-radius: 25%;
-    font: normal 170%/normal "Times New Roman", Times, serif;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
     color: rgba(255,255,255,0.9);
     text-align: center;
     -o-text-overflow: clip;
@@ -179,7 +179,7 @@ fullscreen-bg {
 
 
 .btn-group button {
-    font: normal 200%/normal "Times New Roman", Times, serif;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
     color: rgba(255,255,255,0.9);
     background: #0199d9;
     border: 1px solid #018dc4;
@@ -191,7 +191,7 @@ fullscreen-bg {
     display: block; /* Make the buttons appear below each other */
 }
 .btn-group-help button {
-    font: normal 100%/normal "Times New Roman", Times, serif;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
     color: #080c00;
     background: #81DAF5;
     border: 1px solid #018dc4;
@@ -239,18 +239,21 @@ app {
 
 #signup_form {
     display: none;
+	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #login_form {
     display: none;
+	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #mainmenu {
     display: none;
+	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #playground {
     display: none;
 }
 #scoreboard {
-    font: normal 5%/normal "Times New Roman", Times, serif;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
     font-size: 25%;
     justify-content: center;
     vertical-align:middle;
@@ -284,7 +287,7 @@ app {
     border: 6px solid #58D3F7;
     -webkit-border-radius: 25%;
     border-radius: 25%;
-    font: normal 100%/normal "Times New Roman", Times, serif;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
     color: rgba(255,255,255,0.9);
     text-align: center;
     -o-text-overflow: clip;

@@ -535,14 +535,11 @@ var jsonShow;
 var lvl=1;
 $.getJSON("questions.json", function(json) {
 for (i=0;i<questionnumber;i++){
-	if(json[i].level==lvl) 
+	var rnd = Math.floor(Math.random() * 59) + 1;
+	if(json[rnd].level==lvl) 
 	{
-		jsonShow+=json[i];
+		jsonShow+=json[rnd];
 		lvl++;
-	}
-	else
-	{
-		i++;
 	}
 }
 	questions=jsonShow;

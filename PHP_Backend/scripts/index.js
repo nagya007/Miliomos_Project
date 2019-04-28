@@ -529,3 +529,29 @@ function HighlightScoreboard(index)
 		document.getElementById("scoreboard"+(index-1)).style.border = "";  
 	}
 }
+function getQuestionsOffline()
+{
+var jsonShow;
+var lvl=1;
+$.getJSON("questions.json", function(json) {
+for (i=0;i<questionnumber;i++){
+	if(json[i].level==lvl) 
+	{
+		jsonShow+=json[i];
+		lvl++;
+	}
+	else
+	{
+		i++;
+	}
+}
+	questions=jsonShow;
+	HelpEnableAll();
+	$("#btn_startgame").removeAttr("disabled");
+	if(questions.length===questionnumber){
+		FillQuestion();
+		ShowPlayground();    
+	}
+	else ShowAlert("There are not enough questions");
+});
+}

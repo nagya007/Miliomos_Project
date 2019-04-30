@@ -1,7 +1,7 @@
 
 body 
 {
-
+background-color:#1d0030;
 }
 /* MEDIA CUCC BACKGROUND */
 audio { 
@@ -67,19 +67,16 @@ fullscreen-bg {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-	width:30%;
-    height: 20%;
     cursor: pointer;
     /* Style stuff */
-    border: 6px solid #58D3F7;
-    -webkit-border-radius: 25%;
+    border: 6px solid gold;
     border-radius: 25%;
     font: normal 100%/normal Arial, Helvetica, Sans-serif;
-    color: rgba(255,255,255,0.9);
+    color: red;
     text-align: center;
     -o-text-overflow: clip;
     text-overflow: clip;
-    background: #170B3B;
+    background: pink;
 }
 
 .button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4 {
@@ -144,7 +141,7 @@ fullscreen-bg {
 }
 .w3-display-middle {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%)
@@ -205,6 +202,7 @@ fullscreen-bg {
 	position:absolute;
 	left:80%;
 	bottom:5%;
+
 }
 #counter{
     padding: 2px 2px 2px 2px; /* padding-top + padding-bottom + text area = image height */
@@ -225,30 +223,31 @@ fullscreen-bg {
 
 .btn-group button {
     font: normal 200%/normal Arial, Helvetica, Sans-serif;
-    color: rgba(255,255,255,0.9);
-    background: #0199d9;
-    border: 1px solid #018dc4;
-    border-radius: 3px;
+    color: khaki;
+    background: linear-gradient(rgba(90, 46, 109), rgba(25,0,44));
+    box-shadow: 0px 0px 15px gold;
+    border-radius: 30px;
     margin: 5px;
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     width: 100%; /* Set a width if needed */
     display: block; /* Make the buttons appear below each other */
 }
+/*
 .btn-group-help button {
-    font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    /*font: normal 100%/normal Arial, Helvetica, Sans-serif;
     color: #080c00;
     background: #81DAF5;
     border: 1px solid #018dc4;
     border-radius: 90%;
 
-    padding: 10px 20px; /* Some padding /*
-    cursor: pointer; /* Pointer/hand icon */
+    padding: 10px 20px; 
+    cursor: pointer;
 	width: 120px;
 	text-align: center;
 	float: left; 
-}
-button, button[disabled]{
+}*/
+button,button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
@@ -283,24 +282,39 @@ app {
 
 #signup_form {
     display: none;
-/*    position:fixed;
-    top: 50%;
-    left: 50%;*/
+   position:fixed;
+   color: gold;
+    top: 60%;
+    left: 50%;
 	font: normal 100%/normal Arial, Helvetica, Sans-serif;
+	background-color:rgba(90, 46, 109, 0.8);
+	border-style: dotted;
+	border-color:lighter gold;
+	border-radius:20px;
 }
 #login_form {
     display: none;
+	color:gold;
+	 top: 60%;
 /*    position: fixed;
-    top: 50%;
     left: 50%;*/
 	font: normal 100%/normal Arial, Helvetica, Sans-serif;
+	background-color:rgba(90, 46, 109, 0.8);
+		border-style: dotted;
+	border-color:lighter gold;
+	border-radius:20px;
 }
 #mainmenu {
     display: none;
-/*    position: fixed;
-    top: 50%;
-    left: 50%;*/
+   position:fixed;
+   color: gold;
+    top: 60%;
+    left: 50%;
 	font: normal 100%/normal Arial, Helvetica, Sans-serif;
+	background-color:rgba(90, 46, 109, 0.8);
+	border-style: dotted;
+	border-color:lighter gold;
+	border-radius:20px;
 }
 #playground {
     display: none;
@@ -313,10 +327,10 @@ app {
 	font-size: 25%;
 	justify-content: center;
 	vertical-align:middle;
-	background-color:#81DAF5;
+	background-color: rgba(90, 46, 109); 
 	width: 16%;
 	height: 40%;
-	border: 1px solid blue;
+	border: 5px solid gold;
 }
 #help_einstein {
     display: none;
@@ -348,18 +362,19 @@ th, td {
 }
 
 #regbox {
-    background-color: lightblue;
+    background-color: khaki;
     border-radius: 20px;
     margin-left: 20px;
+	
 }
 #AlertDiv {
     display: none;
     position: absolute;
-    background-color: rgba(129,218,245,0.95); /*same color, but with some transparency*/
+    background-color: rgba(90, 46, 109,0.7);; /*same color, but with some transparency*/
     top: 50%;
     width: 50%;
     height: 50%;
-    border: 1px solid blue;
+    border: 5px solid khaki;
 }
 
 #alertmessage {
@@ -372,24 +387,34 @@ th, td {
 #HighScoreDiv {
     display: none;
     position: absolute;
-    background-color: rgba(129,218,245,0.95); /*same color, but with some transparency*/
+    background-color: rgba(90, 46, 109); /*same color, but with some transparency*/
     top: 40%;
     width: 40%;
     height: 60%;
-    border: 1px solid blue;
 	max-height: 500px;
+	border-style: dotted;
+	border-radius:20px;
+	border-color:gold;
 }
+
 #HighScoreDataDiv {
     overflow-y:scroll;
     overflow-x:hidden;
 }
 
-
 #highscore {
     position: relative;
     width: 100%;
     padding: 10px;
-    color: blue;
+    color: khaki;
     margin: 10px;
 	font: normal 100%/normal Arial, Helvetica, Sans-serif;
+}
+
+#beginstuff{
+	
+	color:khaki;
+}
+#scoreboard_table{
+	color:khaki;
 }

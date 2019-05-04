@@ -19,77 +19,73 @@
 </head>
 <body>
 
-<!-- Videó 
-<div class="fullscreen-bg">
-    <video loop muted autoplay poster="media/png/background.png" class="fullscreen-bg__video">
-        <source src="media/mp4/background.mp4" type="video/mp4">        
-    </video>
-</div>-->
 
 <!--háttér-->
-<div id="bgpic"><img src="media/png/bg2.png" width="100%" height="98%"></div>
+<div id="bgpic"><img src="media/png/bg2.png" width="100%" height="100%"></div>
 
-
-<!-- Zene -->
-<!-- <iframe src="media/wav/ost-temporary.wav" allow="autoplay" id="audio" style="display:none"></iframe>-->
-<audio id="player" autoplay loop>
-   <!-- <source src="media/wav/ost-temporary.mp3" type="audio/mp3"> -->
-</audio>
-<!-- Media cuccok vége -->
+<!--kezdőképernyő-->
     <div id="welcome" class="w3-padding w3-display-middle btn-group" style="">
-        <button onclick="ShowSignup()" >Register</button>
-        <button onclick="ShowLogin()">Login</button>
-        <button id="btn_exitgame1" onclick="ExitGame()">Exit</button>
+        <button onclick="ShowSignup()" >Regisztráció</button>
+        <button onclick="ShowLogin()">Bejelentkezés</button>
+        <button id="btn_exitgame1" onclick="ExitGame()">Kilépés</button>
 		</div>	
+		
+<!--regisztráció-->
     <div id="signup_form" style="display: none;" class="w3-padding w3-display-middle btn-group">
-        <h1 class="vertical">Registration</h1>
+        <h1 class="vertical">Regisztráció</h1>
  	<div id="regbg">	<table style="text-align: left; width: 100%" border="0" cellpadding="2" cellspacing="2" >
     <tr>
       <td id="beginstuff" >Email: </td>
       <td><input type="text" name="s_email" id="regbox"></td>
     </tr>
     <tr>
-      <td id="beginstuff">Username:</td>
+      <td id="beginstuff">Felhasználónév:</td>
       <td> <input type="text" name="s_username" id="regbox"></td>
     </tr>
     <tr>
-      <td id="beginstuff">Password:</td>
+      <td id="beginstuff">Jelszó:</td>
       <td><input type="password" name="s_password" id="regbox"></td>
     </tr>
 </table>	   
-        <button id="btn_signup" onclick="Signup()">Sign up</button>
-        <button id="btn_cancelsignup" onclick="CancelSignup()">Cancel</button>
+        <button id="btn_signup" onclick="Signup()">Regisztrálás</button>
+        <button id="btn_cancelsignup" onclick="CancelSignup()">Mégsem</button>
     </div></div>	
+	
+<!--bejelentkezés-->	
     <div id="login_form" style="display: inline; display:none" class="w3-padding w3-display-middle btn-group">
-        <h1 class="vertical">Login</h1>
+        <h1 class="vertical">Bejelentkezés</h1>
    		<div>		
 		<table style="text-align: left; width: 100%;" border="0"
  cellpadding="2" cellspacing="2">
     <tr>
-      <td id="beginstuff">Username</td>
+      <td id="beginstuff">Felhasználónév:</td>
       <td><input type="text" name="l_username" id="regbox"></td>
     </tr>
     <tr>
-      <td id="beginstuff">Password: </td>
+      <td id="beginstuff">Jelszó: </td>
       <td><input type="password" name="l_password" id="regbox"></td>
     </tr>
 </table>
 		</div>
-      <button id="btn_login" onclick="Login()">Login</button>
-        <button id="btn_cancellogin"onclick="CancelLogin()">Cancel</button>
+      <button id="btn_login" onclick="Login()">Belépés</button>
+        <button id="btn_cancellogin"onclick="CancelLogin()">Mégsem</button>
     </div>
+	
+<!--főmenü-->
     <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">
-        <h1 class="vertical">Welcome </h1>
-        <button id="btn_startgame" class="btn-group" onclick="StartGame()">Start a game</button>
-        <button class="btn-group" onclick="GetScores()">Highscores</button>
-        <button id="btn_exitgame2" class="btn-group" onclick="ExitGame()">Exit</button>
+        <h1 class="vertical">Mizu arc? </h1>
+        <button id="btn_startgame" class="btn-group" onclick="StartGame()">Játék kezdése</button>
+        <button class="btn-group" onclick="GetScores()">Eredménylista</button>
+        <button id="btn_exitgame2" class="btn-group" onclick="ExitGame()">Kilépés</button>
     </div>
+	
+<!--játéktér - válaszok-->
     <div id="playground">
         <h3 class="w3-display-topmiddle text-kerdes" id="questiontext" style="top:4%;left:42%;"></h3>
-        <button class="button-anwser1" id="answer1" onclick="CheckAnswer('#answer1')">asd</button>
-        <button class="button-anwser2" id="answer2" onclick="CheckAnswer('#answer2')">asd</button>
-        <button class="button-anwser3" id="answer3" onclick="CheckAnswer('#answer3')">asd</button>
-        <button class="button-anwser4" id="answer4" onclick="CheckAnswer('#answer4')">asd</button>
+        <button class="button-anwser1" id="answer1" onclick="CheckAnswer('#answer1')">Ez</button>
+        <button class="button-anwser2" id="answer2" onclick="CheckAnswer('#answer2')">még</button>
+        <button class="button-anwser3" id="answer3" onclick="CheckAnswer('#answer3')">mindig</button>
+        <button class="button-anwser4" id="answer4" onclick="CheckAnswer('#answer4')">gáz!</button>
       
 
 	  <div class="w3-display-bottomright-help btn-group-help">
@@ -108,7 +104,7 @@
 </table>
 -->
 
-
+<!--játéktér - segítségek-->
 <table style="text-align: center; margin-left: auto; margin-right: auto;>"  border="1">
     <tr>
       <td height="50%" width="50%"><input type="image" src="media/png/audition.png" width="28%" height="28%" id="help3" onclick="AskTheAudience()"></td>
@@ -118,12 +114,10 @@
       <td colspan="2" rowspan="1" height="50%" width="50%">><input type="image" src="media/png/einstein.png" width="28%" height="28%" id="help2" onclick="HelpEinstein()"></td>
     </tr>
 </table>
-
-
 		</div>
 		
         <div id="scoreboard" class="w3-display-topright w3-padding vertical" style="margin: auto;">
-            <div>
+            <div class="w3-display-middle">
 			<table id="scoreboard_table" style="font-size: 12px;line-height: 0.6;">
                 <caption id="counter"></caption>
             </table>
@@ -132,6 +126,7 @@
         <div id="counter" class="w3-display-topleft w3-padding">
         -->
         </div>
+		
         <!--Einstein-->
         <div class="vertical w3-display-middle" id="help_einstein">
             <div class="w3-display-middle" style="top:40%;">
@@ -144,9 +139,7 @@
 			</div>
         </div>
 
-
-
-        <!--Ask Audi-->
+        <!--közönség-->
         <div id="ask_Audi" class="vertical w3-display-middle">
 			<div class="w3-display-middle" style="top:36%;height: 70%;width:100%;">
 				<p style="margin-bottom: 0px;margin-top: 0px;">

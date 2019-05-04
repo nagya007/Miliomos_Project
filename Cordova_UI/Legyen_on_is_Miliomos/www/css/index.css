@@ -70,13 +70,13 @@ fullscreen-bg {
     cursor: pointer;
     /* Style stuff */
     border: 6px solid gold;
-    border-radius: 25%;
+    border-radius: 60px;
     font: normal 100%/normal Arial, Helvetica, Sans-serif;
-    color: red;
+    color: khaki;
     text-align: center;
     -o-text-overflow: clip;
     text-overflow: clip;
-    background: pink;
+    background: linear-gradient(rgba(90, 46, 109), rgba(25,0,44));;
 }
 
 .button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4 {
@@ -123,22 +123,7 @@ fullscreen-bg {
 .w3-padding {
     padding: 8px 16px !important
 }
-#answer1:hover
-{
-	background-color:#81DAF5;
-}
-#answer2:hover
-{
-	background-color:#81DAF5;
-}
-#answer3:hover
-{
-	background-color:#81DAF5;
-}
-#answer4:hover
-{
-	background-color:#81DAF5;
-}
+
 .w3-display-middle {
     position: absolute;
     top: 70%;
@@ -327,10 +312,11 @@ app {
 	font-size: 25%;
 	justify-content: center;
 	vertical-align:middle;
-	background-color: rgba(90, 46, 109); 
+	background-color: rgba(90, 46, 109,0.8); 
 	width: 16%;
 	height: 50%;
 	border: 5px solid gold;
+	border-radius:20px;
 }
 #help_einstein {
     display: none;
@@ -343,11 +329,11 @@ app {
 }
 #ask_Audi {
     display: none;
-	background-color:#81DAF5;
+	background-color:rgba(23, 2, 33, 0.9);
 	top:45%;
 	width: 60%;
 	height: 85%;
-	border: 1px solid blue;
+	border: 3px solid rgba(212, 175, 55, .9);
 }
 th, td {
 	vertical-align: middle;
@@ -370,24 +356,25 @@ th, td {
 #AlertDiv {
     display: none;
     position: absolute;
-    background-color: rgba(90, 46, 109,0.7);; /*same color, but with some transparency*/
+    background-color: rgba(90, 46, 109);; /*same color, but with some transparency*/
     top: 50%;
     width: 50%;
     height: 50%;
-    border: 5px solid khaki;
+    border: 5px solid red;
+	border-radius:20px;
 }
 
 #alertmessage {
     position: relative;
     font-size: 24px;
     top: 20%;
-    color: blue;
+    color: khaki;
 }
 
 #HighScoreDiv {
     display: none;
     position: absolute;
-    background-color: rgba(90, 46, 109); /*same color, but with some transparency*/
+    background-color: rgba(90, 46, 109); 
     top: 40%;
     width: 40%;
     height: 60%;

@@ -269,7 +269,7 @@ app {
     display: none;
    position:fixed;
    color: gold;
-    top: 60%;
+    top: 50%;
     left: 50%;
 	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 	background-color:rgba(90, 46, 109, 0.8);
@@ -280,7 +280,7 @@ app {
 #login_form {
     display: none;
 	color:gold;
-	 top: 60%;
+	 top: 55%;
 /*    position: fixed;
     left: 50%;*/
 	font: normal 100%/normal Arial, Helvetica, Sans-serif;
@@ -293,7 +293,7 @@ app {
     display: none;
    position:fixed;
    color: gold;
-    top: 60%;
+    top: 55%;
     left: 50%;
 	font: normal 100%/normal Arial, Helvetica, Sans-serif;
 	background-color:rgba(90, 46, 109, 0.8);
@@ -320,12 +320,14 @@ app {
 }
 #help_einstein {
     display: none;
-	background-color:#81DAF5;
-	top:50%;
-	width: 60%;
-	height: 95%;
-	border: 1px solid blue;
-	font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    background-color: rgb(90, 46, 109);
+    top: 50%;
+    width: 60%;
+    height: 90%;
+    border-style: dotted;
+    border-radius: 20px;
+    border-color: gold;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #ask_Audi {
     display: none;
@@ -356,7 +358,7 @@ th, td {
 #AlertDiv {
     display: none;
     position: absolute;
-    background-color: rgba(90, 46, 109);; /*same color, but with some transparency*/
+    background-color: rgb(90, 46, 109); /*same color, but with some transparency*/
     top: 50%;
     width: 50%;
     height: 50%;
@@ -374,17 +376,17 @@ th, td {
 #HighScoreDiv {
     display: none;
     position: absolute;
-    background-color: rgba(90, 46, 109); 
-    top: 40%;
-    width: 40%;
-    height: 60%;
-	max-height: 500px;
+    background-color: rgb(90, 46, 109); 
+    top: 50%;
+    width: 65%;
+    height: 70%;
 	border-style: dotted;
 	border-radius:20px;
 	border-color:gold;
 }
 
 #HighScoreDataDiv {
+    height:65%;
     overflow-y:scroll;
     overflow-x:hidden;
 }

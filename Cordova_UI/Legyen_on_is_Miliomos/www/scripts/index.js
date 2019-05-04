@@ -32,11 +32,21 @@ var lock=false; //locks answer buttons after clicking one
 var url="https://milliomos.000webhostapp.com/"; //free webhost server
 //var url="./"; //localhost for web use
 //----------------------
+window.addEventListener('native.keyboardshow', keyboardShowHandler);
+window.addEventListener('native.keyboardhide', keyboardHideHandler);
+function keyboardShowHandler(e) {
+    $("#login_form").css("top", "30%");
+    $("#signup_form").css("top", "30%");
+}
+function keyboardHideHandler(e) {
+    $("#signup_form").css("top", "50%");
+    $("#login_form").css("top", "55%");
+}
 function ExitGame() {
     navigator.notification.confirm('', function (button) {
         if (button === 2) navigator.app.exitApp();
         else return null;
-    }, 'Are you sure?', 'No,Yes');
+    }, 'Biztosan kilépsz?', 'Nem,Igen');
 }
 function ShowAlert(message,onContinue){
     $("#alertmessage").text(message);
@@ -119,11 +129,11 @@ function Signup(){
 		timeout: 5000,
         success: function (data) {
 			$("#btn_signup").removeAttr("disabled");
-            if(data==="successful")  {alert("Successful registration. You can login now."); ShowLogin();}
-            else if (data==="empty") ShowAlert ("You need to fill all fields");
-            else if (data==="exist") ShowAlert("This user/email already exist");
+            if(data==="successful")  {ShowAlert("Sikeres regisztráció. Most már bejelentkezhetsz.",ShowLogin());}
+            else if (data==="empty") ShowAlert ("Minden mezőt ki kell tölteni");
+            else if (data==="exist") ShowAlert("Ez a felhasználónév/email már létezik");
         },
-        error: function(){ShowAlert("Something went wrong");$("#btn_signup").removeAttr("disabled");}
+        error: function(){ShowAlert("Hiba történt");$("#btn_signup").removeAttr("disabled");}
     });
 } 
 function Login(){
@@ -138,13 +148,13 @@ function Login(){
 	   timeout: 5000,
        success: function(data){
 		   $("#btn_login").removeAttr("disabled");
-           if(data==="false") ShowAlert("Wrong username or password");
+           if(data==="false") ShowAlert("Rossz felhasználónév vagy jelszó");
            else {
                session_user=username;
                ShowMainMenu(session_user);
            }
        },
-       error: function(){ShowAlert("Something went wrong");$("#btn_login").removeAttr("disabled");}
+       error: function(){ShowAlert("Hiba történt");$("#btn_login").removeAttr("disabled");}
     });
 } 
 function GetQuestions(){
@@ -164,7 +174,7 @@ function GetQuestions(){
 				FillQuestion();
 				ShowPlayground();    
 			}
-			else ShowAlert("There are not enough questions");
+			else ShowAlert("Nincs elég kérdés");
         },
         error: function (jqXHR, textStatus) {
             alert(' http request error' + textStatus);
@@ -245,7 +255,7 @@ function CheckAnswer(buttonid){
                  FillQuestion();
                 } 
                 else {
-                    ShowAlert("You win!", function () {
+                    ShowAlert("Nyertél!", function () {
                         Highscore(cnt - 1);
                         CleanUp();
                         ShowMainMenu();
@@ -263,7 +273,7 @@ function CheckAnswer(buttonid){
             $(buttonid).css("background","#ff0000");
             $(rightbtnid).css("animation","wronganimation 1s infinite");
             setTimeout(function(){
-                ShowAlert("Wrong answer! You lost!", function () {
+                ShowAlert("Helytelen válasz! Vesztettél!", function () {
                     Highscore(cnt - 2);
                     CleanUp();
                     ShowMainMenu();
@@ -441,7 +451,7 @@ function GetScores() {
         success: function (data) {
             tablecontent = "<caption>Highscores</caption>";
             for (i = 0; i < data.length; i++) {
-                tablecontent += "<tr><td>" + (i + 1) + ".</td><td>" + data[i].username + "</td><td>" + data[i].money + "</td></tr>";
+                tablecontent += "<tr><td>" + (i + 1) + ".</td><td>" + data[i].username + "</td><td>" + data[i].money + " Ft</td></tr>";
             }
             $("#highscore").html(tablecontent);
             $("#HighScoreDiv").fadeIn("slow");

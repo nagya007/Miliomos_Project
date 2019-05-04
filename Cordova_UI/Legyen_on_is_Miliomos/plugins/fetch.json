@@ -14,5 +14,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "ionic-plugin-keyboard": {
+        "source": {
+            "type": "local",
+            "path": "C:\\Users\\Tomi\\Desktop\\ionic-plugin-keyboard-master"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

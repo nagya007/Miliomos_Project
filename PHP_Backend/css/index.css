@@ -1,38 +1,21 @@
-﻿body 
+
+body 
 {
-	background-color:#c8c8c8;
+    background-color:#c8c8c8;
 }
+
 #screen{
 	position:relative;
 	margin:auto;
 	width:50%;
+        background-color:#1d0030;
 	min-width:768px;
 	max-width:50%;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
-/* MEDIA CUCC BACKGROUND */
-audio { 
-   display:none;
+#backgroundimg{
+    width:100%;
 }
-
-fullscreen-bg {
-    position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
-}
-
-.fullscreen-bg__video {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 @media (min-aspect-ratio: 16/9) {
   .fullscreen-bg__video {
     width: 100%;
@@ -42,21 +25,21 @@ fullscreen-bg {
 
 @media (max-aspect-ratio: 16/9) {
   .fullscreen-bg__video {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
   }
 }
 
 
 /* Ebbe kerül a kérdés játék közben */
-#questiontext {
-    font: normal 150%/1 Impact, Charcoal, sans-serif;
+.text-kerdes {
+    font: normal 120%/1 Impact, Charcoal, sans-serif;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     color: white;
     text-align: center;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    width: 70%;
+    width: 50%;
     height: auto;
     padding: 8px;
     overflow: visible;
@@ -66,34 +49,49 @@ fullscreen-bg {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-    left:40%;
+    position: static;
 }
 
 /* Ebbe kerülnek a 4 válasz játék közbe */
-.button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4 {
-    /* Ezek a gombok játék közben */
-    /* Bal felső gomb */
+.button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4, .button-anwser-einstein, .button-anwser {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-    width: 35%;
-    height: 18%;
-    position: absolute;
     cursor: pointer;
     /* Style stuff */
-    margin: auto;
-    padding: inherit;
-    border: 6px solid #58D3F7;
-    -webkit-border-radius: 25%;
-    border-radius: 25%;
+    border: 6px solid gold;
+    border-radius: 60px;
     font: normal 100%/normal Arial, Helvetica, Sans-serif;
-    color: rgba(255,255,255,0.9);
+    color: khaki;
     text-align: center;
     -o-text-overflow: clip;
     text-overflow: clip;
-    background: #170B3B;
+    background: linear-gradient(rgba(90, 46, 109), rgba(25,0,44));;
 }
 
+.button-anwser1, .button-anwser2, .button-anwser3, .button-anwser4 {
+    /* Ezek a gombok játék közben */
+    /* Bal felső gomb */
+    position: absolute;
+    margin: auto;
+    padding: inherit;
+	width:30%;
+    height: 20%;
+}
+.button-anwser-einstein {
+	/* Einstein */
+	width:100%;
+}
+.button-anwser-audience {
+	/* Einstein */
+	width:15%;
+    height: 10%;
+}
+.button-anwser {
+	/* Einstein */
+	width:30%;
+    height: 20%;
+}
 
 /* Hol helyezkedik el, elég rossz sztem de mükszik! */
 .button-anwser1{
@@ -115,28 +113,34 @@ fullscreen-bg {
 .w3-padding {
     padding: 8px 16px !important
 }
-#answer1:hover
-{
-	background-color:#81DAF5;
-}
-#answer2:hover
-{
-	background-color:#81DAF5;
-}
-#answer3:hover
-{
-	background-color:#81DAF5;
-}
-#answer4:hover
-{
-	background-color:#81DAF5;
-}
+
 .w3-display-middle {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%)
+}
+.w3-display-right{
+	position:absolute;
+	top:50%;
+	right:0%;
+	transform:translate(0%,-50%);
+	-ms-transform:translate(0%,-50%)
+}
+.w3-display-left{
+	position:absolute;
+	top:50%;
+	left:0%;
+	transform:translate(0%,-50%);
+	-ms-transform:translate(-0%,-50%)
+}
+.w3-display-right{
+	position:absolute;
+	top:50%;
+	right:0%;
+	transform:translate(0%,-50%);
+	-ms-transform:translate(0%,-50%)
 }
 .w3-display-bottommiddle{
 	position:absolute;
@@ -146,10 +150,18 @@ fullscreen-bg {
 	-ms-transform:translate(-50%,0%)
 	
 }
+.w3-display-bottommiddle-fix{
+	position:absolute;
+	left:50%;
+	bottom:0%;
+	transform:translate(-50%,0%);
+	-ms-transform:translate(-50%,0%)
+	
+}
 .w3-display-topmiddle {
 	position:absolute;
 	left:50%;
-	top:0;
+	top:-25;
 	transform:translate(-50%,0%);
 	-ms-transform:translate(-50%,0%)
 }
@@ -161,10 +173,16 @@ fullscreen-bg {
 	position:absolute;
 	right:0;top:0
 }
+.w3-display-bottomright-help{
+	position:absolute;
+	left:80%;
+	bottom:5%;
+
+}
 #counter{
     padding: 2px 2px 2px 2px; /* padding-top + padding-bottom + text area = image height */
     margin: 2px 2px 2px 2px; /* offset vertical: half of image height */
-	font-size:100%;
+	font-size:110%;
 }
 
 
@@ -179,35 +197,35 @@ fullscreen-bg {
 
 
 .btn-group button {
-    font: normal 100%/normal Arial, Helvetica, Sans-serif;
-    color: rgba(255,255,255,0.9);
-    background: #0199d9;
-    border: 1px solid #018dc4;
-    border-radius: 3px;
-	margin: 2px;
+    font: normal 200%/normal Arial, Helvetica, Sans-serif;
+    color: khaki;
+    background: linear-gradient(rgba(90, 46, 109), rgba(25,0,44));
+    box-shadow: 0px 0px 15px gold;
+    border-radius: 30px;
+    margin: 5px;
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
     width: 100%; /* Set a width if needed */
     display: block; /* Make the buttons appear below each other */
 }
+/*
 .btn-group-help button {
-    font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    /*font: normal 100%/normal Arial, Helvetica, Sans-serif;
     color: #080c00;
     background: #81DAF5;
     border: 1px solid #018dc4;
     border-radius: 90%;
 
-    padding: 10px 20px; /* Some padding /*
-    cursor: pointer; /* Pointer/hand icon */
+    padding: 10px 20px; 
+    cursor: pointer;
 	width: 120px;
 	text-align: center;
 	float: left; 
-}
-button, button[disabled]{
+}*/
+button,button[disabled]{
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
-  outline:none;
 }
 
 
@@ -239,69 +257,78 @@ app {
 
 #signup_form {
     display: none;
-	font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    position: absolute;
+    color: gold;
+    top: 50%;
+    left: 50%;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    background-color:rgba(90, 46, 109, 0.8);
+    border-style: dotted;
+    border-color:lighter gold;
+    border-radius:20px;
 }
 #login_form {
     display: none;
-	font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    color:gold;
+    top: 55%;
+    position: absolute;
+    left: 50%;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    background-color:rgba(90, 46, 109, 0.8);
+    border-style: dotted;
+    border-color:lighter gold;
+    border-radius:20px;
 }
 #mainmenu {
     display: none;
-	font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    position:absolute;
+    color: gold;
+    top: 55%;
+    left: 50%;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
+    background-color:rgba(90, 46, 109, 0.8);
+    border-style: dotted;
+    border-color:lighter gold;
+    border-radius:20px;
 }
 #playground {
     display: none;
+/*    position: fixed;
+    top: 50%;
+    left: 50%;*/
 }
 #scoreboard {
-    font: normal 100%/normal Arial, Helvetica, Sans-serif;
-    font-size: 25%;
-    justify-content: center;
-    vertical-align:middle;
-    background-color:#81DAF5;
-    width: 16%;
-    height: 40%;
-    border: 1px solid blue;
+	font: normal 5%/normal Arial, Helvetica, Sans-serif;
+	font-size: 25%;
+	justify-content: center;
+	vertical-align:middle;
+	background-color: rgba(90, 46, 109,0.8); 
+	width: 16%;
+	height: 50%;
+	border: 5px solid gold;
+	border-radius:20px;
 }
 #help_einstein {
     display: none;
-    /*background-color:#81DAF5;*/
-    background-color:rgba(129,218,245,0.95); /*same color, but with some transparency*/
-    top:45%;
+    background-color: rgb(90, 46, 109);
+    top: 50%;
     width: 60%;
-    height: 62%;
-    border: 1px solid blue;
+    height: 60%;
+    border-style: dotted;
+    border-radius: 20px;
+    border-color: gold;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
 }
 #ask_Audi {
     display: none;
-    background-color:rgba(129, 218, 245,0.95);
-    top:45%;
-    width: 60%;
-    height: 70%;
-    border: 1px solid blue;
+	background-color: rgb(90, 46, 109);
+	top:45%;
+	width: 60%;
+	height: 75%;
+	border: 3px solid rgba(212, 175, 55, .9);
 }
-.button-anwser {
-    /* Einstein */
-    width:40%;
-    height: 20%;
-    cursor: pointer;
-    border: 6px solid #58D3F7;
-    -webkit-border-radius: 25%;
-    border-radius: 25%;
-    font: normal 100%/normal Arial, Helvetica, Sans-serif;
-    color: rgba(255,255,255,0.9);
-    text-align: center;
-    -o-text-overflow: clip;
-    text-overflow: clip;
-    background: #170B3B;
-}
-
 th, td {
-  vertical-align: middle;
-}
-
-
-.scoreboard-text {
-	font-size: 25%;
+	vertical-align: middle;
 }
 
 @keyframes wronganimation {
@@ -311,47 +338,72 @@ th, td {
     99% { background-color: #000000; }
     100% { background-color: #00ff00; }
 }
-.w3-display-bottommiddle-fix{
-	position:absolute;
-	left:50%;
-	bottom:0%;
-	transform:translate(-50%,0%);
-	-ms-transform:translate(-50%,0%)
+
+.regbox {
+    background-color: khaki;
+    border-radius: 20px;
+    margin-left: 20px;
 	
 }
-#ask_Audi_tips {
-    top:50%;
-    height:95%;
-    width:100%;
-}
-#AlertDiv{
+#AlertDiv {
     display: none;
-    position:absolute;
-    background-color:rgba(129,218,245,0.95); /*same color, but with some transparency*/
-    top:50%;
+    position: absolute;
+    background-color: rgb(90, 46, 109); /*same color, but with some transparency*/
+    top: 50%;
     width: 50%;
     height: 50%;
-    border: 1px solid blue;
+    border: 5px solid red;
+    border-radius:20px;
 }
-#alertmessage{
-    position:relative;
-    font-size:24px;
-    top:20%;
-    color:blue;
+
+#alertmessage {
+    position: relative;
+    font-size: 24px;
+    top: 20%;
+    color: khaki;
 }
-#HighScoreDiv{
+
+#HighScoreDiv {
     display: none;
-    position:absolute;
-    background-color:rgba(129,218,245,0.95); /*same color, but with some transparency*/
-    top:40%;
-    width: 40%;
-    height: 60%;
-    border: 1px solid blue;
+    position: absolute;
+    background-color: rgb(90, 46, 109); 
+    top: 50%;
+    width: 65%;
+    height: 70%;
+    border-style: dotted;
+    border-radius:20px;
+    border-color:gold;
 }
-#highscore{
-    position:relative;
+
+#HighScoreDataDiv {
+    height:65%;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+#highscore {
+    position: relative;
     width: 100%;
     padding: 10px;
-    color:blue;
-    margin:10px;
+    color: khaki;
+    margin: 10px;
+    font: normal 100%/normal Arial, Helvetica, Sans-serif;
+}
+
+.beginstuff{
+	color:khaki;
+}
+#scoreboard_table{
+	color:khaki;
+}
+#help1,#help2,#help3{
+    width:28%;
+    height:28%;
+}
+#bg {
+    background-color: rgba(50, 19, 63, 0.8);
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
 }

@@ -185,7 +185,7 @@ fullscreen-bg {
 }
 .w3-display-bottomright-help{
 	position:absolute;
-	left:80%;
+	left:75%;
 	bottom:5%;
 
 }
@@ -315,6 +315,7 @@ app {
 	background-color: rgba(90, 46, 109,0.8); 
 	width: 16%;
 	height: 50%;
+    
 	border: 5px solid gold;
 	border-radius:20px;
 }
@@ -406,4 +407,19 @@ th, td {
 }
 #scoreboard_table{
 	color:khaki;
+}
+#help2 {
+    width: 40%;
+}
+
+#help1, #help3 {
+    width: 80%;
+}
+
+#bg {
+    background-color: rgba(50, 19, 63, 0.8);
+    width: 98%;
+    position: absolute;
+    height: 100%;
+    top: 0;
 }

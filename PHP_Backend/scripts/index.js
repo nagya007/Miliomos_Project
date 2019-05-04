@@ -268,12 +268,16 @@ function CheckAnswer(buttonid){
 var HelpCount = 3;
 function HelpDisable(index) {
     $("#help" + index).attr('disabled', 'true');
+	$("#help" + index).css('-webkit-filter', 'grayscale(100%)');
+	$("#help" + index).css('filter', 'grayscale(100%)');
     // Kikapcsolás vagy eltüntetés is
     //$("#help" + index).style.display = "hidden";
 }
 // Bekapcsol egy speckó helpet - nem használt egyenlőre
 function HelpEnable(index) {
     $("#help" + index).removeAttr("disabled");
+	$("#help" + index).css('-webkit-filter', 'grayscale(0%)');
+	$("#help" + index).css('filter', 'grayscale(0%)');
     // lehet mind2 nem kell, de azért why not
     //$("#help" + index).style.display = "block";
 }

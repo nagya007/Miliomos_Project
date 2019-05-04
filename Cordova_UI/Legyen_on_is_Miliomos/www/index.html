@@ -81,6 +81,7 @@
 	
 <!--játéktér - válaszok-->
     <div id="playground">
+        <div id="bg">
         <h3 class="w3-display-topmiddle text-kerdes" id="questiontext" style="top:4%;left:42%;"></h3>
         <button class="button-anwser1" id="answer1" onclick="CheckAnswer('#answer1')">Ez</button>
         <button class="button-anwser2" id="answer2" onclick="CheckAnswer('#answer2')">még</button>
@@ -105,13 +106,13 @@
 -->
 
 <!--játéktér - segítségek-->
-<table style="text-align: center; margin-left: auto; margin-right: auto;>"  border="1">
+<table style="text-align: center; margin-left: auto; margin-right: auto;"  border="0">
     <tr>
-      <td height="50%" width="50%"><input type="image" src="media/png/audition.png" width="28%" height="28%" id="help3" onclick="AskTheAudience()"></td>
-      <td height="50%" width="50%">><input type="image" src="media/png/halfq.png" width="28%" height="28%" id="help1" onclick="HelpRemove(2)"></td>
+      <td><input type="image" src="media/png/audition.png" id="help3" onclick="AskTheAudience()"></td>
+      <td><input type="image" src="media/png/halfq.png" id="help1" onclick="HelpRemove(2)"></td>
     </tr>
     <tr>
-      <td colspan="2" rowspan="1" height="50%" width="50%">><input type="image" src="media/png/einstein.png" width="28%" height="28%" id="help2" onclick="HelpEinstein()"></td>
+      <td colspan="2" rowspan="1"><input type="image" src="media/png/einstein.png" id="help2" onclick="HelpEinstein()"></td>
     </tr>
 </table>
 		</div>
@@ -163,7 +164,7 @@
 				<button  onclick="ByeAudi()">Folytatás!</button>
 			</div>
         </div>
-
+        </div>
 
     </div>
     <div id="AlertDiv" class="vertical w3-display-middle">

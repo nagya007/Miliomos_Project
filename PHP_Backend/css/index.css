@@ -176,7 +176,7 @@ body
 .w3-display-bottomright-help{
 	position:absolute;
 	left:80%;
-	bottom:5%;
+	bottom:10%;
 
 }
 #counter{
@@ -396,9 +396,11 @@ th, td {
 #scoreboard_table{
 	color:khaki;
 }
-#help1,#help2,#help3{
-    width:28%;
-    height:28%;
+#help2{
+    width:38%;
+}
+#help1,#help3{
+	width:76%;
 }
 #bg {
     background-color: rgba(50, 19, 63, 0.8);

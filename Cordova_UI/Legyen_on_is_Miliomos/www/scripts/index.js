@@ -79,7 +79,8 @@ function CleanUp(){
 	rightanswer=""; 
     questions=null; 
     previous=[]; 
-    cnt=0;  
+    cnt = 0;  
+    
 }
 //function ShowSignup(){
 //    //makes signup form visible
@@ -106,7 +107,8 @@ function ShowPlayground(){
     $("#welcome").css("display", "none");
     $("#mainmenu").css("display", "none");
 	$("#playground").css("display", "block");
-	$("#ask_Audi").css("display", "none");
+    $("#ask_Audi").css("display", "none");
+  
 }
 //Fejlesztés alatt!! Score táblát jeleníti (majd) meg. Egy kóbor frontendes megcsinálhatja nyugodtan! :)
 /*function ShowScores(){
@@ -208,8 +210,9 @@ function SelectQuestion() {
 function StartGame(){
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
 	$("#btn_startgame").attr("disabled","true"); //disables the button to prevent multiple click, it will be re-enabled when the next function successes or fails
-	GetQuestions();
-	FillScoreboard();
+    getQuestionsOffline();
+    FillScoreboard();
+   
 }
 function FillQuestion(){
     //fills a selected question and answers to the playing form
@@ -342,7 +345,6 @@ function HelpRemove(count)
 	// 1 = indexe
     HelpDisable(1);
 }
-
 // EINSTEIN
 function HelpTip1(){
     
@@ -373,8 +375,6 @@ function HelpEinstein(){
     //$("#help_einstein").css("display", "block");
     $("#help_einstein").fadeIn("slow");
 }
-
-
 function HelpEinsteinRefuse(){
     //$("#help_einstein").css("display", "none");
     $("#help_einstein").fadeOut("slow");
@@ -437,8 +437,6 @@ function AskTheAudience_ClearCanvas()
 	context.clearRect(0, 0, a.width, a.height);
     }
 }
-
-
 function ByeAudi() {
     //$("#ask_Audi").css("display", "none");
     $("#ask_Audi").fadeOut("slow");
@@ -569,16 +567,16 @@ function getQuestionsOffline()
 {
 var jsonShow;
 var lvl=1;
-$.getJSON("questions.json", function(json) {
-for (i=0;i<questionnumber;i++){
-	var rnd = Math.floor(Math.random() * 59) + 1;
-	if(json[rnd].level==lvl) 
-	{
-		jsonShow+=json[rnd];
-		lvl++;
-	}
-}
-	questions=jsonShow;
+    $.getJSON("scripts/questions.json", function (json){
+//for (i=0;i<questionnumber;i++){
+//	var rnd = Math.floor(Math.random() * 59) + 1;
+//	if(json[rnd].level==lvl) 
+//	{
+//		jsonShow+=json[rnd];
+//		lvl++;
+//	}
+//}
+        questions = json;
 	HelpEnableAll();
 	$("#btn_startgame").removeAttr("disabled");
 	if(questions.length===questionnumber){

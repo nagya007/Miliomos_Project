@@ -8,7 +8,9 @@
     function onDeviceReady() {
         // Handle the Cordova pause and resume events
         document.addEventListener( 'pause', onPause.bind( this ), false );
-        document.addEventListener( 'resume', onResume.bind( this ), false );
+        document.addEventListener('resume', onResume.bind(this), false);
+        $("#welcome").css("display", "none");
+        $("#mainmenu").css("display", "block");
     };
     function onPause() {
         // TODO: This application has been suspended. Save application state here.
@@ -34,14 +36,14 @@ var url="https://milliomos.000webhostapp.com/"; //free webhost server
 //----------------------
 window.addEventListener('native.keyboardshow', keyboardShowHandler);
 window.addEventListener('native.keyboardhide', keyboardHideHandler);
-function keyboardShowHandler(e) {
-    $("#login_form").css("top", "30%");
-    $("#signup_form").css("top", "30%");
-}
-function keyboardHideHandler(e) {
-    $("#signup_form").css("top", "50%");
-    $("#login_form").css("top", "55%");
-}
+//function keyboardShowHandler(e) {
+//    $("#login_form").css("top", "30%");
+//    $("#signup_form").css("top", "30%");
+//}
+//function keyboardHideHandler(e) {
+//    $("#signup_form").css("top", "50%");
+//    $("#login_form").css("top", "55%");
+//}
 function ExitGame() {
     navigator.notification.confirm('', function (button) {
         if (button === 2) navigator.app.exitApp();
@@ -57,19 +59,19 @@ function ShowAlert(message,onContinue){
             if(onContinue) onContinue();
         });
 }
-function CancelLogin(){
-    $("#welcome").css("display", "block");
-    $("#login_form").css("display", "none");
-    $("#mainmenu").css("display", "none");
-    $("#playground").css("display", "none");  
-}
-function CancelSignup() {
-    $("#welcome").css("display", "block");
-    $("#login_form").css("display", "none");
-    $("#mainmenu").css("display", "none");
-    $("#playground").css("display", "none");
-    $("#signup_form").css("display", "none");
-}
+//function CancelLogin(){
+//    $("#welcome").css("display", "block");
+//    $("#login_form").css("display", "none");
+//    $("#mainmenu").css("display", "none");
+//    $("#playground").css("display", "none");  
+//}
+//function CancelSignup() {
+//    $("#welcome").css("display", "block");
+//    $("#login_form").css("display", "none");
+//    $("#mainmenu").css("display", "none");
+//    $("#playground").css("display", "none");
+//    $("#signup_form").css("display", "none");
+//}
 function CleanUp(){
     //at the end of a game, this function clear these fields
     AskTheAudience_ClearCanvas();
@@ -79,18 +81,18 @@ function CleanUp(){
     previous=[]; 
     cnt=0;  
 }
-function ShowSignup(){
-    //makes signup form visible
-    $("#welcome").css("display", "none");
-    $("#signup_form").css("display", "block");
-	$("#login_form").css("display", "none");
-}  
-function ShowLogin(){
-    //makes login form visible
-    $("#signup_form").css("display", "none");
-    $("#login_form").css("display", "block");
-	$("#welcome").css("display", "none");
-}   
+//function ShowSignup(){
+//    //makes signup form visible
+//    $("#welcome").css("display", "none");
+//    $("#signup_form").css("display", "block");
+//	$("#login_form").css("display", "none");
+//}  
+//function ShowLogin(){
+//    //makes login form visible
+//    $("#signup_form").css("display", "none");
+//    $("#login_form").css("display", "block");
+//	$("#welcome").css("display", "none");
+//}   
 function ShowMainMenu(user){
     //makes main menu visible
     $("#welcome").css("display", "none");
@@ -115,48 +117,48 @@ function ShowPlayground(){
 } */
 
 
-function Signup(){
-    //implements signup function via ajax call
-	$("#btn_signup").attr("disabled","true")
-        ;
-    var username=$("input[name='s_username']").val();
-    var email=$("input[name='s_email']").val();
-    var password=$("input[name='s_password']").val();
-    $.ajax({
-        type:'POST',
-        url: url+'signup.php',
-        data:'email='+email+'&username='+username+'&password='+password,
-		timeout: 5000,
-        success: function (data) {
-			$("#btn_signup").removeAttr("disabled");
-            if(data==="successful")  {ShowAlert("Sikeres regisztráció. Most már bejelentkezhetsz.",ShowLogin());}
-            else if (data==="empty") ShowAlert ("Minden mezőt ki kell tölteni");
-            else if (data==="exist") ShowAlert("Ez a felhasználónév/email már létezik");
-        },
-        error: function(){ShowAlert("Hiba történt");$("#btn_signup").removeAttr("disabled");}
-    });
-} 
-function Login(){
-    //implements login function via ajax call
-	$("#btn_login").attr("disabled","true");
-    var username=$("input[name='l_username']").val();
-    var password=$("input[name='l_password']").val();
-    $.ajax({
-       type:'POST',
-       url: url+'login.php',
-       data:'username='+username+'&password='+password,
-	   timeout: 5000,
-       success: function(data){
-		   $("#btn_login").removeAttr("disabled");
-           if(data==="false") ShowAlert("Rossz felhasználónév vagy jelszó");
-           else {
-               session_user=username;
-               ShowMainMenu(session_user);
-           }
-       },
-       error: function(){ShowAlert("Hiba történt");$("#btn_login").removeAttr("disabled");}
-    });
-} 
+//function Signup(){
+//    //implements signup function via ajax call
+//	$("#btn_signup").attr("disabled","true")
+//        ;
+//    var username=$("input[name='s_username']").val();
+//    var email=$("input[name='s_email']").val();
+//    var password=$("input[name='s_password']").val();
+//    $.ajax({
+//        type:'POST',
+//        url: url+'signup.php',
+//        data:'email='+email+'&username='+username+'&password='+password,
+//		timeout: 5000,
+//        success: function (data) {
+//			$("#btn_signup").removeAttr("disabled");
+//            if(data==="successful")  {ShowAlert("Sikeres regisztráció. Most már bejelentkezhetsz.",ShowLogin());}
+//            else if (data==="empty") ShowAlert ("Minden mezőt ki kell tölteni");
+//            else if (data==="exist") ShowAlert("Ez a felhasználónév/email már létezik");
+//        },
+//        error: function(){ShowAlert("Hiba történt");$("#btn_signup").removeAttr("disabled");}
+//    });
+//} 
+//function Login(){
+//    //implements login function via ajax call
+//	$("#btn_login").attr("disabled","true");
+//    var username=$("input[name='l_username']").val();
+//    var password=$("input[name='l_password']").val();
+//    $.ajax({
+//       type:'POST',
+//       url: url+'login.php',
+//       data:'username='+username+'&password='+password,
+//	   timeout: 5000,
+//       success: function(data){
+//		   $("#btn_login").removeAttr("disabled");
+//           if(data==="false") ShowAlert("Rossz felhasználónév vagy jelszó");
+//           else {
+//               session_user=username;
+//               ShowMainMenu(session_user);
+//           }
+//       },
+//       error: function(){ShowAlert("Hiba történt");$("#btn_login").removeAttr("disabled");}
+//    });
+//} 
 function GetQuestions(){
     //recieves questions from database
     $.ajax({

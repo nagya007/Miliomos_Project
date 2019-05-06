@@ -120,8 +120,7 @@ function ShowPlayground(){
 
 function Signup(){
     //implements signup function via ajax call
-	$("#btn_signup").attr("disabled","true")
-        ;
+	$("#btn_signup").attr("disabled","true");
     var username=$("input[name='s_username']").val();
     var email=$("input[name='s_email']").val();
     var password=$("input[name='s_password']").val();
@@ -269,11 +268,13 @@ function CheckAnswer(buttonid){
 					var messange="";
 					if(offline == false)
 					{
-						messange="Gratulálunk, ön megnyerte a főnyereményt! Az eredményét rögzítettük!";
+						//messange="Gratulálunk, ön megnyerte a főnyereményt! Az eredményét rögzítettük!";
+						messange="Gratulálunk, ön megnyerte a főnyereményt!";
 					}
 					else
 					{
-						messange="Gratulálunk, ön megnyerte a főnyereményt! Az eredmény tárolása Offline módba viszont nem elérhető.";
+						messange="Gratulálunk, ön megnyerte a főnyereményt!";
+						//messange="Gratulálunk, ön megnyerte a főnyereményt! Az eredmény tárolása Offline módba viszont nem elérhető.";
 					}
                     ShowAlert(messange, function () {
 						if(offline == false)
@@ -310,7 +311,8 @@ function CheckAnswer(buttonid){
 				}
 				else
 				{
-					messange="Sajnáljuk, de nem ez volt a helyes válasz! Az eredmény tárolása Offline módba nem elérhető."
+					// offline üzenet, csak androidon kicsit hosszú
+					messange="Sajnáljuk, de nem ez volt a helyes válasz!"
 				}
                 ShowAlert(messange, function () {
 					if(offline == false)
@@ -606,10 +608,14 @@ function FillScoreboard()
 }
 function HighlightScoreboard(index)
 {
-	document.getElementById("scoreboard"+index).style.border = "thick solid #0000FF";  
+	document.getElementById("scoreboard"+index).style.border = "2px solid	red";
+	document.getElementById("scoreboard"+index).style.borderRadius = "25px"; 
+	document.getElementById("scoreboard"+index).style.animation = "border-pulsate-hiscoresellect 4s infinite"; 
+	//document.getElementById("scoreboard"+index).style.border = 5;
 	if(index!=0)
 	{
 		document.getElementById("scoreboard"+(index-1)).style.border = "";  
+		document.getElementById("scoreboard"+(index-1)).style.animation = "";  
 	}
 }
 

@@ -190,9 +190,10 @@ fullscreen-bg {
 
 }
 #counter{
-    padding: 2px 2px 2px 2px; /* padding-top + padding-bottom + text area = image height */
+    font: normal 125%/normal Arial, Helvetica, Sans-serif;
+    color: white;
+	padding: 2px 2px 2px 2px; /* padding-top + padding-bottom + text area = image height */
     margin: 2px 2px 2px 2px; /* offset vertical: half of image height */
-	font-size:110%;
 }
 
 
@@ -207,7 +208,7 @@ fullscreen-bg {
 
 
 .btn-group button {
-    font: normal 200%/normal Arial, Helvetica, Sans-serif;
+    font: normal 108%/normal Arial, Helvetica, Sans-serif;
     color: khaki;
     background: linear-gradient(rgba(90, 46, 109), rgba(25,0,44));
     box-shadow: 0px 0px 15px gold;
@@ -237,7 +238,14 @@ button,button[disabled]{
   background-color: #cccccc;
   color: #666666;
 }
-
+.btnd:active,
+.btnd:focus,
+.btnd.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
 
 .btn-group button:not(:last-child) {
     border-bottom: none; /* Prevent double borders */
@@ -309,13 +317,12 @@ app {
 }
 #scoreboard {
 	font: normal 5%/normal Arial, Helvetica, Sans-serif;
-	font-size: 25%;
 	justify-content: center;
 	vertical-align:middle;
 	background-color: rgba(90, 46, 109,0.8); 
 	width: 16%;
 	height: 50%;
-    
+    animation: border-pulsate-gold 1s infinite;
 	border: 5px solid gold;
 	border-radius:20px;
 }
@@ -422,4 +429,23 @@ th, td {
     position: absolute;
     height: 100%;
     top: 0;
+}
+@keyframes border-pulsate {
+    0%   { border-color: rgba(95, 31, 135, 1); }
+    50%  { border-color: rgba(255, 252, 255, 0); }
+    100% { border-color: rgba(95, 31, 135, 1); }
+}
+@keyframes border-pulsate-gold {
+    0%   { border: 6px solid #FFD700; }
+    50%  { border: 6px solid #DAA520; }
+    100% { border: 6px solid #FFD700; }
+}
+@keyframes border-pulsate-hiscoresellect {
+    0%   { border: 3px solid red; }
+    50%  { border: 3px solid blue; }
+    100% { border: 3px solid red; }
+}
+#bgpic {
+	border-style: dotted;
+    animation: border-pulsate 4s infinite;
 }

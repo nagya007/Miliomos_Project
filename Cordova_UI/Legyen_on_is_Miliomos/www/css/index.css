@@ -7,7 +7,7 @@ background-color:#1d0030;
 audio { 
    display:none;
 }
-
+button:focus {outline:0;}
 fullscreen-bg {
     position: fixed;
     top: 0;
@@ -363,7 +363,7 @@ th, td {
     top: 50%;
     width: 50%;
     height: 50%;
-    border: 5px solid red;
+    border: 5px solid #af8916;
 	border-radius:20px;
 }
 

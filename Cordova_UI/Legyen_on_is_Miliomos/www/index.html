@@ -25,6 +25,7 @@
 
 <!--kezdőképernyő-->
     <div id="welcome" class="w3-padding w3-display-middle btn-group" style="">
+        <button id="btn_playoffline" onclick="StartGameOffline()" >Offline játék indítása</button>
         <button onclick="ShowSignup()" >Regisztráció</button>
         <button onclick="ShowLogin()">Bejelentkezés</button>
         <button id="btn_exitgame1" onclick="ExitGame()">Kilépés</button>
@@ -73,7 +74,7 @@
 	
 <!--főmenü-->
     <div id="mainmenu" class="w3-display-middle w3-padding btn-group" style="display: none;">
-        <h1 class="vertical">Mizu arc? </h1>
+        <h1 id="greet" class="vertical">Üdvözlöm</h1>
         <button id="btn_startgame" class="btn-group" onclick="StartGame()">Játék kezdése</button>
         <button class="btn-group" onclick="GetScores()">Eredménylista</button>
         <button id="btn_exitgame2" class="btn-group" onclick="ExitGame()">Kilépés</button>

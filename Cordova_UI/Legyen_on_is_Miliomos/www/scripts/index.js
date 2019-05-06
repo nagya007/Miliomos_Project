@@ -17,6 +17,7 @@
         // TODO: This application has been reactivated. Restore application state here.
     };
 })();
+var offline=false;
 var session_user="";  //name of actually logged in user
 var questionnumber=10; //number of requested questions
 var scorenumber=10; //number of requested scores
@@ -91,13 +92,15 @@ function ShowLogin(){
     $("#login_form").css("display", "block");
 	$("#welcome").css("display", "none");
 }   
+
 function ShowMainMenu(user){
     //makes main menu visible
     $("#welcome").css("display", "none");
     $("#login_form").css("display", "none");
     $("#mainmenu").css("display", "block");
     $("#playground").css("display", "none");
-	$("#greet").append(user);
+	document.getElementById("greet").innerHTML = "Üdvözlöm "+user+"!";
+	//$("#greet").innerHTML = "Üdvözlöm "+user+"!";
 } 
 function ShowPlayground(){
     // makes question form visible
@@ -204,9 +207,17 @@ function SelectQuestion() {
         return selected;
 }
 function StartGame(){
+	offline=false;
     //invokes GetQuestitons() function, then checks the count of received question and starts the game
 	$("#btn_startgame").attr("disabled","true"); //disables the button to prevent multiple click, it will be re-enabled when the next function successes or fails
 	GetQuestions();
+	FillScoreboard();
+}
+function StartGameOffline(){
+	offline=true;
+    //invokes GetQuestitons() function, then checks the count of received question and starts the game
+	$("#btn_playoffline").attr("disabled","true"); //disables the button to prevent multiple click, it will be re-enabled when the next function successes or fails
+	getQuestionsOffline();
 	FillScoreboard();
 }
 function FillQuestion(){
@@ -255,10 +266,29 @@ function CheckAnswer(buttonid){
                  FillQuestion();
                 } 
                 else {
-                    ShowAlert("Nyertél!", function () {
-                        Highscore(cnt - 1);
+					var messange="";
+					if(offline == false)
+					{
+						messange="Gratulálunk, ön megnyerte a főnyereményt! Az eredményét rögzítettük!";
+					}
+					else
+					{
+						messange="Gratulálunk, ön megnyerte a főnyereményt! Az eredmény tárolása Offline módba viszont nem elérhető.";
+					}
+                    ShowAlert(messange, function () {
+						if(offline == false)
+						{
+							Highscore(cnt - 1);
+						}
                         CleanUp();
-                        ShowMainMenu();
+                        if(offline == false)
+						{
+							ShowMainMenu(session_user);
+						}
+						else
+						{
+							CancelSignup();
+						}
                     });
 
                 }
@@ -273,10 +303,29 @@ function CheckAnswer(buttonid){
             $(buttonid).css("background","#ff0000");
             $(rightbtnid).css("animation","wronganimation 1s infinite");
             setTimeout(function(){
-                ShowAlert("Helytelen válasz! Vesztettél!", function () {
-                    Highscore(cnt - 2);
-                    CleanUp();
-                    ShowMainMenu();
+				var messange="";
+				if(offline == false)
+				{
+					messange="Sajnáljuk, de nem ez volt a helyes válasz!";
+				}
+				else
+				{
+					messange="Sajnáljuk, de nem ez volt a helyes válasz! Az eredmény tárolása Offline módba nem elérhető."
+				}
+                ShowAlert(messange, function () {
+					if(offline == false)
+					{
+						Highscore(cnt - 2);
+					}
+					CleanUp();
+					if(offline == false)
+					{
+						ShowMainMenu(session_user);
+					}
+					else
+					{
+						CancelSignup();
+					}
                 });
             },5000);
 
@@ -563,11 +612,12 @@ function HighlightScoreboard(index)
 		document.getElementById("scoreboard"+(index-1)).style.border = "";  
 	}
 }
+
 function getQuestionsOffline()
 {
 var jsonShow;
 var lvl=1;
-$.getJSON("questions.json", function(json) {
+    $.getJSON("scripts/questions.json", function (json){
 for (i=0;i<questionnumber;i++){
 	var rnd = Math.floor(Math.random() * 59) + 1;
 	if(json[rnd].level==lvl) 
@@ -576,9 +626,9 @@ for (i=0;i<questionnumber;i++){
 		lvl++;
 	}
 }
-	questions=jsonShow;
+    questions = json;
 	HelpEnableAll();
-	$("#btn_startgame").removeAttr("disabled");
+	$("#btn_playoffline").removeAttr("disabled");
 	if(questions.length===questionnumber){
 		FillQuestion();
 		ShowPlayground();    

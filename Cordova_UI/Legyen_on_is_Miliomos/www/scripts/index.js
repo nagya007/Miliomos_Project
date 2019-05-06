@@ -620,11 +620,11 @@ var lvl=1;
     $.getJSON("scripts/questions.json", function (json){
 for (i=0;i<questionnumber;i++){
 	var rnd = Math.floor(Math.random() * 59) + 1;
-	if(json[rnd].level==lvl) 
-	{
-		jsonShow+=json[rnd];
-		lvl++;
-	}
+	//if(json[rnd].level==lvl) 
+	//{
+	//	jsonShow+=json[rnd];
+	//	lvl++;
+	//}
 }
     questions = json;
 	HelpEnableAll();
